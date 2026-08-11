@@ -1,14 +1,19 @@
 {
+  "id": "./",
   "name": "Directorio Llo-Lleo",
   "short_name": "Directorio",
-  "description": "Directorio de hermanos de la iglesia Llo-Lleo",
+  "description": "Directorio de hermanos del Barrio Llo Lleo 1",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["standalone", "browser"],
   "orientation": "portrait-primary",
   "background_color": "#dfece6",
   "theme_color": "#1f4a3e",
   "lang": "es",
+  "dir": "ltr",
+  "categories": ["lifestyle", "utilities"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "icons/icon-192.png",

@@ -84,6 +84,46 @@ llamamiento: Sin llamamientos
 
 familia: Tamara y Joel
 ================================================================
+Organización: Quórum de élderes, Escuela Dominical
+Nombre: Mario Alejandro Rossel Poblete
+fecha de nacimiento: 15 de julio de 1981 (45 años)
+Sexo: Varón
+oficio en el sacerdocio:Presbítero
+teléfono:9 7940 8276
+correo: mrossel154@gmail.com
+dirección: Santa Inés 35 Rafael Moreno
+2660000 Santo Domingo
+VALPARAÍSO
+(-33,63646, -71,61087)
+llamamiento: ningún llamamiento
+
+familia:no hay información
+================================================================
+Organización: Escuela Dominical, Sociedad de Socorro
+Nombre:Graciela Del Carmen Arpe Torres
+fecha de nacimiento: 29 de septiembre de 1990 (35 años)
+Sexo: Mujer
+teléfono: 9 5689 9962
+correo: graciela.arpe.t@gmail.com
+dirección: Los Manantiales 19, Santo Domingo
+2660000 Santo Domingo
+VALPARAÍSO
+(-33,64925, -71,6008)
+llamamiento: sin llamamientos
+
+familia: familia Illanes
+================================================================
+Organización: 
+Nombre:
+fecha de nacimiento: 
+Sexo: 
+oficio en el sacerdocio:
+teléfono:
+correo: 
+dirección: 
+llamamiento: 
+
+familia:
 
 
 
@@ -94,12 +134,6 @@ familia: Tamara y Joel
 
 
 
-
-
-
-
-Mario Alejandro Rossel Poblete
-Graciela Del Carmen Arpe Torres
 Isabella Esperanza Illanes Arpe
 José Manuel Illanes Ceballos
 Roberto Pablo Illanes Postigo

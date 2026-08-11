@@ -4,13 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1f4a3e" />
-  <meta name="description" content="Directorio de hermanos de la iglesia Llo-Lleo" />
+  <meta name="description" content="Directorio de hermanos del Barrio Llo Lleo 1" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="apple-mobile-web-app-title" content="Directorio" />
+  <meta name="application-name" content="Directorio Llo-Lleo" />
+  <meta name="format-detection" content="telephone=no" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
   <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -21,8 +26,15 @@
   <div class="page" id="app">
     <header class="top">
       <div class="brand-block">
-        <p class="brand">Directorio Llo-Lleo</p>
-        <p class="tagline">Hermanos de la iglesia</p>
+        <div class="brand-row">
+          <div>
+            <p class="brand">Directorio Llo-Lleo</p>
+            <p class="tagline">Hermanos de la iglesia</p>
+          </div>
+          <button class="install-btn" id="installBtn" type="button" hidden>
+            Instalar
+          </button>
+        </div>
       </div>
       <label class="search" for="search">
         <span class="search-icon" aria-hidden="true">
@@ -39,23 +51,76 @@
           enterkeyhint="search"
         />
       </label>
+      <div class="filters" role="group" aria-label="Filtrar hermanos">
+        <button class="filter-btn is-active" type="button" data-filter="todos" aria-pressed="true">
+          Todos
+        </button>
+        <button class="filter-btn" type="button" data-filter="recien" aria-pressed="false">
+          Recién conversos
+        </button>
+        <button class="filter-btn" type="button" data-filter="obispado" aria-pressed="false">
+          Obispado
+        </button>
+        <button class="filter-btn" type="button" data-filter="ss" aria-pressed="false">
+          Sociedad de Socorro
+        </button>
+        <button class="filter-btn" type="button" data-filter="elderes" aria-pressed="false">
+          Quórum de élderes
+        </button>
+      </div>
     </header>
 
     <main>
       <p class="results-meta" id="resultsMeta" aria-live="polite"></p>
       <section class="grid" id="directory" aria-label="Listado de hermanos"></section>
-      <p class="empty" id="emptyState" hidden>No se encontraron hermanos con ese nombre.</p>
+      <p class="empty" id="emptyState" hidden>No se encontraron hermanos con ese criterio.</p>
     </main>
   </div>
 
   <div class="detail" id="detail" hidden>
     <div class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailName">
-      <button class="detail-close" id="detailClose" type="button" aria-label="Cerrar">
+      <div class="detail-toolbar">
+        <div class="detail-nav" role="group" aria-label="Navegar fichas">
+          <button class="detail-nav-btn" id="detailBack" type="button" aria-label="Ficha anterior" disabled>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="detail-nav-btn" id="detailForward" type="button" aria-label="Ficha siguiente" disabled>
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <button class="detail-close" id="detailClose" type="button" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="detail-content" id="detailContent"></div>
+    </div>
+  </div>
+
+  <div class="ministrantes" id="ministrantes" hidden>
+    <div class="ministrantes-panel" role="dialog" aria-modal="true" aria-labelledby="ministrantesTitle">
+      <button class="detail-close" id="ministrantesClose" type="button" aria-label="Cerrar">
         <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
           <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
         </svg>
       </button>
-      <div class="detail-content" id="detailContent"></div>
+      <div class="ministrantes-content" id="ministrantesContent"></div>
+    </div>
+  </div>
+
+  <div class="install-banner" id="installBanner" hidden>
+    <div class="install-banner-text">
+      <strong>Instala el Directorio</strong>
+      <span id="installHint">Agrégalo a tu pantalla de inicio para usarlo como app.</span>
+    </div>
+    <div class="install-banner-actions">
+      <button class="install-banner-btn" id="installBannerBtn" type="button">Instalar</button>
+      <button class="install-banner-dismiss" id="installDismiss" type="button" aria-label="Cerrar">×</button>
     </div>
   </div>
 
