@@ -1,9 +1,14 @@
-const CACHE = "directorio-llo-lleo-v8";
+const CACHE = "directorio-llo-lleo-v29";
 const ASSETS = [
   "./",
   "./index.html",
+  "./admin.html",
+  "./admin.css",
+  "./admin.js",
   "./styles.css",
   "./script.js",
+  "./supabase-config.js",
+  "./data/miembros.json",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
@@ -44,6 +49,8 @@ self.addEventListener("fetch", (event) => {
     url.pathname.endsWith("/index.html") ||
     url.pathname.endsWith("/script.js") ||
     url.pathname.endsWith("/styles.css") ||
+    url.pathname.endsWith("/supabase-config.js") ||
+    url.pathname.endsWith("/miembros.json") ||
     url.pathname.endsWith("/manifest.webmanifest");
 
   if (isShell || event.request.mode === "navigate") {
