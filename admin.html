@@ -64,6 +64,10 @@
         <span class="admin-tab-code">02</span>
         Hermanos
       </button>
+      <button class="admin-tab" type="button" data-panel="asistencia" aria-pressed="false">
+        <span class="admin-tab-code">03</span>
+        Asistencia
+      </button>
     </nav>
 
     <section class="admin-panel is-active" id="panel-stats" data-panel="stats" aria-labelledby="statsTitle">
@@ -174,6 +178,109 @@
           </thead>
           <tbody id="adminTableBody"></tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="admin-panel" id="panel-asistencia" data-panel="asistencia" hidden aria-labelledby="asistenciaTitle">
+      <div class="admin-panel-head">
+        <div>
+          <p class="admin-kicker">Reunión sacramental</p>
+          <h2 class="admin-panel-title" id="asistenciaTitle">Registro de asistencia</h2>
+          <p class="admin-panel-lead">
+            Elige un día en el calendario, marca con ✓ quién asistió y consulta el historial por mes o año.
+            Los cambios se guardan en Supabase al instante.
+          </p>
+        </div>
+        <p class="asistencia-sync" id="attSyncStatus" aria-live="polite">Sin sincronizar</p>
+      </div>
+
+      <p class="admin-error" id="asistenciaError" hidden></p>
+      <p class="admin-ok" id="asistenciaOk" hidden></p>
+
+      <div class="asistencia-layout">
+        <aside class="asistencia-calendar-card">
+          <div class="asistencia-cal-toolbar">
+            <button class="admin-ghost admin-ghost--compact" type="button" id="attPrevMonth" aria-label="Mes anterior">‹</button>
+            <div class="asistencia-cal-selectors">
+              <label class="asistencia-select">
+                <span class="sr-only">Mes</span>
+                <select id="attMonth"></select>
+              </label>
+              <label class="asistencia-select">
+                <span class="sr-only">Año</span>
+                <select id="attYear"></select>
+              </label>
+            </div>
+            <button class="admin-ghost admin-ghost--compact" type="button" id="attNextMonth" aria-label="Mes siguiente">›</button>
+          </div>
+          <div class="asistencia-cal-actions">
+            <button class="admin-ghost admin-ghost--compact" type="button" id="attTodayBtn">Hoy</button>
+            <button class="admin-ghost admin-ghost--compact" type="button" id="attRefreshBtn">Recargar</button>
+          </div>
+          <div class="asistencia-weekday" aria-hidden="true">
+            <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span class="is-sunday-label">Dom</span>
+          </div>
+          <div class="asistencia-grid" id="attCalendar" role="grid" aria-label="Calendario de asistencia"></div>
+          <p class="admin-meta" id="attMonthMeta">Selecciona un día para ver y editar la lista.</p>
+
+          <div class="asistencia-month-summary" id="attMonthSummary">
+            <article class="asistencia-summary-chip">
+              <strong id="attSumDays">0</strong>
+              <span>Reuniones</span>
+            </article>
+            <article class="asistencia-summary-chip">
+              <strong id="attSumAvg">0</strong>
+              <span>Promedio</span>
+            </article>
+            <article class="asistencia-summary-chip">
+              <strong id="attSumBest">—</strong>
+              <span>Mejor día</span>
+            </article>
+          </div>
+        </aside>
+
+        <div class="asistencia-day-card">
+          <div class="asistencia-day-head">
+            <div>
+              <p class="admin-kicker">Lista del día</p>
+              <h3 class="asistencia-day-title" id="attDayTitle">—</h3>
+              <p class="admin-meta" id="attDayMeta">Selecciona una fecha en el calendario</p>
+            </div>
+            <div class="asistencia-day-stats" id="attDayStats" hidden>
+              <div>
+                <span class="asistencia-day-stat-value" id="attPresentCount">0</span>
+                <span class="asistencia-day-stat-label">Presentes</span>
+              </div>
+              <div>
+                <span class="asistencia-day-stat-value" id="attAbsentCount">0</span>
+                <span class="asistencia-day-stat-label">Ausentes</span>
+              </div>
+              <div>
+                <span class="asistencia-day-stat-value" id="attPercent">0%</span>
+                <span class="asistencia-day-stat-label">Asistencia</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="asistencia-roll-toolbar">
+            <label class="admin-search">
+              <input id="attSearch" type="search" placeholder="Buscar por nombre…" autocomplete="off" />
+            </label>
+            <div class="asistencia-roll-actions">
+              <button class="admin-ghost admin-ghost--compact" type="button" id="attMarkAll" disabled>Marcar todos</button>
+              <button class="admin-ghost admin-ghost--compact" type="button" id="attClearAll" disabled>Desmarcar todos</button>
+            </div>
+          </div>
+
+          <div class="asistencia-legend" aria-hidden="true">
+            <span class="asistencia-legend-item is-present">✓ Presente</span>
+            <span class="asistencia-legend-item is-absent">Ausente</span>
+          </div>
+
+          <div class="asistencia-roll" id="attRoll" aria-live="polite">
+            <p class="admin-meta">Elige un día en el calendario para ver la lista de hermanos.</p>
+          </div>
+        </div>
       </div>
     </section>
   </div>
