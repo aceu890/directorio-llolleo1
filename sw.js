@@ -1,4 +1,4 @@
-const CACHE = "directorio-llo-lleo-v37";
+const CACHE = "directorio-llo-lleo-v38";
 const ASSETS = [
   "./",
   "./index.html",
@@ -48,6 +48,9 @@ self.addEventListener("fetch", (event) => {
   // App shell: network first, cache fallback
   const isShell =
     url.pathname.endsWith("/") ||
+    url.pathname.endsWith("/admin.html") ||
+    url.pathname.endsWith("/admin.js") ||
+    url.pathname.endsWith("/admin.css") ||
     url.pathname.endsWith("/index.html") ||
     url.pathname.endsWith("/reconocimiento.html") ||
     url.pathname.endsWith("/reconocimiento.js") ||

@@ -1,6 +1,20 @@
 /* Panel admin — Auth + CRUD con fetch (sin CDN) */
 
 (function () {
+  // Evita zoom por pellizco / gestos en iOS (el doble toque lo cubre touch-action: manipulation)
+  const lockViewportMeta = () => {
+    const meta = document.querySelector('meta[name="viewport"]');
+    if (!meta) return;
+    meta.setAttribute(
+      "content",
+      "width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    );
+  };
+  lockViewportMeta();
+  ["gesturestart", "gesturechange", "gestureend"].forEach((type) => {
+    document.addEventListener(type, (event) => event.preventDefault(), { passive: false });
+  });
+
   const cfg = window.SUPABASE_CONFIG || {};
   const supabaseUrl = String(cfg.url || "").trim().replace(/\/$/, "");
   const supabaseKey = String(cfg.anonKey || "").trim();
@@ -1003,6 +1017,64 @@
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const todayKey = toDateKey(new Date());
     const selectedKey = attSelectedDate;
+    const expectedCount = startPad + daysInMonth;
+    const existing = Array.from(attCalendar.querySelectorAll(":scope > button.asistencia-day"));
+    const firstDayKey = toDateKey(new Date(year, month, 1));
+    const canPatch =
+      existing.length === expectedCount &&
+      existing[startPad]?.getAttribute("data-date") === firstDayKey;
+
+    function dayClasses(date, key, hasRecord) {
+      const classes = ["asistencia-day"];
+      if (date.getDay() === 0) classes.push("is-sunday");
+      if (key === todayKey) classes.push("is-today");
+      if (key === selectedKey) classes.push("is-selected");
+      if (hasRecord) classes.push("has-record");
+      return classes.join(" ");
+    }
+
+    if (canPatch) {
+      for (let i = 0; i < startPad; i += 1) {
+        const pad = existing[i];
+        pad.className = "asistencia-day";
+        pad.disabled = true;
+        pad.removeAttribute("data-date");
+        pad.removeAttribute("aria-label");
+        pad.setAttribute("aria-hidden", "true");
+        pad.innerHTML = "";
+      }
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const date = new Date(year, month, day);
+        const key = toDateKey(date);
+        const count = presentCounts.get(key) || 0;
+        const hasRecord = recorded.has(key);
+        const btn = existing[startPad + day - 1];
+        btn.disabled = false;
+        btn.removeAttribute("aria-hidden");
+        btn.className = dayClasses(date, key, hasRecord);
+        btn.setAttribute("data-date", key);
+        btn.setAttribute(
+          "aria-label",
+          `${formatDateLong(date)}${hasRecord ? `, ${count} presentes` : ""}`
+        );
+        let num = btn.querySelector(".asistencia-day-num");
+        let countEl = btn.querySelector(".asistencia-day-count");
+        let dot = btn.querySelector(".asistencia-day-dot");
+        if (!num || !countEl || !dot) {
+          btn.innerHTML = `
+            <span class="asistencia-day-num"></span>
+            <span class="asistencia-day-count"></span>
+            <span class="asistencia-day-dot" aria-hidden="true"></span>
+          `;
+          num = btn.querySelector(".asistencia-day-num");
+          countEl = btn.querySelector(".asistencia-day-count");
+        }
+        if (num) num.textContent = String(day);
+        if (countEl) countEl.textContent = hasRecord ? String(count) : "";
+      }
+      renderMonthSummary();
+      return;
+    }
 
     const cells = [];
     for (let i = 0; i < startPad; i += 1) {
@@ -1013,13 +1085,8 @@
       const key = toDateKey(date);
       const count = presentCounts.get(key) || 0;
       const hasRecord = recorded.has(key);
-      const classes = ["asistencia-day"];
-      if (date.getDay() === 0) classes.push("is-sunday");
-      if (key === todayKey) classes.push("is-today");
-      if (key === selectedKey) classes.push("is-selected");
-      if (hasRecord) classes.push("has-record");
       cells.push(`
-        <button class="${classes.join(" ")}" type="button" data-date="${key}" aria-label="${escapeHtml(formatDateLong(date))}${hasRecord ? `, ${count} presentes` : ""}">
+        <button class="${dayClasses(date, key, hasRecord)}" type="button" data-date="${key}" aria-label="${escapeHtml(formatDateLong(date))}${hasRecord ? `, ${count} presentes` : ""}">
           <span class="asistencia-day-num">${day}</span>
           <span class="asistencia-day-count">${hasRecord ? count : ""}</span>
           <span class="asistencia-day-dot" aria-hidden="true"></span>
@@ -1995,8 +2062,23 @@
   });
   attCalendar?.addEventListener("click", (event) => {
     const btn = event.target.closest("[data-date]");
-    if (!btn) return;
-    loadAttendanceDay(btn.dataset.date);
+    if (!btn || !attCalendar.contains(btn)) return;
+    event.preventDefault();
+    const dateKey = btn.dataset.date;
+    if (!dateKey) return;
+    attCalendar.querySelectorAll(".asistencia-day.is-selected").forEach((el) => {
+      el.classList.remove("is-selected");
+    });
+    btn.classList.add("is-selected");
+    if (typeof btn.blur === "function") btn.blur();
+    if (document.activeElement && document.activeElement !== document.body) {
+      try {
+        document.activeElement.blur();
+      } catch (_) {
+        /* ignore */
+      }
+    }
+    loadAttendanceDay(dateKey);
   });
   attSearch?.addEventListener("input", () => {
     attSearchQuery = attSearch.value;
