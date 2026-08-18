@@ -44,7 +44,7 @@ VALPARAÍSO', '-33.620552, -71.598694', 'Sin llamamientos', 'Tamara y Joel', nul
 VALPARAÍSO', null, null, 'Mario Alejandro Rossel Poblete — Varón', null, null, 'Mario Alejandro Rossel Poblete.png', true, false, false, false, null),
 ('Graciela Del Carmen Arpe Torres', null, '29 sep 1990', 'Mujer', null, '9 5689 9962', 'graciela.arpe.t@gmail.com', 'Los Manantiales 19, Santo Domingo
 2660000 Santo Domingo
-VALPARAÍSO', null, null, 'Graciela del Carmen Arpe Torres — Mujer', null, null, 'Graciela Del Carmen Arpe Torres.png', true, false, false, false, null),
+VALPARAÍSO', null, null, 'Graciela del Carmen Arpe Torres — Mujer', null, null, 'Graciela Del Carmen Arpe Torres.jpeg', true, false, false, false, null),
 ('Isabella Esperanza Illanes Arpe', null, '29 mar 2017', 'Mujer', null, '9 9496 0907', null, null, null, null, 'Isabella Esperanza Illanes Arpe — Mujer (9)', null, null, 'Isabella Esperanza Illanes Arpe.png', true, false, false, false, null),
 ('José Manuel Illanes Ceballos', null, '31 dic 1979', 'Varón', null, '9 9821 4887', 'jose@dynamo.cl', 'Los Manantiles Parcela 19
 2660000 Santo Domingo
@@ -74,7 +74,7 @@ La Vertiente Sin Número, Parcela, Santo
 2660437 San Antonio
 VALPARAÍSO', null, null, 'Eduardo David Enrique Naranjo Gutierrez — Varón', null, null, 'Eduardo David Enrique Naranjo Gutiérrez.png', true, false, false, false, null),
 ('Alicia Cecilia Meza Pizarro', null, '28 sep 1966', 'Mujer', null, '9 7715 7307', 'aliciaceciliameza@gmail.com', 'VALPARAÍSO', null, null, 'Alicia Cecilia Meza Pizarro — Mujer
-David Alejandro Quintanilla Meza — Varón', null, null, null, true, false, false, false, null),
+David Alejandro Quintanilla Meza — Varón', null, null, 'Alicia Cecilia Meza Pizarro.jpeg', true, false, false, false, null),
 ('Cristopher Bastian Jofré Campos', null, '23 abr 1991', 'Varón', null, '9 6163 9998', 'cristopherjcampos@gmail.com', 'Los Cóndores 1864
 2660000 LloLleo
 VALPARAÍSO', null, null, 'Cristopher Bastian Jofré Campos — Varón', null, null, 'Cristopher Bastian Jofré Campos.png', true, false, false, false, null),
@@ -98,7 +98,7 @@ san antonio', null, null, 'Walther Ivaniet Urbina Peña — Varón', null, null,
 ('Hector Ignacio León Pinto', null, '10 ene 1965', 'Varón', null, '9 9345 7055', null, 'Aerodromo Poniente
 Parcela 68
 Santo Domingo', null, null, 'Hector Ignacio León Pinto — Varón
-Mateo Ignacio León Silva — Varón (13)', null, null, null, true, false, false, false, null),
+Mateo Ignacio León Silva — Varón (13)', null, null, 'Héctor Ignacio León Pinto.png', true, false, false, false, null),
 ('Yoel Alejandro Córdova González', null, '24 ago 2001', 'Varón', null, '9 4975 2671', 'Yoelcordova2408@gmail.com', 'Los Vantros 1061
 San Antonio
 VALPARAÍSO', null, null, 'Yoel Alejandro Córdova González — Varón', null, null, null, true, false, false, false, null),
@@ -271,7 +271,7 @@ Andrea Eloísa Castillo Silva — Mujer (12)', null, null, null, false, false, f
 ('Andrea Francisca de Fuentes Molina', null, '30 nov 1974', 'Mujer', null, '2114181', null, 'Los Limites 1262
 Llo Lleo
 2660000 San Antonio', null, null, 'Wilhermina Francisca de Molina Zuñiga — Mujer
-Andrea Francisca de Fuentes Molina — Mujer', null, null, null, false, false, false, false, null),
+Andrea Francisca de Fuentes Molina — Mujer', null, null, 'Andrea Francisca de Fuentes Molina.png', false, false, false, false, null),
 ('Andrea Jaqueline Jofre Aravena', null, '13 ago 1992', 'Mujer', null, '9 6525 6965', 'Jofre.aravena.an@gmail.com', 'PASA JE LOS HELECHOS 27
 2720000 SANTO DOMINGO
 VALPARAÍSO', null, null, 'Felipe Ignacio Riquelme Cornejo — Varón
@@ -385,7 +385,7 @@ Yasna Karen Hernandez Rojas — Mujer
 Constanza Antonia Astorga Hernandez — Mujer (17)', null, null, null, false, false, false, false, null),
 ('Cristian Alexander Cortez Benavente', null, '22 sep 2013', 'Varón', null, '9 6511 0607', null, 'Las Vertientes, Pasaje El Sauce 12
 San Antonio
-VALPARAÍSO', null, null, 'Cristian Alexander Cortez Benavente — Varón (12)', null, null, null, false, false, false, false, null),
+VALPARAÍSO', null, null, 'Cristian Alexander Cortez Benavente — Varón (12)', null, null, 'Cristian Alexander Cortez Benavente.png', false, false, false, false, null),
 ('Cristian Ignacio Ampuero Ampuero', null, '21 oct 1974', 'Varón', null, '9 7567 9989', 'campuero33@gmail.com', 'fundo la princesa
 26000000 santo domingo
 VALPARAÍSO', null, null, 'Cristian Ignacio Ampuero Ampuero — Varón', null, null, null, false, false, false, false, null),
@@ -407,7 +407,7 @@ Maria Enriqueta Vidal Diaz — Mujer
 Dafnhe Monserrat Echaniz Maripangui — Mujer
 Yhanela Danaee Echaniz Maripangui — Mujer
 Ian Aaron Cobarrubia Maripangui — Varón (14)
-Yeiko Leon Cobarrubia Maripangui — Varón (12)', null, null, 'Dafnhe Monserrat Echaniz Maripangui.jpeg', false, false, false, false, null),
+Yeiko Leon Cobarrubia Maripangui — Varón (12)', null, null, 'Dafnhe Monserrat Echaniz Maripangui.png', false, false, false, false, null),
 ('Daniel Andres Delgado Atenas', null, '20 mar 1986', 'Varón', null, '9 9946 8464', null, 'Larrain Gandarillas 1147
 San Antonio', null, null, 'Daniel Andres Delgado Atenas — Varón
 Diego Cristobal Delgado Atenas — Varón', null, null, null, false, false, false, false, null),
@@ -417,7 +417,7 @@ VALPARAÍSO', null, null, 'Leonardo Nelson Wilches Santibañez — Varón
 Eugenia Margarita de Wilches Martinez — Mujer
 Daniel Ignacio Wilches Martinez — Varón', null, null, null, false, false, false, false, null),
 ('Daniela Beatriz Jeria Nuñez', null, '21 ene 1986', 'Mujer', null, null, null, 'San Antonio
-VALPARAÍSO', null, null, 'Daniela Beatriz Jeria Nuñez — Mujer', null, null, null, false, false, false, false, null),
+VALPARAÍSO', null, null, 'Daniela Beatriz Jeria Nuñez — Mujer', null, null, 'Daniela Beatriz Jeria Nuñez.png', false, false, false, false, null),
 ('Daniela Francisca Vera Trincado', null, '22 dic 1985', 'Mujer', null, null, null, 'Llo-Lleo
 San Antonio', null, null, 'Daniela Francisca Vera Trincado — Mujer', null, null, null, false, false, false, false, null),
 ('David Alejandro Quintanilla Meza', null, '22 mar 2005', 'Varón', null, '9 3261 5152', 'davidquintanillabmxing@gmail.com', 'VALPARAÍSO', null, 'Secretario de quórum de élderes', 'Alicia Cecilia Meza Pizarro — Mujer
@@ -451,7 +451,7 @@ SAN ANTONIO
 VALPARAÍSO', null, null, 'Jesus Alberto Torres Benavente — Varón
 Maria Cristina Jimenez Ramirez — Mujer
 Joaquin Ignacio Torres Jimenez — Varón (13)
-Elias Benjamin Torres Jimenez — Varón (4)', null, null, null, false, false, false, false, null),
+Elias Benjamin Torres Jimenez — Varón (4)', null, null, 'Elias Benjamin Torres Jimenez.png', false, false, false, false, null),
 ('Eliette Belen Martez Hernadez', null, '11 feb 2016', 'Mujer', null, '9 4214 2771', null, 'CAMINO A EL CONVENTO 22
 2720000 SANTO DOMINGO
 VALPARAÍSO', null, null, 'Marjorie Andrea Hernández Arellano — Mujer
@@ -506,7 +506,7 @@ Félix Francisco Julian Pizarro Hernández — Varón (14)', null, null, null, f
 Santo Domingo
 VALPARAÍSO', null, null, 'Juan Antonio Meza Meza — Varón
 Margarita del Pilar de Meza Soto — Mujer
-Fernanda Belen Meza Soto — Mujer', null, null, null, false, false, false, false, null),
+Fernanda Belen Meza Soto — Mujer', null, null, 'Fernanda Belén Meza Soto.png', false, false, false, false, null),
 ('Fernando Andres Soto Gazul', null, '24 sep 1991', 'Varón', null, '9 8546 7687', 'eldersoto1876@hotmail.com', 'LOS CONDORES 1876
 SAN ANTONIO
 VALPARAÍSO', null, 'Presidente de quórum de élderes', 'Jose Miguel Soto Soto — Varón
@@ -516,7 +516,7 @@ Fernando Andres Soto Gazul — Varón', null, null, null, false, false, false, t
 ('Fernando Antonio Cerda Paredes', null, '24 feb 1986', 'Varón', null, null, null, 'Santa Elba 26
 Poblacion Rafael Moreno
 1 Santo Domingo', null, null, 'Ulises Gonzalo Cerda Paredes — Varón
-Fernando Antonio Cerda Paredes — Varón', null, null, null, false, false, false, false, null),
+Fernando Antonio Cerda Paredes — Varón', null, null, 'Fernando Andrés Soto Gazul.png', false, false, false, false, null),
 ('Flores Martinez Consuelo Rosario', null, '23 nov 2017', 'Mujer', null, '9 8295 1847', null, 'Miguel Hernández 837
 San Antonio
 VALPARAÍSO', null, null, 'Mauricio Fernando Flores Rojas — Varón
@@ -639,7 +639,7 @@ SAN ANTONIO
 VALPARAÍSO', null, null, 'Jesus Alberto Torres Benavente — Varón
 Maria Cristina Jimenez Ramirez — Mujer
 Joaquin Ignacio Torres Jimenez — Varón (13)
-Elias Benjamin Torres Jimenez — Varón (4)', null, null, null, false, false, false, false, null),
+Elias Benjamin Torres Jimenez — Varón (4)', null, null, 'Jesús Alberto Torres Benavente.png', false, false, false, false, null),
 ('Jesus Antonio Quijada Gonzalez', null, '19 abr 2002', 'Varón', null, '98959684', null, 'Av San Juan 4610
 San Antonio
 VALPARAÍSO', null, null, 'Clemira Ester Gonzalez Gonzalez — Mujer
@@ -653,7 +653,7 @@ SAN ANTONIO
 VALPARAÍSO', null, null, 'Jesus Alberto Torres Benavente — Varón
 Maria Cristina Jimenez Ramirez — Mujer
 Joaquin Ignacio Torres Jimenez — Varón (13)
-Elias Benjamin Torres Jimenez — Varón (4)', null, null, null, false, false, false, false, null),
+Elias Benjamin Torres Jimenez — Varón (4)', null, null, 'Joaquín Ignacio Torres Jiménez.png', false, false, false, false, null),
 ('Jorge Armando Guerrero Ortega', null, '26 feb 1970', 'Varón', null, '9 2231 8982', null, 'Los Algarrobos 1079 Pob Los Alerces Llol
 san antonio
 VALPARAÍSO', null, null, 'Jorge Armando Guerrero Ortega — Varón', null, null, null, false, false, false, false, null),
@@ -767,7 +767,7 @@ ESCALANTE 695
 SAN ANTONIO
 VALPARAÍSO', null, null, 'Veronica Elizabeth de Peñailillo Meza — Mujer
 Nahomi Maira Pañailillo Meza — Mujer
-Leon Baltazar Maureira Peñailillo — Varón (10)', null, null, null, false, false, false, false, null),
+Leon Baltazar Maureira Peñailillo — Varón (10)', null, null, 'León Baltazar maureira peñailillo.png', false, false, false, false, null),
 ('Leonardo Esteban Wilches Martinez', null, '15 dic 1993', 'Varón', null, '9 9520 0657', 'leo.e.wm@gmail.com', 'Los Alerces 1026
 san antonio
 VALPARAÍSO', null, null, 'Leonardo Esteban Wilches Martinez — Varón
@@ -787,7 +787,7 @@ SAN ANTONIO', null, null, 'Marco Antonio Hernandez Ruiz — Varón
 Marisol Andrea de Hernandez Ruiz — Mujer
 Mateo Alonso Hernández Inostroza — Varón
 Milena Paz Andrea Hernandez Inostroza — Mujer (12)
-Luciano Rafael Antonio Hernandez Inostroza — Varón (9)', null, null, null, false, false, false, false, null),
+Luciano Rafael Antonio Hernandez Inostroza — Varón (9)', null, null, 'Luciano Rafael Antonio Hernández Inostroza.jpeg', false, false, false, false, null),
 ('Lucresia del Carmen de Delgado Atenas', null, '25 sep 1957', 'Mujer', null, '9 9413 8562', 'lucatenas.alvarez@gmail.com', 'Larraín Gandarillas 1147
 Llo Lleo
 San Antonio', null, 'Presidenta de Sociedad de Socorro', 'Lucresia del Carmen de Delgado Atenas — Mujer
@@ -803,7 +803,7 @@ San antonio', null, 'Primer consejero de quórum de élderes', 'Luis Mariano Hin
 San antonio', null, null, 'Felipe Osvaldo Cortez Vera — Varón
 Sarah Nazaret Lassaube Lopez — Mujer
 Sebastian Antonio Mori Lassaube — Varón
-Luis Martin Lassaube Lassaube — Varón', null, null, null, false, false, false, false, null),
+Luis Martin Lassaube Lassaube — Varón', null, null, 'Luis Alberto Cornejo Mancilla.png', false, false, false, false, null),
 ('Luisa del Carmen Peso Huenchuan', null, '16 mar 1980', 'Mujer', null, null, null, null, null, null, 'Luisa del Carmen Peso Huenchuan — Mujer
 Melanie Soledad Coral Gutierrez Peso — Mujer', null, null, null, false, false, false, false, null),
 ('Luz Angelica de Pardo Millares', null, '30 mayo 1950', 'Mujer', null, '(35) 228 5210', null, 'el convento
@@ -866,7 +866,7 @@ Paula Andrea Pardo Perez — Mujer', null, null, null, false, false, false, fals
 Santo Domingo
 VALPARAÍSO', null, null, 'Juan Antonio Meza Meza — Varón
 Margarita del Pilar de Meza Soto — Mujer
-Fernanda Belen Meza Soto — Mujer', null, null, null, false, false, false, false, null),
+Fernanda Belen Meza Soto — Mujer', null, null, 'Margarita del Pilar de Meza Soto.jpeg', false, false, false, false, null),
 ('Margarita Elena de Soto Abarca', null, '7 feb 1943', 'Mujer', null, '035441975', null, 'CALLE LAS HORTENSIAS 32
 SANTO DOMINGO
 VALPARAÍSO', null, null, 'Margarita Elena de Soto Abarca — Mujer', null, null, null, false, false, false, false, null),
@@ -950,7 +950,7 @@ SAN ANTONIO', null, null, 'Marco Antonio Hernandez Ruiz — Varón
 Marisol Andrea de Hernandez Ruiz — Mujer
 Mateo Alonso Hernández Inostroza — Varón
 Milena Paz Andrea Hernandez Inostroza — Mujer (12)
-Luciano Rafael Antonio Hernandez Inostroza — Varón (9)', null, null, null, false, false, false, false, null),
+Luciano Rafael Antonio Hernandez Inostroza — Varón (9)', null, null, 'Mateo Alonso Hernández Inostroza.png', false, false, false, false, null),
 ('Matías Reinaldo Montecinos Montecinos', null, '1 dic 2006', 'Varón', null, '75127433', null, 'La vertiente 119, San Antonio
 2663528 San Antonio
 ARAUCANÍA', null, null, 'Matías Reinaldo Montecinos Montecinos — Varón', null, null, null, false, false, false, false, null),
@@ -1004,13 +1004,13 @@ ESCALANTE 695
 SAN ANTONIO
 VALPARAÍSO', null, null, 'Veronica Elizabeth de Peñailillo Meza — Mujer
 Nahomi Maira Pañailillo Meza — Mujer
-Leon Baltazar Maureira Peñailillo — Varón (10)', null, null, null, false, false, false, false, null),
+Leon Baltazar Maureira Peñailillo — Varón (10)', null, null, 'Nahomi Maira Pañailillo Meza.png', false, false, false, false, null),
 ('Nancy de Lourdes de Acevedo Rojas', null, '19 ago 1957', 'Mujer', null, '9 7632 5132', null, 'Los Alces 1405
 San Antonio
 VALPARAÍSO', null, null, 'Victor Orlando Acevedo Nacaratte — Varón
 Nancy de Lourdes de Acevedo Rojas — Mujer
 Yasna Karen Hernandez Rojas — Mujer
-Constanza Antonia Astorga Hernandez — Mujer (17)', null, null, null, false, false, false, false, null),
+Constanza Antonia Astorga Hernandez — Mujer (17)', null, null, 'Nancy de Lourdes de Acevedo Rojas.jpeg', false, false, false, false, null),
 ('Nicolás Aaron Miranda Acevedo', null, '23 ago 2021', 'Varón', null, '9 6141 6040', 'cesarsud@hotmail.com', 'Av. Cristo Rey 1012
 San Antonio
 VALPARAÍSO', null, null, 'Cesar Aaron Miranda Cabello — Varón
@@ -1108,7 +1108,7 @@ Raul Alfredo Vidal Martinez — Varón
 RODRIGO SEBASTIAN VIDAL MARTINEZ — Varón', null, null, null, false, false, false, false, null),
 ('Raúl Antonio Arce Huerta', null, '23 sep 1969', 'Varón', null, '9 9241 3505', 'raulantonioarce@gmail.com', 'Camino la Media Luna
 Lote 3 , Parcela 10
-Santo Domingo', null, null, 'Raúl Antonio Arce Huerta — Varón', null, null, null, false, false, false, false, null),
+Santo Domingo', null, null, 'Raúl Antonio Arce Huerta — Varón', null, null, 'Raúl Antonio Arce Huerta.png', false, false, false, false, null),
 ('Rene Alberto Gana Gatica', null, '10 ene 1962', 'Varón', null, null, 'ragg62@gmail.com', 'Los Romeros 1832
 San Antonio
 VALPARAÍSO', null, null, 'Rene Alberto Gana Gatica — Varón
@@ -1260,7 +1260,7 @@ Leon Baltazar Maureira Peñailillo — Varón (10)', null, null, null, false, fa
 ('Veronica Paola Vera Campos', null, '17 dic 1992', 'Mujer', null, null, 'familiavera74@hotmail.com', 'san juan
 san antonio
 VALPARAÍSO', null, null, 'Veronica Paola Vera Campos — Mujer
-Sandra Jazmine de Vera Campos — Mujer', null, null, null, false, false, false, false, null),
+Sandra Jazmine de Vera Campos — Mujer', null, null, 'Verónica Elizabeth de Peñailillo Meza.png', false, false, false, false, null),
 ('Victor Alejandro Acevedo Rojas', null, '15 dic 1990', 'Varón', null, '9 7562 9326', null, 'Los Alces 1405
 Llolleo
 0 San Antonio', null, null, 'Victor Alejandro Acevedo Rojas — Varón

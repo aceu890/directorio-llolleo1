@@ -19,6 +19,7 @@ create table if not exists public.miembros (
   bautismo text,
   tiempo_miembro text,
   foto text,
+  observaciones text,
   recien_converso boolean not null default false,
   obispado boolean not null default false,
   sociedad_socorro boolean not null default false,

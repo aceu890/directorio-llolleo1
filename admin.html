@@ -187,8 +187,8 @@
           <p class="admin-kicker">Reunión sacramental</p>
           <h2 class="admin-panel-title" id="asistenciaTitle">Registro de asistencia</h2>
           <p class="admin-panel-lead">
-            Elige un día en el calendario, marca con ✓ quién asistió y consulta el historial por mes o año.
-            Los cambios se guardan en Supabase al instante.
+            Todo se guarda y sincroniza en Supabase. Lo que marques aquí se ve en el teléfono y el computador
+            con la misma cuenta. El estado debe decir “Supabase” o “guardado en Supabase”.
           </p>
         </div>
         <p class="asistencia-sync" id="attSyncStatus" aria-live="polite">Sin sincronizar</p>
@@ -263,12 +263,39 @@
           </div>
 
           <div class="asistencia-roll-toolbar">
-            <label class="admin-search">
+            <label class="admin-search asistencia-roll-search">
               <input id="attSearch" type="search" placeholder="Buscar por nombre…" autocomplete="off" />
             </label>
-            <div class="asistencia-roll-actions">
-              <button class="admin-ghost admin-ghost--compact" type="button" id="attMarkAll" disabled>Marcar todos</button>
-              <button class="admin-ghost admin-ghost--compact" type="button" id="attClearAll" disabled>Desmarcar todos</button>
+            <div class="asistencia-filters-wrap">
+              <button
+                class="admin-ghost admin-ghost--compact asistencia-filters-btn"
+                type="button"
+                id="attFiltersBtn"
+                disabled
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-controls="attFiltersPanel"
+              >
+                Filtros
+                <span class="asistencia-filters-current" id="attFiltersCurrent">Todos</span>
+              </button>
+              <div class="asistencia-filters-panel" id="attFiltersPanel" hidden>
+                <p class="asistencia-filters-heading">Ver lista</p>
+                <div class="asistencia-roll-filters" role="group" aria-label="Filtrar lista">
+                  <button type="button" class="asistencia-filter-btn is-active" data-att-filter="all">Todos</button>
+                  <button type="button" class="asistencia-filter-btn" data-att-filter="present">Presentes</button>
+                  <button type="button" class="asistencia-filter-btn" data-att-filter="absent">Ausentes</button>
+                  <button type="button" class="asistencia-filter-btn" data-att-filter="recien" title="Recién conversos presentes">RC</button>
+                  <button type="button" class="asistencia-filter-btn" data-att-filter="ss" title="Sociedad de Socorro presentes">SS</button>
+                  <button type="button" class="asistencia-filter-btn" data-att-filter="elderes" title="Quórum de élderes presentes">Élderes</button>
+                </div>
+                <p class="asistencia-filters-heading">Acciones</p>
+                <div class="asistencia-roll-actions">
+                  <button class="admin-ghost admin-ghost--compact" type="button" id="attMarkAll" disabled>Marcar todos</button>
+                  <button class="admin-ghost admin-ghost--compact" type="button" id="attClearAll" disabled>Desmarcar</button>
+                  <button class="admin-ghost admin-ghost--compact" type="button" id="attExportPdf" disabled>Exportar PDF</button>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -282,7 +309,103 @@
           </div>
         </div>
       </div>
+
+      <section class="asistencia-analytics" id="attAnalytics" aria-labelledby="attAnalyticsTitle">
+        <div class="asistencia-analytics-head">
+          <div>
+            <p class="admin-kicker">Indicadores</p>
+            <h3 class="asistencia-analytics-title" id="attAnalyticsTitle">Estadísticas de asistencia</h3>
+            <p class="admin-meta" id="attAnalyticsMeta">Números del día seleccionado y del mes en vista.</p>
+          </div>
+        </div>
+
+        <div class="asistencia-analytics-grid">
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Presentes hoy</p>
+            <p class="asistencia-analytics-value" id="attAnDayPresent">—</p>
+            <p class="asistencia-analytics-hint" id="attAnDayHint">Selecciona un día</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">% del día</p>
+            <p class="asistencia-analytics-value" id="attAnDayPct">—</p>
+            <p class="asistencia-analytics-hint">Sobre el padrón</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">RC presentes</p>
+            <p class="asistencia-analytics-value" id="attAnDayRc">—</p>
+            <p class="asistencia-analytics-hint" id="attAnDayRcHint">Recién conversos</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">SS presentes</p>
+            <p class="asistencia-analytics-value" id="attAnDaySs">—</p>
+            <p class="asistencia-analytics-hint">Mujeres ≥ 18</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Élderes presentes</p>
+            <p class="asistencia-analytics-value" id="attAnDayEld">—</p>
+            <p class="asistencia-analytics-hint">Varones ≥ 18</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Reuniones del mes</p>
+            <p class="asistencia-analytics-value" id="attAnMonthMeetings">0</p>
+            <p class="asistencia-analytics-hint" id="attAnMonthName">—</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Promedio / reunión</p>
+            <p class="asistencia-analytics-value" id="attAnMonthAvg">0</p>
+            <p class="asistencia-analytics-hint" id="attAnMonthAvgPct">—</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Mejor domingo</p>
+            <p class="asistencia-analytics-value" id="attAnMonthBest">—</p>
+            <p class="asistencia-analytics-hint" id="attAnMonthBestHint">Mayor asistencia</p>
+          </article>
+          <article class="asistencia-analytics-card">
+            <p class="asistencia-analytics-label">Menor domingo</p>
+            <p class="asistencia-analytics-value" id="attAnMonthWorst">—</p>
+            <p class="asistencia-analytics-hint" id="attAnMonthWorstHint">Menor asistencia</p>
+          </article>
+        </div>
+
+        <div class="asistencia-analytics-panels">
+          <article class="admin-stat-panel">
+            <h4 class="admin-stat-panel-title">Domingos del mes</h4>
+            <ul class="admin-stat-list" id="attAnSundaysList"></ul>
+          </article>
+          <article class="admin-stat-panel">
+            <h4 class="admin-stat-panel-title">Resumen del padrón</h4>
+            <ul class="admin-stat-list" id="attAnPadronList"></ul>
+          </article>
+        </div>
+
+        <article class="admin-stat-panel asistencia-obs-panel">
+          <h4 class="admin-stat-panel-title">Observaciones del mes</h4>
+          <p class="admin-meta" id="attAnObsMeta">Análisis automático según las reuniones registradas.</p>
+          <ul class="asistencia-obs-list" id="attAnObservationsList"></ul>
+        </article>
+      </section>
     </section>
+  </div>
+
+  <div class="admin-modal" id="attObsModal" hidden>
+    <div class="admin-modal-panel att-obs-panel" role="dialog" aria-modal="true" aria-labelledby="attObsTitle">
+      <div class="admin-modal-head">
+        <div>
+          <p class="admin-kicker">Observaciones</p>
+          <h2 id="attObsTitle">Hermano</h2>
+        </div>
+        <button class="admin-icon-close" type="button" id="attObsClose" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="att-obs-body" id="attObsBody"></div>
+      <div class="admin-form-actions">
+        <button class="admin-ghost" type="button" id="attObsCancel">Cerrar</button>
+        <button class="admin-primary" type="button" id="attObsSaveNotes">Guardar notas</button>
+      </div>
+    </div>
   </div>
 
   <div class="admin-modal" id="memberModal" hidden>
@@ -363,6 +486,16 @@
           <textarea id="f_familia" name="familia" rows="3"></textarea>
         </label>
 
+        <label class="admin-field">
+          <span>Observaciones del administrador</span>
+          <textarea
+            id="f_observaciones"
+            name="observaciones"
+            rows="4"
+            placeholder="Profesión, gustos, comida favorita, cómo apoyar al hermano…"
+          ></textarea>
+        </label>
+
         <div class="admin-grid-2">
           <label class="admin-field">
             <span>Bautismo</span>
@@ -401,6 +534,30 @@
       </form>
     </div>
   </div>
+
+  <div class="admin-modal" id="attPdfModal" hidden>
+    <div class="admin-modal-panel att-pdf-panel" role="dialog" aria-modal="true" aria-labelledby="attPdfTitle">
+      <div class="admin-modal-head">
+        <div>
+          <p class="admin-kicker">Exportar</p>
+          <h2 id="attPdfTitle">Vista previa PDF</h2>
+        </div>
+        <button class="admin-icon-close" type="button" id="attPdfClose" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+      </div>
+      <p class="admin-meta" id="attPdfHint">Revisa la lista y pulsa Imprimir · Guardar PDF.</p>
+      <div class="att-pdf-preview" id="attPdfPreview"></div>
+      <div class="admin-form-actions">
+        <button class="admin-ghost" type="button" id="attPdfCancel">Cerrar</button>
+        <button class="admin-primary" type="button" id="attPdfPrint">Imprimir · Guardar PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <iframe id="attPrintFrame" title="Impresión de asistencia" aria-hidden="true"></iframe>
 
   <script src="supabase-config.js"></script>
   <script src="admin.js"></script>

@@ -842,6 +842,93 @@ html {
   color: var(--hud-ink);
 }
 
+.att-pdf-panel {
+  width: min(720px, 100%);
+}
+
+.att-pdf-preview {
+  margin: 0.5rem 0 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  background: #ffffff;
+  color: #122033;
+  max-height: min(55dvh, 520px);
+  overflow: auto;
+}
+
+.att-pdf-preview h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.2rem;
+  color: #122033;
+}
+
+.att-pdf-preview .meta {
+  margin: 0 0 0.75rem;
+  color: #445566;
+}
+
+.att-pdf-preview .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.att-pdf-preview .chip {
+  border: 1px solid #c9d5e2;
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #f4f8fc;
+  color: #122033;
+}
+
+.att-pdf-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.att-pdf-preview th,
+.att-pdf-preview td {
+  border-bottom: 1px solid #d7e0ea;
+  padding: 0.4rem 0.3rem;
+  text-align: left;
+}
+
+.att-pdf-preview th {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5a6b7d;
+}
+
+.att-pdf-preview .num { width: 2rem; color: #6a7b8c; }
+.att-pdf-preview .age { width: 4.2rem; color: #1a6f8a; font-weight: 700; }
+.att-pdf-preview .phone { width: 7rem; color: #334455; font-weight: 600; }
+.att-pdf-preview .status { width: 5.2rem; font-weight: 700; }
+.att-pdf-preview .detail { color: #5a6b7d; font-size: 0.85rem; }
+.att-pdf-preview tr.is-present .status { color: #1a7a45; }
+.att-pdf-preview tr.is-absent .status { color: #b42318; }
+.att-pdf-preview .footer {
+  margin: 0.85rem 0 0;
+  color: #7a8b9c;
+  font-size: 0.78rem;
+}
+
+#attPrintFrame {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .admin-icon-close {
   appearance: none;
   width: 40px;
@@ -1151,21 +1238,143 @@ html {
 
 .asistencia-roll-toolbar {
   display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-  margin-bottom: 0.65rem;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.asistencia-roll-search {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.asistencia-roll-search input {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+}
+
+.asistencia-filters-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.asistencia-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 100%;
+  min-height: 2.5rem;
+  padding: 0.4rem 0.7rem !important;
+}
+
+.asistencia-filters-btn.is-open {
+  border-color: rgba(0, 212, 255, 0.55);
+  color: var(--hud-cyan);
+}
+
+.asistencia-filters-current {
+  display: inline-flex;
+  align-items: center;
+  max-width: 7.5rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--hud-cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asistencia-filters-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: 0;
+  z-index: 25;
+  width: min(92vw, 320px);
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  background: linear-gradient(180deg, #0d1a2b 0%, #091421 100%);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+.asistencia-filters-panel[hidden] {
+  display: none !important;
+}
+
+.asistencia-filters-heading {
+  margin: 0 0 0.4rem;
+  color: var(--hud-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.asistencia-filters-heading + .asistencia-roll-actions {
+  margin-top: 0.15rem;
+}
+
+.asistencia-filters-panel .asistencia-filters-heading:not(:first-child) {
+  margin-top: 0.75rem;
 }
 
 .asistencia-roll-actions {
   display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.asistencia-roll-actions .admin-ghost--compact {
+  width: 100%;
+  justify-content: center;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.82rem;
+}
+
+.asistencia-roll-filters {
+  display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.asistencia-filter-btn {
+  appearance: none;
+  flex: 1 1 calc(50% - 0.35rem);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: 10px;
+  padding: 0.45rem 0.55rem;
+  background: rgba(0, 212, 255, 0.05);
+  color: var(--hud-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.asistencia-filter-btn:hover {
+  border-color: rgba(0, 212, 255, 0.4);
+  color: var(--hud-ink);
+}
+
+.asistencia-filter-btn.is-active {
+  color: #041018;
+  background: linear-gradient(135deg, #7ce7ff, #3dde8c);
+  border-color: transparent;
 }
 
 .asistencia-legend {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.55rem;
+  gap: 0.65rem;
+  margin-bottom: 0.4rem;
 }
 
 .asistencia-legend-item {
@@ -1194,14 +1403,135 @@ html {
 .asistencia-roll-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 0.55rem;
   width: 100%;
   margin: 0;
   padding: 0.55rem 0.75rem;
   border-bottom: 1px solid rgba(0, 212, 255, 0.08);
   border-left: 3px solid transparent;
-  cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.asistencia-roll-main {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-width: 0;
+  flex: 1;
+  cursor: pointer;
+}
+
+.asistencia-obs-btn {
+  appearance: none;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 8px;
+  padding: 0.28rem 0.45rem;
+  background: rgba(0, 212, 255, 0.08);
+  color: var(--hud-cyan);
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.asistencia-obs-btn:hover {
+  border-color: rgba(0, 212, 255, 0.55);
+  background: rgba(0, 212, 255, 0.16);
+}
+
+.asistencia-obs-panel {
+  margin-top: 0.85rem;
+}
+
+.asistencia-obs-list {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.asistencia-obs-list li {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  border-radius: 10px;
+  background: rgba(0, 212, 255, 0.04);
+  color: var(--hud-ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.att-obs-panel {
+  width: min(560px, 100%);
+}
+
+.att-obs-body {
+  margin-bottom: 0.85rem;
+}
+
+.att-obs-meta {
+  margin: 0 0 0.75rem;
+  color: var(--hud-muted);
+  font-weight: 700;
+}
+
+.att-obs-notes {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  color: var(--hud-ink);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.att-obs-dates {
+  margin: 0.85rem 0 0;
+  color: var(--hud-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.att-obs-dates .is-yes {
+  color: #3dde8c;
+  font-weight: 700;
+}
+
+.att-obs-section {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(0, 212, 255, 0.14);
+}
+
+.att-obs-section-title {
+  margin: 0 0 0.35rem;
+  font-family: var(--hud-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--hud-cyan);
+}
+
+.att-obs-notes-input {
+  width: 100%;
+  margin-top: 0.35rem;
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  background: rgba(3, 10, 20, 0.75);
+  color: var(--hud-ink);
+  font: inherit;
+  line-height: 1.4;
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.att-obs-notes-input:focus {
+  outline: none;
+  border-color: rgba(0, 212, 255, 0.55);
 }
 
 .asistencia-roll-item:last-child {
@@ -1266,6 +1596,16 @@ html {
   text-overflow: ellipsis;
 }
 
+.asistencia-roll-age {
+  color: var(--hud-cyan);
+  font-weight: 700;
+}
+
+.asistencia-roll-phone {
+  color: var(--hud-ink);
+  font-weight: 700;
+}
+
 .asistencia-roll-badge {
   flex-shrink: 0;
   min-width: 4.6rem;
@@ -1289,19 +1629,126 @@ html {
   border: 1px solid rgba(255, 107, 107, 0.35);
 }
 
+.asistencia-analytics {
+  margin-top: 1.15rem;
+  padding: 1rem;
+  border: 1px solid rgba(0, 212, 255, 0.18);
+  border-radius: 14px;
+  background: var(--hud-panel);
+  box-shadow: var(--hud-shadow);
+}
+
+.asistencia-analytics-head {
+  margin-bottom: 0.85rem;
+}
+
+.asistencia-analytics-title {
+  margin: 0.15rem 0 0;
+  font-family: var(--hud-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: var(--hud-ink);
+}
+
+.asistencia-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+}
+
+.asistencia-analytics-card {
+  position: relative;
+  padding: 0.75rem 0.7rem;
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  border-radius: 12px;
+  background: rgba(0, 212, 255, 0.04);
+  overflow: hidden;
+}
+
+.asistencia-analytics-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: linear-gradient(180deg, #7ce7ff, #3dde8c);
+}
+
+.asistencia-analytics-label {
+  margin: 0;
+  color: var(--hud-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.asistencia-analytics-value {
+  margin: 0.25rem 0 0.1rem;
+  font-family: var(--hud-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  color: var(--hud-cyan);
+}
+
+.asistencia-analytics-hint {
+  margin: 0;
+  color: var(--hud-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.asistencia-analytics-panels {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+@media (min-width: 640px) {
+  .asistencia-analytics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .asistencia-analytics-panels {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 980px) {
+  .asistencia-analytics-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 900px) {
   .asistencia-layout {
     grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.25fr);
     align-items: start;
   }
 
-  .asistencia-roll-toolbar {
-    flex-direction: row;
-    align-items: center;
+  .asistencia-filters-panel {
+    width: 340px;
+  }
+}
+
+@media (max-width: 899px) {
+  .asistencia-day-card {
+    padding: 0.85rem;
   }
 
-  .asistencia-roll-toolbar .admin-search {
-    flex: 1;
+  .asistencia-day-head {
+    margin-bottom: 0.55rem;
+    gap: 0.5rem;
+  }
+
+  .asistencia-day-stats {
+    gap: 0.45rem;
+  }
+
+  .asistencia-day-stats > div {
+    min-width: 3.6rem;
+    padding: 0.35rem 0.4rem;
   }
 }
 

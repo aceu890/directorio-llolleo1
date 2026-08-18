@@ -54,6 +54,10 @@
   const attSyncStatus = document.getElementById("attSyncStatus");
   const attMarkAll = document.getElementById("attMarkAll");
   const attClearAll = document.getElementById("attClearAll");
+  const attExportPdf = document.getElementById("attExportPdf");
+  const attFiltersBtn = document.getElementById("attFiltersBtn");
+  const attFiltersPanel = document.getElementById("attFiltersPanel");
+  const attFiltersCurrent = document.getElementById("attFiltersCurrent");
 
   let session = null;
   let miembros = [];
@@ -64,6 +68,7 @@
   let attMonthRows = [];
   let attDayPresent = new Set();
   let attSearchQuery = "";
+  let attRollFilter = "all";
   let attDirty = false;
   let attCloudReady = null; // null unknown, true/false
   const ATT_LOCAL_KEY = "directorio-asistencia-v1";
@@ -406,12 +411,59 @@
   function attendanceTableHint(err) {
     const msg = String(err?.message || err || "");
     if (/does not exist|schema cache|relation|Could not find the table|PGRST205/i.test(msg)) {
-      return "Supabase aún no tiene la tabla. Ejecuta supabase/asistencia.sql en el SQL Editor. Mientras tanto se guarda en este dispositivo.";
+      return "Supabase no tiene la tabla de asistencia. Ejecuta supabase/asistencia.sql en el SQL Editor. Mientras tanto el cambio quedó pendiente en este dispositivo.";
     }
     if (/permission|policy|row-level|RLS|jwt|not authenticated/i.test(msg)) {
-      return "Sin permiso en Supabase. Revisa sesión y políticas de asistencia.sql. El check se mantuvo en este dispositivo.";
+      return "Sin permiso en Supabase. Cierra sesión, vuelve a entrar y revisa las políticas de asistencia.sql.";
     }
-    return msg || "No se pudo sincronizar con Supabase.";
+    return msg || "No se pudo sincronizar con Supabase. Revisa la conexión e inténtalo de nuevo.";
+  }
+
+  const ATT_FLUSH_KEY = "directorio-asistencia-flushed-v1";
+
+  /** Sube una sola vez lo pendiente en este dispositivo a Supabase. */
+  async function pushLocalAttendancePending() {
+    if (localStorage.getItem(ATT_FLUSH_KEY) === "1") return 0;
+    const store = readLocalAttendanceStore();
+    const payload = [];
+    Object.entries(store).forEach(([fecha, ids]) => {
+      (Array.isArray(ids) ? ids : []).forEach((miembroId) => {
+        payload.push({
+          fecha,
+          miembro_id: String(miembroId),
+          presente: true,
+        });
+      });
+    });
+    if (payload.length) {
+      const chunkSize = 100;
+      for (let i = 0; i < payload.length; i += chunkSize) {
+        await api("/rest/v1/asistencia_sacramental?on_conflict=fecha,miembro_id", {
+          method: "POST",
+          headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
+          body: JSON.stringify(payload.slice(i, i + chunkSize)),
+        });
+      }
+    }
+    localStorage.setItem(ATT_FLUSH_KEY, "1");
+    return payload.length;
+  }
+
+  /** Espejo local del mes = lo que hay en Supabase (fuente de verdad). */
+  function mirrorLocalFromCloudRows(rows) {
+    const { start, end } = monthBounds(attView);
+    const store = readLocalAttendanceStore();
+    Object.keys(store).forEach((fecha) => {
+      if (fecha >= start && fecha <= end) delete store[fecha];
+    });
+    (rows || []).forEach((row) => {
+      if (!row?.presente || !row.fecha) return;
+      if (row.fecha < start || row.fecha > end) return;
+      if (!store[row.fecha]) store[row.fecha] = [];
+      const id = String(row.miembro_id);
+      if (!store[row.fecha].includes(id)) store[row.fecha].push(id);
+    });
+    writeLocalAttendanceStore(store);
   }
 
   function updateDayStats() {
@@ -426,6 +478,75 @@
     const enabled = Boolean(attSelectedDate);
     if (attMarkAll) attMarkAll.disabled = !enabled;
     if (attClearAll) attClearAll.disabled = !enabled;
+    if (attExportPdf) attExportPdf.disabled = !enabled;
+    if (attFiltersBtn) attFiltersBtn.disabled = !enabled;
+    renderAttendanceAnalytics();
+  }
+
+  function attFilterLabel() {
+    switch (attRollFilter) {
+      case "present":
+        return "Presentes";
+      case "absent":
+        return "Ausentes";
+      case "recien":
+        return "RC";
+      case "ss":
+        return "SS";
+      case "elderes":
+        return "Élderes";
+      default:
+        return "Todos";
+    }
+  }
+
+  function getAttendanceRollList() {
+    if (!attSelectedDate) return [];
+    const q = attSearchQuery.trim().toLowerCase();
+    return miembros.filter((m) => {
+      if (!matchesAttFilter(m)) return false;
+      if (!q) return true;
+      return String(m.nombre || "").toLowerCase().includes(q);
+    });
+  }
+
+  function matchesAttFilter(m) {
+    const id = String(m.id);
+    const isPresent = attDayPresent.has(id);
+    switch (attRollFilter) {
+      case "present":
+        return isPresent;
+      case "absent":
+        return !isPresent;
+      case "recien":
+        // Solo RC que están presentes (no mezclar ausentes)
+        return !!m.recien_converso && isPresent;
+      case "ss":
+        return enSociedadSocorro(m) && isPresent;
+      case "elderes":
+        return enQuorumElderes(m) && isPresent;
+      default:
+        return true;
+    }
+  }
+
+  function syncAttFilterButtons() {
+    document.querySelectorAll("[data-att-filter]").forEach((btn) => {
+      btn.classList.toggle("is-active", btn.getAttribute("data-att-filter") === attRollFilter);
+    });
+    if (attFiltersCurrent) attFiltersCurrent.textContent = attFilterLabel();
+  }
+
+  function setAttFiltersOpen(open) {
+    if (!attFiltersPanel || !attFiltersBtn) return;
+    attFiltersPanel.hidden = !open;
+    attFiltersBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    attFiltersBtn.classList.toggle("is-open", open);
+  }
+
+  function toggleAttFilters() {
+    if (!attFiltersPanel || attFiltersBtn?.disabled) return;
+    setAttFiltersOpen(attFiltersPanel.hidden);
   }
 
   function renderAttendanceRoll() {
@@ -437,11 +558,7 @@
       return;
     }
 
-    const q = attSearchQuery.trim().toLowerCase();
-    const list = miembros.filter((m) => {
-      if (!q) return true;
-      return String(m.nombre || "").toLowerCase().includes(q);
-    });
+    const list = getAttendanceRollList();
 
     if (!list.length) {
       attRoll.innerHTML = `<p class="admin-meta">No hay hermanos con ese criterio.</p>`;
@@ -454,34 +571,240 @@
         const id = String(m.id);
         const present = attDayPresent.has(id);
         const foto = fotoMiembroUrl(m.foto);
+        const edad = calcEdad(m.nacimiento);
+        const edadTexto = edad != null ? `${edad} años` : "Edad —";
+        const telefono = String(m.telefono || "").trim() || "Sin teléfono";
+        const detalle = m.organizacion || m.llamamiento || "—";
         return `
-          <label class="asistencia-roll-item ${present ? "is-present" : "is-absent"}">
-            <input
-              class="asistencia-roll-check"
-              type="checkbox"
-              data-miembro="${escapeHtml(id)}"
-              ${present ? "checked" : ""}
-            />
-            <img
-              class="asistencia-roll-photo"
-              src="${escapeHtml(foto)}"
-              alt=""
-              width="40"
-              height="40"
-              loading="lazy"
-              onerror="this.onerror=null;this.src='${FOTO_ANON}'"
-            />
-            <span class="asistencia-roll-copy">
-              <strong>${escapeHtml(m.nombre)}</strong>
-              <small>${escapeHtml(m.organizacion || m.llamamiento || "—")}</small>
-            </span>
+          <div class="asistencia-roll-item ${present ? "is-present" : "is-absent"}">
+            <label class="asistencia-roll-main">
+              <input
+                class="asistencia-roll-check"
+                type="checkbox"
+                data-miembro="${escapeHtml(id)}"
+                ${present ? "checked" : ""}
+              />
+              <img
+                class="asistencia-roll-photo"
+                src="${escapeHtml(foto)}"
+                alt=""
+                width="40"
+                height="40"
+                loading="lazy"
+                onerror="this.onerror=null;this.src='${FOTO_ANON}'"
+              />
+              <span class="asistencia-roll-copy">
+                <strong>${escapeHtml(m.nombre)}</strong>
+                <small>
+                  <span class="asistencia-roll-age">${escapeHtml(edadTexto)}</span>
+                  · <span class="asistencia-roll-phone">${escapeHtml(telefono)}</span>
+                  · ${escapeHtml(detalle)}
+                </small>
+              </span>
+            </label>
+            <button
+              class="asistencia-obs-btn"
+              type="button"
+              data-obs-id="${escapeHtml(id)}"
+              title="Ver observaciones"
+              aria-label="Observaciones de ${escapeHtml(m.nombre)}"
+            >Obs</button>
             <span class="asistencia-roll-badge">${present ? "Presente" : "Ausente"}</span>
-          </label>
+          </div>
         `;
       })
       .join("");
 
     updateDayStats();
+  }
+
+  function buildAttendanceExportHtml(list) {
+    const date = parseDateKey(attSelectedDate);
+    const dateLabel = date ? formatDateLong(date) : attSelectedDate;
+    const filterLabel = attFilterLabel();
+    const searchLabel = attSearchQuery.trim()
+      ? ` · Búsqueda: "${attSearchQuery.trim()}"`
+      : "";
+    const presentCount = list.filter((m) => attDayPresent.has(String(m.id))).length;
+    const absentCount = list.length - presentCount;
+    const generatedAt = new Date().toLocaleString("es-CL");
+
+    const rows = list
+      .map((m, index) => {
+        const present = attDayPresent.has(String(m.id));
+        const edad = calcEdad(m.nacimiento);
+        const edadTexto = edad != null ? `${edad} años` : "—";
+        const telefono = String(m.telefono || "").trim() || "—";
+        const detail = m.organizacion || m.llamamiento || "—";
+        return `
+          <tr class="${present ? "is-present" : "is-absent"}">
+            <td class="num">${index + 1}</td>
+            <td class="name">${escapeHtml(m.nombre)}</td>
+            <td class="age">${escapeHtml(edadTexto)}</td>
+            <td class="phone">${escapeHtml(telefono)}</td>
+            <td class="detail">${escapeHtml(detail)}</td>
+            <td class="status">${present ? "Presente" : "Ausente"}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    return {
+      dateLabel,
+      filterLabel,
+      searchLabel,
+      presentCount,
+      absentCount,
+      generatedAt,
+      bodyHtml: `
+        <h1>Asistencia sacramental</h1>
+        <p class="meta">${escapeHtml(dateLabel)}</p>
+        <div class="chips">
+          <span class="chip">Filtro: ${escapeHtml(filterLabel)}${escapeHtml(searchLabel)}</span>
+          <span class="chip">${list.length} en lista</span>
+          <span class="chip">${presentCount} presentes</span>
+          <span class="chip">${absentCount} ausentes</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Teléfono</th>
+              <th>Detalle</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+        <p class="footer">Barrio Llo Lleo 1 · Generado ${escapeHtml(generatedAt)} · Vista actual del admin</p>
+      `,
+    };
+  }
+
+  function attendancePrintStyles() {
+    return `
+      @page { margin: 14mm; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        color: #122033;
+        font-size: 11pt;
+        background: #fff;
+      }
+      h1 { margin: 0 0 0.25rem; font-size: 1.35rem; }
+      .meta { margin: 0 0 0.85rem; color: #445566; font-size: 0.95rem; }
+      .chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.9rem; }
+      .chip {
+        border: 1px solid #c9d5e2;
+        border-radius: 999px;
+        padding: 0.2rem 0.65rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        background: #f4f8fc;
+      }
+      table { width: 100%; border-collapse: collapse; }
+      th, td {
+        border-bottom: 1px solid #d7e0ea;
+        padding: 0.42rem 0.35rem;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #5a6b7d;
+      }
+      .num { width: 2.2rem; color: #6a7b8c; }
+      .age { width: 4.2rem; color: #1a6f8a; font-weight: 700; }
+      .phone { width: 7.5rem; color: #334455; font-weight: 600; white-space: nowrap; }
+      .status { width: 5.5rem; font-weight: 700; }
+      .detail { color: #5a6b7d; font-size: 0.9rem; }
+      tr.is-present .status { color: #1a7a45; }
+      tr.is-absent .status { color: #b42318; }
+      .footer { margin-top: 1rem; color: #7a8b9c; font-size: 0.8rem; }
+    `;
+  }
+
+  function closeAttendancePdfModal() {
+    const modal = document.getElementById("attPdfModal");
+    if (modal) modal.hidden = true;
+    document.body.classList.remove("detail-open");
+  }
+
+  function exportAttendancePdf() {
+    if (!attSelectedDate) {
+      showError(asistenciaError, "Elige un día en el calendario para exportar.");
+      return;
+    }
+
+    const list = getAttendanceRollList();
+    if (!list.length) {
+      showError(asistenciaError, "No hay hermanos en la lista actual para exportar.");
+      return;
+    }
+
+    const built = buildAttendanceExportHtml(list);
+    const preview = document.getElementById("attPdfPreview");
+    const modal = document.getElementById("attPdfModal");
+    const hint = document.getElementById("attPdfHint");
+    if (!preview || !modal) {
+      showError(asistenciaError, "No se pudo abrir la vista previa.");
+      return;
+    }
+
+    preview.innerHTML = built.bodyHtml;
+    if (hint) {
+      hint.textContent = `Filtro: ${built.filterLabel}${built.searchLabel} · ${list.length} nombres. En impresión elige “Guardar como PDF”.`;
+    }
+    modal.hidden = false;
+    document.body.classList.add("detail-open");
+    showError(asistenciaError, "");
+    showOk(asistenciaOk, "Vista previa lista");
+  }
+
+  function printAttendancePdf() {
+    const preview = document.getElementById("attPdfPreview");
+    const frame = document.getElementById("attPrintFrame");
+    if (!preview || !frame) return;
+
+    const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Asistencia sacramental</title>
+  <style>${attendancePrintStyles()}</style>
+</head>
+<body>${preview.innerHTML}</body>
+</html>`;
+
+    const doc = frame.contentDocument;
+    if (!doc) {
+      showError(asistenciaError, "No se pudo preparar la impresión.");
+      return;
+    }
+    doc.open();
+    doc.write(html);
+    doc.close();
+
+    const runPrint = () => {
+      try {
+        frame.contentWindow.focus();
+        frame.contentWindow.print();
+      } catch (err) {
+        showError(asistenciaError, "No se pudo abrir la impresión. Inténtalo de nuevo.");
+      }
+    };
+
+    // Esperar a que el iframe pinte el contenido
+    if (frame.contentDocument?.readyState === "complete") {
+      setTimeout(runPrint, 120);
+    } else {
+      frame.onload = () => setTimeout(runPrint, 120);
+    }
   }
 
   function attendanceStatsByDay() {
@@ -518,6 +841,154 @@
       attMonthMeta.textContent = reuniones
         ? `${reuniones} reunión${reuniones === 1 ? "" : "es"} registradas en ${MES_NOMBRES[attView.getMonth()]} ${attView.getFullYear()}`
         : `Sin registros en ${MES_NOMBRES[attView.getMonth()]} ${attView.getFullYear()}`;
+    }
+    renderAttendanceAnalytics();
+  }
+
+  function setAnalyticsText(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  }
+
+  function listItemAnalytics(label, value) {
+    return `<li><span>${escapeHtml(label)}</span><strong>${escapeHtml(String(value))}</strong></li>`;
+  }
+
+  function renderAttendanceAnalytics() {
+    const total = miembros.length || 0;
+    const monthName = `${MES_NOMBRES[attView.getMonth()]} ${attView.getFullYear()}`;
+    setAnalyticsText("attAnalyticsMeta", `Día seleccionado y mes en vista · ${monthName}`);
+    setAnalyticsText("attAnMonthName", monthName);
+
+    // Día seleccionado
+    if (attSelectedDate && total) {
+      const present = attDayPresent.size;
+      const pct = Math.round((present / total) * 100);
+      const rcTotal = miembros.filter((m) => m.recien_converso).length;
+      const rcPresent = miembros.filter(
+        (m) => m.recien_converso && attDayPresent.has(String(m.id))
+      ).length;
+      const ssTotal = miembros.filter((m) => enSociedadSocorro(m)).length;
+      const ssPresent = miembros.filter(
+        (m) => enSociedadSocorro(m) && attDayPresent.has(String(m.id))
+      ).length;
+      const eldTotal = miembros.filter((m) => enQuorumElderes(m)).length;
+      const eldPresent = miembros.filter(
+        (m) => enQuorumElderes(m) && attDayPresent.has(String(m.id))
+      ).length;
+      const date = parseDateKey(attSelectedDate);
+      const dayLabel = date ? formatDateLong(date) : attSelectedDate;
+
+      setAnalyticsText("attAnDayPresent", String(present));
+      setAnalyticsText("attAnDayHint", dayLabel);
+      setAnalyticsText("attAnDayPct", `${pct}%`);
+      setAnalyticsText("attAnDayRc", String(rcPresent));
+      setAnalyticsText(
+        "attAnDayRcHint",
+        rcTotal ? `${rcPresent} de ${rcTotal} RC` : "Sin RC en padrón"
+      );
+      setAnalyticsText("attAnDaySs", String(ssPresent));
+      setAnalyticsText("attAnDayEld", String(eldPresent));
+    } else {
+      setAnalyticsText("attAnDayPresent", "—");
+      setAnalyticsText("attAnDayHint", "Selecciona un día");
+      setAnalyticsText("attAnDayPct", "—");
+      setAnalyticsText("attAnDayRc", "—");
+      setAnalyticsText("attAnDayRcHint", "Recién conversos");
+      setAnalyticsText("attAnDaySs", "—");
+      setAnalyticsText("attAnDayEld", "—");
+    }
+
+    // Mes
+    const { presentCounts, recorded } = attendanceStatsByDay();
+    const days = [...recorded].map((key) => [key, presentCounts.get(key) || 0]);
+    const reuniones = days.length;
+    const avg = reuniones
+      ? Math.round(days.reduce((sum, [, n]) => sum + n, 0) / reuniones)
+      : 0;
+    const avgPct = total && reuniones ? Math.round((avg / total) * 100) : 0;
+
+    let bestLabel = "—";
+    let bestHint = "Mayor asistencia";
+    let worstLabel = "—";
+    let worstHint = "Menor asistencia";
+    if (days.length) {
+      const sorted = [...days].sort((a, b) => b[1] - a[1]);
+      const [bestKey, bestCount] = sorted[0];
+      const [worstKey, worstCount] = sorted[sorted.length - 1];
+      const bestDate = parseDateKey(bestKey);
+      const worstDate = parseDateKey(worstKey);
+      bestLabel = String(bestCount);
+      bestHint = bestDate
+        ? `${formatDateLong(bestDate)}`
+        : bestKey;
+      worstLabel = String(worstCount);
+      worstHint = worstDate ? formatDateLong(worstDate) : worstKey;
+    }
+
+    setAnalyticsText("attAnMonthMeetings", String(reuniones));
+    setAnalyticsText("attAnMonthAvg", String(avg));
+    setAnalyticsText(
+      "attAnMonthAvgPct",
+      total && reuniones ? `${avgPct}% del padrón` : "Sin datos"
+    );
+    setAnalyticsText("attAnMonthBest", bestLabel);
+    setAnalyticsText("attAnMonthBestHint", bestHint);
+    setAnalyticsText("attAnMonthWorst", worstLabel);
+    setAnalyticsText("attAnMonthWorstHint", worstHint);
+
+    // Domingos del mes
+    const sundaysList = document.getElementById("attAnSundaysList");
+    if (sundaysList) {
+      const year = attView.getFullYear();
+      const month = attView.getMonth();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const sundayRows = [];
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const date = new Date(year, month, day);
+        if (date.getDay() !== 0) continue;
+        const key = toDateKey(date);
+        const count = presentCounts.get(key) || 0;
+        const has = recorded.has(key);
+        const pct = total && has ? Math.round((count / total) * 100) : null;
+        sundayRows.push(
+          listItemAnalytics(
+            formatDateLong(date),
+            has ? `${count} · ${pct}%` : "Sin registro"
+          )
+        );
+      }
+      sundaysList.innerHTML = sundayRows.length
+        ? sundayRows.join("")
+        : `<li><span>Sin domingos en este mes</span><strong>—</strong></li>`;
+    }
+
+    // Padrón
+    const padronList = document.getElementById("attAnPadronList");
+    if (padronList) {
+      const rc = miembros.filter((m) => m.recien_converso).length;
+      const ss = miembros.filter((m) => enSociedadSocorro(m)).length;
+      const eld = miembros.filter((m) => enQuorumElderes(m)).length;
+      padronList.innerHTML = [
+        listItemAnalytics("Hermanos en padrón", total),
+        listItemAnalytics("Recién conversos", rc),
+        listItemAnalytics("Sociedad de Socorro", ss),
+        listItemAnalytics("Quórum de élderes", eld),
+        listItemAnalytics(
+          "Asistencia promedio del mes",
+          reuniones ? `${avg} (${avgPct}%)` : "—"
+        ),
+      ].join("");
+    }
+
+    const obs = buildMonthObservationHighlights();
+    const obsMeta = document.getElementById("attAnObsMeta");
+    const obsList = document.getElementById("attAnObservationsList");
+    if (obsMeta) obsMeta.textContent = obs.meta;
+    if (obsList) {
+      obsList.innerHTML = obs.items
+        .map((text) => `<li>${escapeHtml(text)}</li>`)
+        .join("");
     }
   }
 
@@ -569,6 +1040,393 @@
     if (badge) badge.textContent = present ? "Presente" : "Ausente";
   }
 
+  function formatAttShortDate(key) {
+    const d = parseDateKey(key);
+    if (!d) return key;
+    return `${d.getDate()} ${MES_NOMBRES[d.getMonth()].slice(0, 3)}`;
+  }
+
+  function getRecordedMeetingDates() {
+    const { recorded } = attendanceStatsByDay();
+    return [...recorded].sort();
+  }
+
+  function memberPresentDatesInMonth(miembroId) {
+    const id = String(miembroId);
+    return attMonthRows
+      .filter((row) => row.presente && String(row.miembro_id) === id)
+      .map((row) => row.fecha)
+      .sort();
+  }
+
+  function analyzeMemberMonth(m) {
+    const meetings = getRecordedMeetingDates();
+    const present = memberPresentDatesInMonth(m.id);
+    const total = meetings.length;
+    const count = present.length;
+    const notes = [];
+    const monthName = `${MES_NOMBRES[attView.getMonth()]} ${attView.getFullYear()}`;
+
+    if (!total) {
+      notes.push(`Aún no hay reuniones registradas en ${monthName}.`);
+      return { meetings, present, count, total, notes, kind: "empty" };
+    }
+
+    if (count === 0) {
+      notes.push(
+        `No asistió a ninguna de las ${total} reunión${total === 1 ? "" : "es"} registradas este mes.`
+      );
+      return { meetings, present, count, total, notes, kind: "never" };
+    }
+
+    if (count === total) {
+      notes.push(`Asistió a todas las reuniones del mes (${count}/${total}). Excelente constancia.`);
+      return { meetings, present, count, total, notes, kind: "perfect" };
+    }
+
+    if (count === 1) {
+      const only = present[0];
+      const idx = meetings.indexOf(only);
+      if (idx === 0 && total > 1) {
+        notes.push(
+          `Asistió solo la primera reunión (${formatAttShortDate(only)}) y después no volvió.`
+        );
+        return { meetings, present, count, total, notes, kind: "once-start" };
+      }
+      if (idx === total - 1 && total > 1) {
+        notes.push(
+          `Asistió solo la última reunión (${formatAttShortDate(only)}); no había venido antes en el mes.`
+        );
+        return { meetings, present, count, total, notes, kind: "once-end" };
+      }
+      notes.push(`Asistió solo 1 vez este mes (${formatAttShortDate(only)}).`);
+      return { meetings, present, count, total, notes, kind: "once" };
+    }
+
+    const firstMeeting = meetings[0];
+    const lastMeeting = meetings[total - 1];
+    const firstPresent = present[0];
+    const lastPresent = present[present.length - 1];
+    const cameFirst = present.includes(firstMeeting);
+    const cameLast = present.includes(lastMeeting);
+    const pct = Math.round((count / total) * 100);
+
+    if (cameFirst && lastPresent < lastMeeting) {
+      notes.push(
+        `Vino al inicio del mes, pero dejó de asistir después del ${formatAttShortDate(lastPresent)}.`
+      );
+    }
+    if (!cameFirst && cameLast) {
+      notes.push(
+        `No vino al inicio; apareció/volvió hacia el final (desde ${formatAttShortDate(firstPresent)}).`
+      );
+    }
+    if (cameFirst && cameLast && count < total) {
+      notes.push(`Vino al inicio y al final, pero faltó en fechas intermedias.`);
+    }
+    if (!notes.length) {
+      notes.push(`Asistencia irregular este mes.`);
+    }
+    notes.push(`Total: ${count} de ${total} reuniones (${pct}%).`);
+    notes.push(
+      `Fechas presente: ${present.map(formatAttShortDate).join(", ")}.`
+    );
+    return { meetings, present, count, total, notes, kind: "partial" };
+  }
+
+  function sampleNames(profiles, limit = 3) {
+    return profiles
+      .slice(0, limit)
+      .map((p) => p.m.nombre)
+      .join(", ");
+  }
+
+  function buildMonthObservationHighlights() {
+    const meetings = getRecordedMeetingDates();
+    const monthName = `${MES_NOMBRES[attView.getMonth()]} ${attView.getFullYear()}`;
+    if (!meetings.length) {
+      return {
+        meta: `Sin reuniones registradas en ${monthName}.`,
+        items: [
+          "Marca asistencia en al menos un domingo para generar observaciones automáticas.",
+        ],
+      };
+    }
+
+    const profiles = miembros.map((m) => ({ m, a: analyzeMemberMonth(m) }));
+    const perfect = profiles.filter((p) => p.a.kind === "perfect");
+    const onceStart = profiles.filter((p) => p.a.kind === "once-start");
+    const onceEnd = profiles.filter((p) => p.a.kind === "once-end");
+    const once = profiles.filter((p) => p.a.kind === "once");
+    const never = profiles.filter((p) => p.a.kind === "never");
+    const stopped = profiles.filter((p) =>
+      /dejó de asistir/i.test(p.a.notes.join(" "))
+    );
+    const returned = profiles.filter((p) =>
+      /apareció\/volvió|no había venido antes/i.test(p.a.notes.join(" "))
+    );
+
+    const items = [];
+    items.push(
+      `Hay ${meetings.length} reunión${meetings.length === 1 ? "" : "es"} registrada${meetings.length === 1 ? "" : "s"} en ${monthName}.`
+    );
+
+    if (perfect.length) {
+      items.push(
+        `${perfect.length} hermano${perfect.length === 1 ? "" : "s"} asistieron todas las reuniones` +
+          (perfect.length ? `: ${sampleNames(perfect)}${perfect.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (onceStart.length) {
+      items.push(
+        `${onceStart.length} asistieron solo la primera vez y después no volvieron` +
+          (onceStart.length ? `: ${sampleNames(onceStart)}${onceStart.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (onceEnd.length) {
+      items.push(
+        `${onceEnd.length} aparecieron solo en la última reunión` +
+          (onceEnd.length ? `: ${sampleNames(onceEnd)}${onceEnd.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (once.length) {
+      items.push(
+        `${once.length} asistieron una sola vez en otra fecha del mes` +
+          (once.length ? `: ${sampleNames(once)}${once.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (stopped.length) {
+      items.push(
+        `${stopped.length} vinieron al inicio y luego dejaron de asistir` +
+          (stopped.length ? `: ${sampleNames(stopped)}${stopped.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (returned.length) {
+      items.push(
+        `${returned.length} no vinieron al inicio y aparecieron más tarde` +
+          (returned.length ? `: ${sampleNames(returned)}${returned.length > 3 ? "…" : ""}` : ".")
+      );
+    }
+    if (never.length) {
+      items.push(
+        `${never.length} del padrón no tienen ninguna asistencia marcada este mes.`
+      );
+    }
+
+    return {
+      meta: `Análisis de ${meetings.length} reunión${meetings.length === 1 ? "" : "es"} · ${monthName}`,
+      items,
+    };
+  }
+
+  const OBS_LOCAL_KEY = "directorio-observaciones-v1";
+  let obsColumnReady = null; // null unknown, true/false
+
+  function readObsStore() {
+    try {
+      const raw = localStorage.getItem(OBS_LOCAL_KEY);
+      if (!raw) return {};
+      const parsed = JSON.parse(raw);
+      return parsed && typeof parsed === "object" ? parsed : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function writeObsStore(store) {
+    localStorage.setItem(OBS_LOCAL_KEY, JSON.stringify(store || {}));
+  }
+
+  function setLocalObservacion(id, text) {
+    const store = readObsStore();
+    const key = String(id);
+    const value = String(text || "").trim();
+    if (value) store[key] = value;
+    else delete store[key];
+    writeObsStore(store);
+  }
+
+  function applyLocalObservacionesToMiembros() {
+    const store = readObsStore();
+    miembros.forEach((m) => {
+      const local = store[String(m.id)];
+      if (local == null) return;
+      // Si la nube aún no tiene la columna, o viene vacía, usa lo local
+      if (obsColumnReady === false || !String(m.observaciones || "").trim()) {
+        m.observaciones = local;
+      }
+    });
+  }
+
+  function isMissingObsColumnError(err) {
+    const msg = String(err?.message || err || "");
+    return /42703|observaciones does not exist|Could not find the .*observaciones/i.test(msg);
+  }
+
+  async function ensureObservacionesColumn() {
+    if (obsColumnReady === true) return true;
+    if (obsColumnReady === false) return false;
+    try {
+      await api("/rest/v1/miembros?select=observaciones&limit=1");
+      obsColumnReady = true;
+      return true;
+    } catch (err) {
+      if (isMissingObsColumnError(err)) {
+        obsColumnReady = false;
+        return false;
+      }
+      // Otro error de red/sesión: no marcar como ausente
+      return true;
+    }
+  }
+
+  async function saveObservaciones(id, value) {
+    const clean = emptyToNull(value);
+    setLocalObservacion(id, clean || "");
+    const m = miembros.find((x) => String(x.id) === String(id));
+    if (m) m.observaciones = clean;
+
+    const ready = await ensureObservacionesColumn();
+    if (!ready) {
+      return { localOnly: true };
+    }
+
+    try {
+      await updateMiembro(id, { observaciones: clean });
+      obsColumnReady = true;
+      return { localOnly: false };
+    } catch (err) {
+      if (isMissingObsColumnError(err)) {
+        obsColumnReady = false;
+        return { localOnly: true };
+      }
+      throw err;
+    }
+  }
+
+  async function flushLocalObservacionesToCloud() {
+    if (!(await ensureObservacionesColumn())) return 0;
+    const store = readObsStore();
+    const entries = Object.entries(store);
+    let saved = 0;
+    for (const [id, text] of entries) {
+      try {
+        await updateMiembro(id, { observaciones: text || null });
+        saved += 1;
+      } catch (err) {
+        if (isMissingObsColumnError(err)) {
+          obsColumnReady = false;
+          break;
+        }
+      }
+    }
+    return saved;
+  }
+
+  let attObsMemberId = null;
+
+  function openMemberObservations(miembroId) {
+    const m = miembros.find((x) => String(x.id) === String(miembroId));
+    if (!m) return;
+    const analysis = analyzeMemberMonth(m);
+    const title = document.getElementById("attObsTitle");
+    const body = document.getElementById("attObsBody");
+    const modal = document.getElementById("attObsModal");
+    if (!title || !body || !modal) return;
+
+    attObsMemberId = String(m.id);
+    title.textContent = m.nombre;
+    const edad = calcEdad(m.nacimiento);
+    const tel = String(m.telefono || "").trim() || "Sin teléfono";
+    const notas = String(m.observaciones || "").trim();
+    body.innerHTML = `
+      <p class="att-obs-meta">
+        ${edad != null ? `${edad} años` : "Edad —"} · ${escapeHtml(tel)} ·
+        ${analysis.count}/${analysis.total || 0} reuniones este mes
+      </p>
+
+      <section class="att-obs-section">
+        <h3 class="att-obs-section-title">Notas del administrador</h3>
+        <p class="admin-meta">Profesión, gustos, comida, cómo apoyar al hermano, etc.</p>
+        <textarea
+          id="attObsNotesInput"
+          class="att-obs-notes-input"
+          rows="5"
+          placeholder="Ej: Trabaja en construcción. Le gusta el fútbol y la empanada. Visitar los martes…"
+        >${escapeHtml(notas)}</textarea>
+        <p class="admin-ok" id="attObsNotesOk" hidden></p>
+        <p class="admin-error" id="attObsNotesError" hidden></p>
+      </section>
+
+      <section class="att-obs-section">
+        <h3 class="att-obs-section-title">Asistencia del mes</h3>
+        <ul class="att-obs-notes">
+          ${analysis.notes.map((n) => `<li>${escapeHtml(n)}</li>`).join("")}
+        </ul>
+        ${
+          analysis.meetings.length
+            ? `<p class="att-obs-dates"><strong>Reuniones:</strong> ${analysis.meetings
+                .map((d) => {
+                  const ok = analysis.present.includes(d);
+                  return `<span class="${ok ? "is-yes" : "is-no"}">${escapeHtml(
+                    formatAttShortDate(d)
+                  )}${ok ? " ✓" : ""}</span>`;
+                })
+                .join(" · ")}</p>`
+            : ""
+        }
+      </section>
+    `;
+    modal.hidden = false;
+    document.body.classList.add("detail-open");
+  }
+
+  function closeMemberObservations() {
+    const modal = document.getElementById("attObsModal");
+    if (modal) modal.hidden = true;
+    attObsMemberId = null;
+    const pdfModal = document.getElementById("attPdfModal");
+    if (!pdfModal || pdfModal.hidden) {
+      document.body.classList.remove("detail-open");
+    }
+  }
+
+  async function saveMemberObservacionesFromObsModal() {
+    if (!attObsMemberId) return;
+    const input = document.getElementById("attObsNotesInput");
+    const okEl = document.getElementById("attObsNotesOk");
+    const errEl = document.getElementById("attObsNotesError");
+    const saveBtn = document.getElementById("attObsSaveNotes");
+    const value = input?.value || "";
+
+    showError(errEl, "");
+    showOk(okEl, "");
+    if (saveBtn) {
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Guardando…";
+    }
+
+    try {
+      const result = await saveObservaciones(attObsMemberId, value);
+      if (result.localOnly) {
+        showError(
+          errEl,
+          "Guardado en este dispositivo. Para sincronizar en la nube, ejecuta en Supabase SQL Editor el archivo supabase/observaciones.sql y vuelve a guardar."
+        );
+        showOk(okEl, "Notas guardadas localmente");
+      } else {
+        showOk(okEl, "Notas guardadas en Supabase");
+      }
+    } catch (err) {
+      showError(errEl, err?.message || "No se pudo guardar las notas.");
+    } finally {
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Guardar notas";
+      }
+    }
+  }
+
   async function cloudDeleteMemberDay(fecha, miembroId) {
     await api(
       `/rest/v1/asistencia_sacramental?fecha=eq.${encodeURIComponent(fecha)}&miembro_id=eq.${encodeURIComponent(miembroId)}`,
@@ -596,33 +1454,32 @@
       setAttSync("Sin sesión", "error");
       return;
     }
-    setAttSync("Cargando mes…", "loading");
+    setAttSync("Sincronizando con Supabase…", "loading");
     const { start, end } = monthBounds(attView);
 
     try {
+      const pushed = await pushLocalAttendancePending();
       const rows = await api(
         `/rest/v1/asistencia_sacramental?select=id,fecha,miembro_id,presente&fecha=gte.${start}&fecha=lte.${end}&order=fecha.asc`
       );
       attCloudReady = true;
       attMonthRows = Array.isArray(rows) ? rows : [];
-      // Fusionar marcas locales pendientes del mes
-      localRowsForRange(start, end).forEach((localRow) => {
-        const exists = attMonthRows.some(
-          (r) =>
-            r.fecha === localRow.fecha &&
-            String(r.miembro_id) === String(localRow.miembro_id) &&
-            r.presente
-        );
-        if (!exists) attMonthRows.push(localRow);
-      });
+      mirrorLocalFromCloudRows(attMonthRows);
       renderAttendanceCalendar();
       if (attSelectedDate) await loadAttendanceDay(attSelectedDate, { silent: true });
-      else setAttSync("Mes sincronizado", "ok");
+      else {
+        setAttSync(
+          pushed
+            ? `Mes sincronizado · ${pushed} pendientes subidos`
+            : "Mes sincronizado con Supabase",
+          "ok"
+        );
+      }
     } catch (err) {
       attCloudReady = false;
       attMonthRows = localRowsForRange(start, end);
       renderAttendanceCalendar();
-      setAttSync("Modo local (sin nube)", "error");
+      setAttSync("Sin nube · solo este dispositivo", "error");
       showError(asistenciaError, attendanceTableHint(err));
       if (attSelectedDate) {
         attDayPresent = getLocalDaySet(attSelectedDate);
@@ -639,37 +1496,34 @@
     if (attDayMeta) {
       attDayMeta.textContent =
         date?.getDay() === 0
-          ? "Domingo · reunión sacramental"
-          : "Marca con el check quién asistió";
+          ? "Domingo · reunión sacramental · sync Supabase"
+          : "Marca con el check quién asistió · sync Supabase";
     }
 
     if (!silent) showError(asistenciaError, "");
-    setAttSync("Cargando día…", "loading");
-
-    const localSet = getLocalDaySet(dateKey);
+    setAttSync("Cargando desde Supabase…", "loading");
 
     try {
       const rows = await api(
         `/rest/v1/asistencia_sacramental?select=miembro_id,presente&fecha=eq.${dateKey}&presente=eq.true`
       );
       attCloudReady = true;
-      const remote = new Set(
+      // Supabase es la fuente de verdad (no se mezclan marcas locales viejas)
+      attDayPresent = new Set(
         (Array.isArray(rows) ? rows : []).map((r) => String(r.miembro_id))
       );
-      // Unión: nube + local (para no perder checks pendientes)
-      attDayPresent = new Set([...remote, ...localSet]);
       saveLocalDaySet(dateKey, attDayPresent);
       rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
       renderAttendanceCalendar();
       renderAttendanceRoll();
-      setAttSync(`${attDayPresent.size} presentes · sincronizado`, "ok");
+      setAttSync(`${attDayPresent.size} presentes · Supabase`, "ok");
     } catch (err) {
       attCloudReady = false;
-      attDayPresent = localSet;
+      attDayPresent = getLocalDaySet(dateKey);
       rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
       renderAttendanceCalendar();
       renderAttendanceRoll();
-      setAttSync(`${attDayPresent.size} presentes · local`, "error");
+      setAttSync(`${attDayPresent.size} presentes · sin nube`, "error");
       if (!silent) showError(asistenciaError, attendanceTableHint(err));
     }
   }
@@ -683,27 +1537,27 @@
     attSaving.add(id);
     showOk(asistenciaOk, "");
 
-    // 1) Estado local inmediato (no se cancela)
+    // UI inmediata
     if (presente) attDayPresent.add(id);
     else attDayPresent.delete(id);
     setLocalMemberPresent(attSelectedDate, id, presente);
     rebuildMonthRowsFromPresentSets(attSelectedDate, attDayPresent);
     updateDayStats();
     renderAttendanceCalendar();
-    setAttSync("Guardando…", "loading");
+    setAttSync("Guardando en Supabase…", "loading");
 
-    // 2) Sync Supabase (si falla, el check se mantiene)
     try {
       await cloudDeleteMemberDay(attSelectedDate, id);
       if (presente) await cloudInsertMemberDay(attSelectedDate, id);
       attCloudReady = true;
-      setAttSync(`${attDayPresent.size} presentes · guardado`, "ok");
-      showOk(asistenciaOk, presente ? "Presente guardado" : "Ausente guardado");
+      setLocalMemberPresent(attSelectedDate, id, presente);
+      setAttSync(`${attDayPresent.size} presentes · guardado en Supabase`, "ok");
+      showOk(asistenciaOk, presente ? "Presente sincronizado" : "Ausente sincronizado");
       showError(asistenciaError, "");
       return true;
     } catch (err) {
       attCloudReady = false;
-      setAttSync(`${attDayPresent.size} presentes · solo local`, "error");
+      setAttSync(`${attDayPresent.size} presentes · error de sync`, "error");
       showError(asistenciaError, attendanceTableHint(err));
       return false;
     } finally {
@@ -714,7 +1568,7 @@
   async function setAllAttendance(presente) {
     if (!attSelectedDate || !miembros.length) return;
     showError(asistenciaError, "");
-    setAttSync(presente ? "Marcando todos…" : "Desmarcando todos…", "loading");
+    setAttSync(presente ? "Marcando en Supabase…" : "Desmarcando en Supabase…", "loading");
 
     if (presente) {
       miembros.forEach((m) => attDayPresent.add(String(m.id)));
@@ -739,23 +1593,24 @@
         }));
         const chunkSize = 100;
         for (let i = 0; i < payload.length; i += chunkSize) {
-          await api("/rest/v1/asistencia_sacramental", {
+          await api("/rest/v1/asistencia_sacramental?on_conflict=fecha,miembro_id", {
             method: "POST",
-            headers: { Prefer: "return=minimal" },
+            headers: { Prefer: "resolution=merge-duplicates,return=minimal" },
             body: JSON.stringify(payload.slice(i, i + chunkSize)),
           });
         }
       }
       attCloudReady = true;
-      setAttSync(`${attDayPresent.size} presentes · guardado`, "ok");
+      saveLocalDaySet(attSelectedDate, attDayPresent);
+      setAttSync(`${attDayPresent.size} presentes · guardado en Supabase`, "ok");
       showOk(
         asistenciaOk,
-        presente ? "Todos marcados como presentes" : "Todos desmarcados"
+        presente ? "Todos marcados y sincronizados" : "Todos desmarcados y sincronizados"
       );
       showError(asistenciaError, "");
     } catch (err) {
       attCloudReady = false;
-      setAttSync(`${attDayPresent.size} presentes · solo local`, "error");
+      setAttSync(`${attDayPresent.size} presentes · error de sync`, "error");
       showError(asistenciaError, attendanceTableHint(err));
     }
   }
@@ -955,7 +1810,20 @@
     if (adminStatusText) adminStatusText.textContent = "Sincronizando datos…";
     try {
       miembros = (await fetchMiembros()) || [];
+      await ensureObservacionesColumn();
+      applyLocalObservacionesToMiembros();
+      if (obsColumnReady) {
+        await flushLocalObservacionesToCloud();
+        // recargar notas desde nube tras flush
+        miembros = (await fetchMiembros()) || [];
+        applyLocalObservacionesToMiembros();
+      }
       renderAll();
+      if (adminStatusText) {
+        adminStatusText.textContent = obsColumnReady
+          ? "Datos sincronizados"
+          : "Notas: falta observaciones.sql en Supabase";
+      }
     } catch (err) {
       showError(adminError, err.message || "No se pudo cargar la lista.");
       if (adminMeta) adminMeta.textContent = "Error al cargar";
@@ -981,6 +1849,7 @@
       f_correo: member?.correo || "",
       f_direccion: member?.direccion || "",
       f_familia: member?.familia || "",
+      f_observaciones: member?.observaciones || "",
       f_bautismo: member?.bautismo || "",
       f_tiempo: member?.tiempo_miembro || "",
       f_coords: member?.coords || "",
@@ -1026,6 +1895,7 @@
       correo: emptyToNull(document.getElementById("f_correo").value),
       direccion: emptyToNull(document.getElementById("f_direccion").value),
       familia: emptyToNull(document.getElementById("f_familia").value),
+      observaciones: emptyToNull(document.getElementById("f_observaciones").value),
       bautismo: emptyToNull(document.getElementById("f_bautismo").value),
       tiempo_miembro: emptyToNull(document.getElementById("f_tiempo").value),
       coords: emptyToNull(document.getElementById("f_coords").value),
@@ -1132,6 +2002,22 @@
     attSearchQuery = attSearch.value;
     renderAttendanceRoll();
   });
+  attFiltersBtn?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleAttFilters();
+  });
+  attFiltersPanel?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const filterBtn = event.target.closest("[data-att-filter]");
+    if (filterBtn) {
+      attRollFilter = filterBtn.getAttribute("data-att-filter") || "all";
+      syncAttFilterButtons();
+      renderAttendanceRoll();
+      setAttFiltersOpen(false);
+      return;
+    }
+  });
+  document.addEventListener("click", () => setAttFiltersOpen(false));
   attRoll?.addEventListener("change", (event) => {
     const input = event.target.closest("input.asistencia-roll-check[data-miembro]");
     if (!input) return;
@@ -1145,8 +2031,39 @@
     paintRollItemFromCheckbox(input);
     setMemberAttendance(id, input.checked);
   });
-  attMarkAll?.addEventListener("click", () => setAllAttendance(true));
-  attClearAll?.addEventListener("click", () => setAllAttendance(false));
+  attRoll?.addEventListener("click", (event) => {
+    const obsBtn = event.target.closest("[data-obs-id]");
+    if (!obsBtn) return;
+    event.preventDefault();
+    event.stopPropagation();
+    openMemberObservations(obsBtn.getAttribute("data-obs-id"));
+  });
+  document.getElementById("attObsClose")?.addEventListener("click", closeMemberObservations);
+  document.getElementById("attObsCancel")?.addEventListener("click", closeMemberObservations);
+  document.getElementById("attObsSaveNotes")?.addEventListener("click", () => {
+    saveMemberObservacionesFromObsModal();
+  });
+  document.getElementById("attObsModal")?.addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) closeMemberObservations();
+  });
+  attMarkAll?.addEventListener("click", () => {
+    setAllAttendance(true);
+    setAttFiltersOpen(false);
+  });
+  attClearAll?.addEventListener("click", () => {
+    setAllAttendance(false);
+    setAttFiltersOpen(false);
+  });
+  attExportPdf?.addEventListener("click", () => {
+    setAttFiltersOpen(false);
+    exportAttendancePdf();
+  });
+  document.getElementById("attPdfClose")?.addEventListener("click", closeAttendancePdfModal);
+  document.getElementById("attPdfCancel")?.addEventListener("click", closeAttendancePdfModal);
+  document.getElementById("attPdfPrint")?.addEventListener("click", () => printAttendancePdf());
+  document.getElementById("attPdfModal")?.addEventListener("click", (event) => {
+    if (event.target === event.currentTarget) closeAttendancePdfModal();
+  });
 
   adminSearch?.addEventListener("input", () => {
     searchQuery = adminSearch.value;
@@ -1204,12 +2121,35 @@
     saveBtn.textContent = "Guardando…";
 
     try {
-      if (id) await updateMiembro(id, payload);
-      else await insertMiembro(payload);
+      const obsValue = payload.observaciones;
+      const ready = await ensureObservacionesColumn();
+      if (!ready) {
+        delete payload.observaciones;
+      }
+
+      let savedId = id;
+      if (id) {
+        await updateMiembro(id, payload);
+      } else {
+        const created = await insertMiembro(payload);
+        savedId = Array.isArray(created) ? created[0]?.id : created?.id;
+      }
+
+      if (savedId) {
+        await saveObservaciones(savedId, obsValue);
+      }
+
       closeModal();
       await loadMiembros();
     } catch (err) {
-      showError(formError, err.message || "No se pudo guardar.");
+      if (isMissingObsColumnError(err)) {
+        showError(
+          formError,
+          "Falta la columna observaciones. Ejecuta supabase/observaciones.sql en Supabase y vuelve a guardar."
+        );
+      } else {
+        showError(formError, err.message || "No se pudo guardar.");
+      }
     } finally {
       saveBtn.disabled = false;
       saveBtn.textContent = "Guardar";
@@ -1217,7 +2157,22 @@
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !memberModal.hidden) closeModal();
+    if (event.key !== "Escape") return;
+    if (attFiltersPanel && !attFiltersPanel.hidden) {
+      setAttFiltersOpen(false);
+      return;
+    }
+    const obsModal = document.getElementById("attObsModal");
+    if (obsModal && !obsModal.hidden) {
+      closeMemberObservations();
+      return;
+    }
+    const pdfModal = document.getElementById("attPdfModal");
+    if (pdfModal && !pdfModal.hidden) {
+      closeAttendancePdfModal();
+      return;
+    }
+    if (!memberModal.hidden) closeModal();
   });
 
   setPanel("stats");

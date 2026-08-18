@@ -1,55 +1,78 @@
 const FOTO_ANON = "./icons/avatar-anon.png";
 
 const FOTOS = [
+  "Alicia Cecilia Meza Pizarro.jpeg",
   "Alicia del Carmen de Peña Jerez.png",
+  "Andrea Francisca de Fuentes Molina.png",
   "Bárbara Elizabeth González Salazar.png",
   "Benjamín Alexander Vásquez Zolorsa.png",
+  "Cristian Alexander Cortez Benavente.png",
+  "Cristopher Bastian Jofré Campos.jpeg",
   "Cristopher Bastian Jofré Campos.png",
   "Da Vía Rubio Lucas Maximiliano.jpeg",
-  "Dafnhe Monserrat Echaniz Maripangui.jpeg",
+  "Dafnhe Monserrat Echaniz Maripangui.png",
+  "Daniela Beatriz Jeria Nuñez.png",
   "David Francisco Flores Contreras.jpeg",
   "David Joel Ramos Torres.jpeg",
   "Diego Aaron Miranda Acevedo.jpeg",
   "Edgardo José Abarca Neira.png",
   "Eduardo Alberto Castillo Fuentes.png",
   "Eduardo David Enrique Naranjo Gutiérrez.png",
+  "Elias Benjamin Torres Jimenez.png",
   "Elvira del Carmen Núñez Ureta.jpeg",
   "Emma Maritza de Pineda Urra.jpeg",
   "Eugenia Margarita de Wilches Martínez.jpeg",
+  "Fernanda Belén Meza Soto.png",
+  "Fernando Andrés Soto Gazul.png",
   "Francesco Alejandro Davía Rubio.jpeg",
   "Gonzalo Aaron Miranda Acevedo.jpeg",
-  "Graciela Del Carmen Arpe Torres.png",
+  "Graciela Del Carmen Arpe Torres.jpeg",
+  "Héctor Ignacio León Pinto.png",
   "Hernan Enrique Aravena Martínez.jpeg",
   "Ignacio Aaron Miranda Acevedo.jpeg",
   "Iris del Pilar Duque Cáceres.jpeg",
   "Isabella Esperanza Illanes Arpe.png",
+  "Jesús Alberto Torres Benavente.png",
+  "Joaquín Ignacio Torres Jiménez.png",
   "José Manuel Illanes Ceballos.png",
   "Julio Anibal Ramírez Soto.png",
+  "Laura Elizabeth Acevedo Rojas.png",
+  "León Baltazar maureira peñailillo.png",
   "Leonardo Esteban Wilches Martínez.jpeg",
   "Leonardo Nelson Wilches Santibáñez.png",
+  "Luciano Rafael Antonio Hernández Inostroza.jpeg",
   "Lucresia del Carmen de Delgado Atenas.jpeg",
+  "Luis Alberto Cornejo Mancilla.png",
   "Manuel Antonio Pailamilla Abarza.jpeg",
   "Marco Antonio Hernandez Ruiz.png",
+  "Margarita del Pilar de Meza Soto.jpeg",
+  "Maria Cristina Jimenez Ramirez.png",
   "María Cristina Jiménez Ramírez.png",
   "Mario Alejandro Rossel Poblete.png",
   "Marisol Andrea de Hernandez Inostroza.jpeg",
   "Martina Francisca Escalante Cornejo.png",
+  "Mateo Alonso Hernández Inostroza.png",
   "Matías Alejandro Fuentes Martinez.png",
   "Matias Ignacio Vega Abarca.png",
   "Matías Valentín Leyes Campos.png",
+  "Nahomi Maira Pañailillo Meza.png",
   "Nahuel Nicolás Leyes Campos.png",
+  "Nancy de Lourdes de Acevedo Rojas.jpeg",
   "Nicolás Aarón Miranda Acevedo.jpeg",
   "Omar Ramon Ayala Roman.png",
   "Paola Andrea de Castillo Silva.jpeg",
   "Pascuala Blanca Arratia Zambrano.jpeg",
   "Pilar de Lourdes Toro Pontigo.jpeg",
+  "Raúl Antonio Arce Huerta.png",
   "Roberto Pablo Illanes Postigo.png",
   "Romina Rubio Luna.jpeg",
   "Rosales Sánchez, Héctor Manuel.png",
   "Santiago Solanille Clavero.png",
   "Támara Elizabeth González León.png",
+  "Verónica Elizabeth de Peñailillo Meza.png",
   "Víctor Manuel Román Jiménez.png",
   "Víctor Orlando Acevedo Nacaratte.png",
+  "Walther Ivaniet Urbina Peña.jpeg",
   "Walther Ivaniet Urbina Peña.png",
   "Wladimir Antonio Sepúlveda Fuentes.png",
 ];
@@ -82,6 +105,7 @@ const navFiltersDesktop = document.getElementById("navFiltersDesktop");
 
 const FILTER_LABELS = {
   todos: "Todos",
+  "con-foto": "Con foto",
   recien: "Recién conversos",
   obispado: "Obispado",
   ss: "Sociedad de Socorro",
@@ -137,6 +161,16 @@ function nombreDesdeArchivo(filename) {
 
 function fotoUrl(filename) {
   return `./fotos/${encodeURIComponent(filename)}`;
+}
+
+/** Si el archivo en BD ya no existe, usa otra extensión con el mismo nombre. */
+function resolveFotoArchivo(filename) {
+  const name = String(filename || "").trim();
+  if (!name) return null;
+  if (FOTOS.includes(name)) return name;
+  const base = name.replace(/\.[^.]+$/, "");
+  const alt = FOTOS.find((f) => f.replace(/\.[^.]+$/, "") === base);
+  return alt || name;
 }
 
 function overlapNombreScore(a, b) {
@@ -198,7 +232,7 @@ function fotoDePerfil(nombre) {
 let hermanosPorNombre = new Map();
 
 function mapMiembroRow(row, index) {
-  const fotoArchivo = row.foto || null;
+  const fotoArchivo = resolveFotoArchivo(row.foto);
   return {
     id: row.id ?? index,
     nombre: row.nombre || "",
@@ -214,6 +248,7 @@ function mapMiembroRow(row, index) {
     familia: row.familia || "",
     bautismo: row.bautismo || "",
     tiempoMiembro: row.tiempo_miembro || row.tiempoMiembro || "",
+    observaciones: row.observaciones || "",
     foto: fotoArchivo ? fotoUrl(fotoArchivo) : fotoDePerfil(row.nombre || ""),
     recienConverso: !!(row.recien_converso ?? row.recienConverso),
     obispado: !!row.obispado,
@@ -502,7 +537,7 @@ function createCard(hermano, index) {
   card.className = classes.join(" ");
   card.style.setProperty("--i", Math.min(index, 20));
   card.innerHTML = `
-    <div class="card-photo-wrap">
+    <button class="card-photo-wrap" type="button" data-id="${hermano.id}" aria-label="Ver detalles de ${escapeHtml(hermano.nombre)}">
       <img
         class="card-photo"
         src="${hermano.foto || FOTO_ANON}"
@@ -513,7 +548,7 @@ function createCard(hermano, index) {
         height="400"
       />
       ${cardBadges(hermano)}
-    </div>
+    </button>
     <div class="card-body">
       <h2 class="card-name">${escapeHtml(hermano.nombre)}</h2>
       <p class="card-age">${escapeHtml(edadTexto(hermano))}</p>
@@ -642,6 +677,13 @@ function openDetail(hermano, options = {}) {
 
   items += detailItem("Familia", familiaHtml(hermano.familia, hermano.id));
 
+  if (hermano.observaciones) {
+    items += detailItem(
+      "Notas",
+      escapeHtml(hermano.observaciones).replace(/\n/g, "<br />")
+    );
+  }
+
   detailContent.innerHTML = `
     <img
       class="detail-hero"
@@ -700,6 +742,7 @@ function searchableText(h) {
     h.direccion,
     h.coords,
     h.familia,
+    h.observaciones,
     h.recienConverso ? "recien converso recienconversos" : "",
     h.obispado ? "obispado llamamiento" : "",
     enSociedadSocorro(h) ? "sociedad de socorro ss" : "",
@@ -710,11 +753,18 @@ function searchableText(h) {
   ].join(" ");
 }
 
+function tieneFoto(h) {
+  const foto = String(h?.foto || "").trim();
+  return Boolean(foto) && foto !== FOTO_ANON;
+}
+
 function applyFilters() {
   const q = normalize(searchInput.value.trim());
   let list = hermanos;
 
-  if (activeFilter === "recien") {
+  if (activeFilter === "con-foto") {
+    list = list.filter((h) => tieneFoto(h));
+  } else if (activeFilter === "recien") {
     list = list.filter((h) => h.recienConverso);
   } else if (activeFilter === "obispado") {
     list = list.filter((h) => h.obispado);
@@ -738,6 +788,7 @@ function applyFilters() {
 function render(list) {
   directory.replaceChildren();
   const total = hermanos.length;
+  const totalConFoto = hermanos.filter((h) => tieneFoto(h)).length;
   const totalRecien = hermanos.filter((h) => h.recienConverso).length;
   const totalObispado = hermanos.filter((h) => h.obispado).length;
   const totalSs = hermanos.filter((h) => enSociedadSocorro(h)).length;
@@ -746,6 +797,11 @@ function render(list) {
   const totalElderesPres = hermanos.filter((h) => h.quorumElderes).length;
 
   const scopeMap = {
+    "con-foto": {
+      total: totalConFoto,
+      label: "con foto",
+      empty: `0 de ${totalConFoto} con foto`,
+    },
     recien: { total: totalRecien, label: "recién conversos", empty: `0 de ${totalRecien} recién conversos` },
     obispado: { total: totalObispado, label: "del obispado", empty: `0 de ${totalObispado} del obispado` },
     ss: { total: totalSs, label: "de Sociedad de Socorro", empty: `0 de ${totalSs} de Sociedad de Socorro` },
@@ -806,9 +862,9 @@ directory.addEventListener("click", (event) => {
     return;
   }
 
-  const button = event.target.closest(".card-btn");
-  if (!button) return;
-  const hermano = hermanos.find((h) => String(h.id) === button.dataset.id);
+  const openBtn = event.target.closest(".card-btn, .card-photo-wrap");
+  if (!openBtn) return;
+  const hermano = hermanos.find((h) => String(h.id) === openBtn.dataset.id);
   if (hermano) openDetail(hermano);
 });
 
