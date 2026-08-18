@@ -1,10 +1,12 @@
-const CACHE = "directorio-llo-lleo-v35";
+const CACHE = "directorio-llo-lleo-v37";
 const ASSETS = [
   "./",
   "./index.html",
   "./admin.html",
   "./admin.css",
   "./admin.js",
+  "./reconocimiento.html",
+  "./reconocimiento.js",
   "./styles.css",
   "./script.js",
   "./supabase-config.js",
@@ -47,6 +49,8 @@ self.addEventListener("fetch", (event) => {
   const isShell =
     url.pathname.endsWith("/") ||
     url.pathname.endsWith("/index.html") ||
+    url.pathname.endsWith("/reconocimiento.html") ||
+    url.pathname.endsWith("/reconocimiento.js") ||
     url.pathname.endsWith("/script.js") ||
     url.pathname.endsWith("/styles.css") ||
     url.pathname.endsWith("/supabase-config.js") ||

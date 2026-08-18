@@ -1025,6 +1025,11 @@ async function boot() {
   }
   try {
     await loadHermanos();
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q && searchInput) {
+      searchInput.value = q;
+    }
     refresh();
   } catch (error) {
     console.error(error);

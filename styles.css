@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --bg-top: #050a12;
   --bg-bottom: #0a1422;
   --ink: #e8f4ff;
@@ -1768,5 +1768,341 @@ body.filters-open {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* —— Reconocimiento facial —— */
+.face-page .top {
+  margin-bottom: 0.35rem;
+}
+
+.face-main {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 0.5rem 1rem 2.5rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.face-kicker {
+  margin: 0 0 0.25rem;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.face-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 4.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.face-lead {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.45;
+  max-width: 38rem;
+}
+
+.face-status-card,
+.face-upload-card,
+.face-results {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: var(--shadow);
+  padding: 1rem 1.05rem;
+}
+
+.face-status-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.face-status-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-top: 0.35rem;
+  border-radius: 50%;
+  background: var(--muted);
+  box-shadow: 0 0 0 3px rgba(127, 151, 173, 0.18);
+  flex: 0 0 auto;
+}
+
+.face-status-dot[data-state="loading"] {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(240, 164, 58, 0.2);
+  animation: face-pulse 1.1s ease-in-out infinite;
+}
+
+.face-status-dot[data-state="ready"] {
+  background: var(--hud-ok);
+  box-shadow: 0 0 0 3px rgba(61, 222, 140, 0.22);
+}
+
+.face-status-dot[data-state="error"] {
+  background: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+}
+
+@keyframes face-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.86);
+  }
+}
+
+.face-status-label {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.face-status-meta {
+  margin: 0.15rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.face-progress {
+  margin-top: 0.75rem;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 212, 255, 0.1);
+  overflow: hidden;
+}
+
+.face-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--brand-deep), var(--brand));
+  transition: width 0.2s ease;
+}
+
+.face-section-title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.face-drop {
+  position: relative;
+  display: grid;
+  place-items: center;
+  gap: 0.35rem;
+  min-height: 9.5rem;
+  padding: 1.1rem;
+  border: 1.5px dashed rgba(0, 212, 255, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 212, 255, 0.04);
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.face-drop:hover,
+.face-drop.is-dragover {
+  border-color: rgba(0, 212, 255, 0.7);
+  background: rgba(0, 212, 255, 0.09);
+}
+
+.face-drop input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.face-drop-icon {
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0.2rem;
+  pointer-events: none;
+}
+
+.face-drop strong,
+.face-drop small {
+  pointer-events: none;
+}
+
+.face-drop strong {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.face-drop small {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.face-preview-wrap {
+  position: relative;
+  margin-top: 0.85rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  background: #030810;
+}
+
+.face-preview {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+.face-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.face-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.face-btn {
+  appearance: none;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  touch-action: manipulation;
+  padding: 0.7rem 1rem;
+  min-height: 44px;
+  transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.face-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.face-btn--primary {
+  border: 1px solid rgba(0, 212, 255, 0.45);
+  color: var(--ink);
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.28), rgba(0, 120, 180, 0.35));
+}
+
+.face-btn--ghost {
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  color: var(--ink);
+  background: rgba(3, 10, 20, 0.55);
+}
+
+.face-results-summary {
+  margin: 0 0 0.85rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+}
+
+.face-matches {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.face-match {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  background: rgba(3, 10, 20, 0.45);
+}
+
+.face-match.is-known {
+  border-color: rgba(61, 222, 140, 0.35);
+}
+
+.face-match.is-unknown {
+  border-color: rgba(240, 164, 58, 0.3);
+}
+
+.face-match-photo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #0a1422;
+}
+
+.face-match-name {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.face-match-meta {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.face-match-tel,
+.face-match-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  margin-right: 0.75rem;
+  color: var(--brand);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.face-match-tel:hover,
+.face-match-link:hover {
+  text-decoration: underline;
+}
+
+.face-note {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .face-main {
+    padding: 0.35rem 0.75rem 2rem;
+  }
+
+  .face-match {
+    grid-template-columns: 64px 1fr;
+  }
+
+  .face-match-photo {
+    width: 64px;
+    height: 64px;
   }
 }
