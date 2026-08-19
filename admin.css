@@ -49,6 +49,7 @@ html {
   background: var(--hud-bg);
   position: relative;
   overflow-x: hidden;
+  overflow-anchor: none;
 }
 
 .admin-body input,
@@ -1037,6 +1038,9 @@ html {
   border-radius: 14px;
   background: var(--hud-panel);
   box-shadow: var(--hud-shadow);
+  overflow: hidden;
+  max-width: 100%;
+  overflow-anchor: none;
 }
 
 .asistencia-cal-toolbar {
@@ -1096,15 +1100,27 @@ html {
 
 .asistencia-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.3rem;
+  width: 100%;
   touch-action: manipulation;
+  -ms-touch-action: manipulation;
+}
+
+.asistencia-grid *,
+.asistencia-day,
+.asistencia-day * {
+  touch-action: manipulation !important;
+  -ms-touch-action: manipulation !important;
 }
 
 .asistencia-day {
   appearance: none;
+  -webkit-appearance: none;
   aspect-ratio: 1 / 1;
-  min-height: 44px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
   border: 1px solid rgba(0, 212, 255, 0.12);
   border-radius: 10px;
   background: rgba(0, 212, 255, 0.03);
@@ -1122,6 +1138,8 @@ html {
   touch-action: manipulation;
   -webkit-user-select: none;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
   transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -1130,9 +1148,11 @@ html {
   background: rgba(0, 212, 255, 0.1);
 }
 
+.asistencia-day.is-pad,
 .asistencia-day:disabled {
   opacity: 0.25;
   cursor: default;
+  pointer-events: none;
 }
 
 .asistencia-day.is-sunday {
@@ -1221,6 +1241,14 @@ html {
 .asistencia-day-stats {
   display: flex;
   gap: 0.85rem;
+  min-height: 3.25rem;
+  visibility: visible;
+}
+
+.asistencia-day-stats[hidden] {
+  display: flex !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .asistencia-day-stats > div {
@@ -1435,11 +1463,16 @@ html {
 }
 
 .asistencia-roll {
-  max-height: min(58dvh, 560px);
+  height: 360px;
+  max-height: 360px;
+  min-height: 360px;
   overflow: auto;
+  overscroll-behavior: contain;
   border: 1px solid rgba(0, 212, 255, 0.12);
   border-radius: 12px;
   background: rgba(3, 10, 20, 0.45);
+  overflow-anchor: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .asistencia-roll-item {
@@ -1792,6 +1825,12 @@ html {
   .asistencia-day-stats > div {
     min-width: 3.6rem;
     padding: 0.35rem 0.4rem;
+  }
+
+  .asistencia-roll {
+    height: 320px;
+    max-height: 320px;
+    min-height: 320px;
   }
 }
 

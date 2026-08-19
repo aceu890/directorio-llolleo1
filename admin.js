@@ -1006,9 +1006,9 @@
     }
   }
 
-  function renderAttendanceCalendar() {
+  function renderAttendanceCalendar({ syncSelectors = true } = {}) {
     if (!attCalendar) return;
-    syncAttendanceSelectors();
+    if (syncSelectors) syncAttendanceSelectors();
     const { presentCounts, recorded } = attendanceStatsByDay();
     const year = attView.getFullYear();
     const month = attView.getMonth();
@@ -1018,14 +1018,20 @@
     const todayKey = toDateKey(new Date());
     const selectedKey = attSelectedDate;
     const expectedCount = startPad + daysInMonth;
-    const existing = Array.from(attCalendar.querySelectorAll(":scope > button.asistencia-day"));
+    const existing = Array.from(
+      attCalendar.querySelectorAll(":scope > .asistencia-day")
+    );
     const firstDayKey = toDateKey(new Date(year, month, 1));
     const canPatch =
       existing.length === expectedCount &&
       existing[startPad]?.getAttribute("data-date") === firstDayKey;
 
-    function dayClasses(date, key, hasRecord) {
+    function dayClasses(date, key, hasRecord, isPad) {
       const classes = ["asistencia-day"];
+      if (isPad) {
+        classes.push("is-pad");
+        return classes.join(" ");
+      }
       if (date.getDay() === 0) classes.push("is-sunday");
       if (key === todayKey) classes.push("is-today");
       if (key === selectedKey) classes.push("is-selected");
@@ -1033,14 +1039,41 @@
       return classes.join(" ");
     }
 
+    function fillDayCell(el, day, date, key, count, hasRecord) {
+      el.className = dayClasses(date, key, hasRecord, false);
+      el.removeAttribute("aria-hidden");
+      el.setAttribute("role", "gridcell");
+      el.setAttribute("tabindex", "-1");
+      el.setAttribute("data-date", key);
+      el.setAttribute(
+        "aria-label",
+        `${formatDateLong(date)}${hasRecord ? `, ${count} presentes` : ""}`
+      );
+      let num = el.querySelector(".asistencia-day-num");
+      let countEl = el.querySelector(".asistencia-day-count");
+      let dot = el.querySelector(".asistencia-day-dot");
+      if (!num || !countEl || !dot) {
+        el.innerHTML = `
+          <span class="asistencia-day-num"></span>
+          <span class="asistencia-day-count"></span>
+          <span class="asistencia-day-dot" aria-hidden="true"></span>
+        `;
+        num = el.querySelector(".asistencia-day-num");
+        countEl = el.querySelector(".asistencia-day-count");
+      }
+      if (num) num.textContent = String(day);
+      if (countEl) countEl.textContent = hasRecord ? String(count) : "";
+    }
+
     if (canPatch) {
       for (let i = 0; i < startPad; i += 1) {
         const pad = existing[i];
-        pad.className = "asistencia-day";
-        pad.disabled = true;
+        pad.className = "asistencia-day is-pad";
         pad.removeAttribute("data-date");
         pad.removeAttribute("aria-label");
         pad.setAttribute("aria-hidden", "true");
+        pad.removeAttribute("role");
+        pad.removeAttribute("tabindex");
         pad.innerHTML = "";
       }
       for (let day = 1; day <= daysInMonth; day += 1) {
@@ -1048,29 +1081,7 @@
         const key = toDateKey(date);
         const count = presentCounts.get(key) || 0;
         const hasRecord = recorded.has(key);
-        const btn = existing[startPad + day - 1];
-        btn.disabled = false;
-        btn.removeAttribute("aria-hidden");
-        btn.className = dayClasses(date, key, hasRecord);
-        btn.setAttribute("data-date", key);
-        btn.setAttribute(
-          "aria-label",
-          `${formatDateLong(date)}${hasRecord ? `, ${count} presentes` : ""}`
-        );
-        let num = btn.querySelector(".asistencia-day-num");
-        let countEl = btn.querySelector(".asistencia-day-count");
-        let dot = btn.querySelector(".asistencia-day-dot");
-        if (!num || !countEl || !dot) {
-          btn.innerHTML = `
-            <span class="asistencia-day-num"></span>
-            <span class="asistencia-day-count"></span>
-            <span class="asistencia-day-dot" aria-hidden="true"></span>
-          `;
-          num = btn.querySelector(".asistencia-day-num");
-          countEl = btn.querySelector(".asistencia-day-count");
-        }
-        if (num) num.textContent = String(day);
-        if (countEl) countEl.textContent = hasRecord ? String(count) : "";
+        fillDayCell(existing[startPad + day - 1], day, date, key, count, hasRecord);
       }
       renderMonthSummary();
       return;
@@ -1078,7 +1089,7 @@
 
     const cells = [];
     for (let i = 0; i < startPad; i += 1) {
-      cells.push(`<button class="asistencia-day" type="button" disabled aria-hidden="true"></button>`);
+      cells.push(`<div class="asistencia-day is-pad" aria-hidden="true"></div>`);
     }
     for (let day = 1; day <= daysInMonth; day += 1) {
       const date = new Date(year, month, day);
@@ -1086,11 +1097,11 @@
       const count = presentCounts.get(key) || 0;
       const hasRecord = recorded.has(key);
       cells.push(`
-        <button class="${dayClasses(date, key, hasRecord)}" type="button" data-date="${key}" aria-label="${escapeHtml(formatDateLong(date))}${hasRecord ? `, ${count} presentes` : ""}">
+        <div class="${dayClasses(date, key, hasRecord, false)}" role="gridcell" tabindex="-1" data-date="${key}" aria-label="${escapeHtml(formatDateLong(date))}${hasRecord ? `, ${count} presentes` : ""}">
           <span class="asistencia-day-num">${day}</span>
           <span class="asistencia-day-count">${hasRecord ? count : ""}</span>
           <span class="asistencia-day-dot" aria-hidden="true"></span>
-        </button>
+        </div>
       `);
     }
     attCalendar.innerHTML = cells.join("");
@@ -1555,8 +1566,26 @@
     }
   }
 
+  function freezeViewport() {
+    return {
+      x: window.scrollX || window.pageXOffset || 0,
+      y: window.scrollY || window.pageYOffset || 0,
+    };
+  }
+
+  function restoreViewport(pos) {
+    if (!pos) return;
+    const apply = () => window.scrollTo(pos.x, pos.y);
+    apply();
+    requestAnimationFrame(apply);
+    setTimeout(apply, 0);
+    setTimeout(apply, 50);
+    setTimeout(apply, 120);
+  }
+
   async function loadAttendanceDay(dateKey, { silent = false } = {}) {
     if (!dateKey) return;
+    const viewport = freezeViewport();
     attSelectedDate = dateKey;
     const date = parseDateKey(dateKey);
     if (attDayTitle) attDayTitle.textContent = date ? formatDateLong(date) : dateKey;
@@ -1569,6 +1598,7 @@
 
     if (!silent) showError(asistenciaError, "");
     setAttSync("Cargando desde Supabase…", "loading");
+    restoreViewport(viewport);
 
     try {
       const rows = await api(
@@ -1581,17 +1611,19 @@
       );
       saveLocalDaySet(dateKey, attDayPresent);
       rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
-      renderAttendanceCalendar();
+      renderAttendanceCalendar({ syncSelectors: false });
       renderAttendanceRoll();
       setAttSync(`${attDayPresent.size} presentes · Supabase`, "ok");
     } catch (err) {
       attCloudReady = false;
       attDayPresent = getLocalDaySet(dateKey);
       rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
-      renderAttendanceCalendar();
+      renderAttendanceCalendar({ syncSelectors: false });
       renderAttendanceRoll();
       setAttSync(`${attDayPresent.size} presentes · sin nube`, "error");
       if (!silent) showError(asistenciaError, attendanceTableHint(err));
+    } finally {
+      restoreViewport(viewport);
     }
   }
 
@@ -2060,18 +2092,20 @@
     attView = new Date(Number(attYear.value), Number(attMonth.value), 1);
     loadAttendanceMonth();
   });
-  attCalendar?.addEventListener("click", (event) => {
-    const btn = event.target.closest("[data-date]");
-    if (!btn || !attCalendar.contains(btn)) return;
+  let attCalendarLastTap = 0;
+  let attCalendarTouchHandled = false;
+  function selectAttendanceDayFromEvent(event) {
+    const cell = event.target.closest("[data-date]");
+    if (!cell || !attCalendar?.contains(cell)) return false;
+    const dateKey = cell.getAttribute("data-date");
+    if (!dateKey) return false;
     event.preventDefault();
-    const dateKey = btn.dataset.date;
-    if (!dateKey) return;
+    event.stopPropagation();
     attCalendar.querySelectorAll(".asistencia-day.is-selected").forEach((el) => {
       el.classList.remove("is-selected");
     });
-    btn.classList.add("is-selected");
-    if (typeof btn.blur === "function") btn.blur();
-    if (document.activeElement && document.activeElement !== document.body) {
+    cell.classList.add("is-selected");
+    if (document.activeElement && typeof document.activeElement.blur === "function") {
       try {
         document.activeElement.blur();
       } catch (_) {
@@ -2079,6 +2113,34 @@
       }
     }
     loadAttendanceDay(dateKey);
+    return true;
+  }
+  attCalendar?.addEventListener(
+    "touchend",
+    (event) => {
+      const now = Date.now();
+      const isDoubleTap = now - attCalendarLastTap <= 350;
+      attCalendarLastTap = now;
+      if (isDoubleTap) {
+        event.preventDefault();
+        return;
+      }
+      if (selectAttendanceDayFromEvent(event)) {
+        attCalendarTouchHandled = true;
+        setTimeout(() => {
+          attCalendarTouchHandled = false;
+        }, 500);
+      }
+    },
+    { passive: false }
+  );
+  attCalendar?.addEventListener("click", (event) => {
+    if (attCalendarTouchHandled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    selectAttendanceDayFromEvent(event);
   });
   attSearch?.addEventListener("input", () => {
     attSearchQuery = attSearch.value;

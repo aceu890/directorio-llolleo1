@@ -1,4 +1,4 @@
-const CACHE = "directorio-llo-lleo-v38";
+const CACHE = "directorio-llo-lleo-v39";
 const ASSETS = [
   "./",
   "./index.html",
