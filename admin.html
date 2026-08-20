@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="admin.css?v=39" />
+  <link rel="stylesheet" href="admin.css?v=46" />
 </head>
 <body class="admin-body">
   <div class="admin-fx" aria-hidden="true"></div>
@@ -526,6 +526,53 @@
           <label><input type="checkbox" id="f_elderes" name="quorum_elderes" /> Presidencia Quórum de élderes</label>
         </fieldset>
 
+        <fieldset class="admin-ministrantes">
+          <legend>Hermanos ministrantes</legend>
+          <p class="admin-meta">Busca por nombre y elige hasta 2 compañeros del directorio.</p>
+          <p class="admin-error" id="ministrantesSetupHint" hidden>
+            Falta crear la columna en Supabase. Abre SQL Editor, ejecuta el archivo
+            <strong>supabase/hermanos-ministrantes.sql</strong> y vuelve a guardar.
+          </p>
+          <div class="admin-grid-2">
+            <div class="min-picker admin-field" data-min-slot="1">
+              <span>Ministrante 1</span>
+              <input type="hidden" id="f_ministrante_1" name="ministrante_1" value="" />
+              <div class="min-picker-selected" hidden>
+                <span class="min-picker-name"></span>
+                <button class="min-picker-clear" type="button">Quitar</button>
+              </div>
+              <div class="min-picker-search-wrap">
+                <input
+                  class="min-picker-search"
+                  type="search"
+                  placeholder="Buscar por nombre…"
+                  autocomplete="off"
+                  enterkeyhint="search"
+                />
+                <ul class="min-picker-results" hidden role="listbox" aria-label="Resultados ministrante 1"></ul>
+              </div>
+            </div>
+            <div class="min-picker admin-field" data-min-slot="2">
+              <span>Ministrante 2</span>
+              <input type="hidden" id="f_ministrante_2" name="ministrante_2" value="" />
+              <div class="min-picker-selected" hidden>
+                <span class="min-picker-name"></span>
+                <button class="min-picker-clear" type="button">Quitar</button>
+              </div>
+              <div class="min-picker-search-wrap">
+                <input
+                  class="min-picker-search"
+                  type="search"
+                  placeholder="Buscar por nombre…"
+                  autocomplete="off"
+                  enterkeyhint="search"
+                />
+                <ul class="min-picker-results" hidden role="listbox" aria-label="Resultados ministrante 2"></ul>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
         <p class="admin-error" id="formError" hidden></p>
         <div class="admin-form-actions">
           <button class="admin-ghost" type="button" id="memberCancel">Cancelar</button>
@@ -560,6 +607,6 @@
   <iframe id="attPrintFrame" title="Impresión de asistencia" aria-hidden="true"></iframe>
 
   <script src="supabase-config.js"></script>
-  <script src="admin.js?v=39"></script>
+  <script src="admin.js?v=46"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-const CACHE = "directorio-llo-lleo-v39";
+const CACHE = "directorio-llo-lleo-v48";
 const ASSETS = [
   "./",
   "./index.html",
@@ -7,6 +7,8 @@ const ASSETS = [
   "./admin.js",
   "./reconocimiento.html",
   "./reconocimiento.js",
+  "./mapa-ministrantes.html",
+  "./mapa-ministrantes.js",
   "./styles.css",
   "./script.js",
   "./supabase-config.js",
@@ -54,6 +56,8 @@ self.addEventListener("fetch", (event) => {
     url.pathname.endsWith("/index.html") ||
     url.pathname.endsWith("/reconocimiento.html") ||
     url.pathname.endsWith("/reconocimiento.js") ||
+    url.pathname.endsWith("/mapa-ministrantes.html") ||
+    url.pathname.endsWith("/mapa-ministrantes.js") ||
     url.pathname.endsWith("/script.js") ||
     url.pathname.endsWith("/styles.css") ||
     url.pathname.endsWith("/supabase-config.js") ||

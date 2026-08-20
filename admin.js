@@ -1341,6 +1341,196 @@
     return /42703|observaciones does not exist|Could not find the .*observaciones/i.test(msg);
   }
 
+  function isMissingMinistrantesColumnError(err) {
+    const msg = String(err?.message || err || "");
+    return /hermanos_ministrantes/i.test(msg) &&
+      /42703|PGRST204|does not exist|schema cache|Could not find/i.test(msg);
+  }
+
+  let ministrantesColumnReady = null;
+
+  async function ensureMinistrantesColumn({ force = false } = {}) {
+    if (!force && ministrantesColumnReady === true) return true;
+    try {
+      await api("/rest/v1/miembros?select=hermanos_ministrantes&limit=1");
+      ministrantesColumnReady = true;
+      return true;
+    } catch (err) {
+      if (isMissingMinistrantesColumnError(err)) {
+        ministrantesColumnReady = false;
+        return false;
+      }
+      // Otro error de red/sesión: no marcar como ausente permanente
+      return ministrantesColumnReady !== false;
+    }
+  }
+
+  function normalizeMinistrantesList(raw) {
+    if (!Array.isArray(raw)) return [];
+    const names = [];
+    for (const slot of raw) {
+      if (!slot) continue;
+      const nombre =
+        typeof slot === "string"
+          ? slot.trim()
+          : String(slot.nombre || "").trim();
+      if (!nombre) continue;
+      if (names.some((n) => n.toLowerCase() === nombre.toLowerCase())) continue;
+      names.push(nombre);
+    }
+    return names;
+  }
+
+  function normalizeSearchText(text) {
+    return String(text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  let ministrantesExcludeId = "";
+
+  function getMinistranteCandidates(query, otherSelected) {
+    const q = normalizeSearchText(query).trim();
+    const other = normalizeSearchText(otherSelected);
+    return miembros
+      .filter((m) => String(m.id) !== String(ministrantesExcludeId || ""))
+      .filter((m) => {
+        const name = String(m.nombre || "").trim();
+        if (!name) return false;
+        if (other && normalizeSearchText(name) === other) return false;
+        if (!q) return true;
+        return normalizeSearchText(name).includes(q);
+      })
+      .sort((a, b) =>
+        String(a.nombre || "").localeCompare(String(b.nombre || ""), "es", {
+          sensitivity: "base",
+        })
+      )
+      .slice(0, 12);
+  }
+
+  function setMinistrantePickerValue(slot, nombre) {
+    const picker = document.querySelector(`.min-picker[data-min-slot="${slot}"]`);
+    if (!picker) return;
+    const hidden = picker.querySelector(`#f_ministrante_${slot}`);
+    const selected = picker.querySelector(".min-picker-selected");
+    const nameEl = picker.querySelector(".min-picker-name");
+    const search = picker.querySelector(".min-picker-search");
+    const results = picker.querySelector(".min-picker-results");
+    const value = String(nombre || "").trim();
+
+    if (hidden) hidden.value = value;
+    if (results) {
+      results.hidden = true;
+      results.innerHTML = "";
+    }
+    if (search) search.value = "";
+
+    if (value) {
+      picker.classList.add("is-filled");
+      if (selected) selected.hidden = false;
+      if (nameEl) nameEl.textContent = value;
+    } else {
+      picker.classList.remove("is-filled");
+      if (selected) selected.hidden = true;
+      if (nameEl) nameEl.textContent = "";
+    }
+  }
+
+  function renderMinistranteResults(slot, query) {
+    const picker = document.querySelector(`.min-picker[data-min-slot="${slot}"]`);
+    if (!picker) return;
+    const results = picker.querySelector(".min-picker-results");
+    if (!results) return;
+
+    const otherSlot = slot === 1 ? 2 : 1;
+    const otherValue = document.getElementById(`f_ministrante_${otherSlot}`)?.value || "";
+    const matches = getMinistranteCandidates(query, otherValue);
+
+    if (!String(query || "").trim()) {
+      results.hidden = true;
+      results.innerHTML = "";
+      return;
+    }
+
+    if (!matches.length) {
+      results.innerHTML = `<li><p class="min-picker-empty">Sin coincidencias</p></li>`;
+      results.hidden = false;
+      return;
+    }
+
+    results.innerHTML = matches
+      .map((m) => {
+        const edad = calcEdad(m.nacimiento);
+        const ageText = edad != null ? `(${edad})` : "";
+        return `
+        <li>
+          <button type="button" class="min-picker-option" data-nombre="${escapeHtml(m.nombre)}">
+            <span class="min-picker-option-name">${escapeHtml(m.nombre)}</span>
+            ${
+              ageText
+                ? `<span class="min-picker-option-age">${escapeHtml(ageText)}</span>`
+                : ""
+            }
+          </button>
+        </li>`;
+      })
+      .join("");
+    results.hidden = false;
+  }
+
+  function showMinistrantesSetupHint(show) {
+    const hint = document.getElementById("ministrantesSetupHint");
+    if (hint) hint.hidden = !show;
+  }
+
+  function fillMinistrantesSelects(member) {
+    ministrantesExcludeId = member?.id ? String(member.id) : "";
+    const assigned = normalizeMinistrantesList(
+      member?.hermanos_ministrantes || member?.hermanosMinistrantes
+    );
+    setMinistrantePickerValue(1, assigned[0] || "");
+    setMinistrantePickerValue(2, assigned[1] || "");
+    ensureMinistrantesColumn({ force: true }).then((ready) => {
+      showMinistrantesSetupHint(!ready);
+    });
+  }
+
+  function bindMinistrantesPickers() {
+    document.querySelectorAll(".min-picker").forEach((picker) => {
+      const slot = Number(picker.getAttribute("data-min-slot"));
+      const search = picker.querySelector(".min-picker-search");
+      const results = picker.querySelector(".min-picker-results");
+      const clearBtn = picker.querySelector(".min-picker-clear");
+
+      search?.addEventListener("input", () => {
+        renderMinistranteResults(slot, search.value);
+      });
+      search?.addEventListener("focus", () => {
+        if (search.value.trim()) renderMinistranteResults(slot, search.value);
+      });
+      results?.addEventListener("click", (event) => {
+        const btn = event.target.closest(".min-picker-option[data-nombre]");
+        if (!btn) return;
+        setMinistrantePickerValue(slot, btn.getAttribute("data-nombre") || "");
+      });
+      clearBtn?.addEventListener("click", () => {
+        setMinistrantePickerValue(slot, "");
+        search?.focus();
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest(".min-picker")) return;
+      document.querySelectorAll(".min-picker-results").forEach((list) => {
+        list.hidden = true;
+      });
+    });
+  }
+
+  bindMinistrantesPickers();
+
   async function ensureObservacionesColumn() {
     if (obsColumnReady === true) return true;
     if (obsColumnReady === false) return false;
@@ -1881,13 +2071,19 @@
       .map(
         (m) => `
       <tr data-id="${escapeHtml(m.id)}">
-        <td>
+        <td class="admin-col-name">
           <p class="admin-name">${escapeHtml(m.nombre)}</p>
           <p class="admin-sub">${escapeHtml(m.organizacion || m.llamamiento || "")}</p>
         </td>
-        <td>${escapeHtml(m.telefono || "—")}</td>
-        <td><div class="admin-badges">${flagsHtml(m)}</div></td>
-        <td>
+        <td class="admin-col-phone">
+          <span class="admin-col-label">Teléfono</span>
+          <p class="admin-phone">${escapeHtml(m.telefono || "—")}</p>
+        </td>
+        <td class="admin-col-flags">
+          <span class="admin-col-label">Marcas</span>
+          <div class="admin-badges">${flagsHtml(m) || `<span class="admin-sub">Sin marcas</span>`}</div>
+        </td>
+        <td class="admin-col-actions">
           <div class="admin-row-actions">
             <button type="button" data-edit="${escapeHtml(m.id)}">Editar</button>
             <button type="button" class="is-danger" data-delete="${escapeHtml(m.id)}">Borrar</button>
@@ -1965,6 +2161,8 @@
     document.getElementById("f_ss").checked = !!member?.sociedad_socorro;
     document.getElementById("f_elderes").checked = !!member?.quorum_elderes;
 
+    fillMinistrantesSelects(member);
+
     memberModal.hidden = false;
     document.getElementById("f_nombre").focus();
   }
@@ -1980,6 +2178,14 @@
   }
 
   function formPayload() {
+    const m1 = String(document.getElementById("f_ministrante_1")?.value || "").trim();
+    const m2 = String(document.getElementById("f_ministrante_2")?.value || "").trim();
+    const ministrantes = [];
+    if (m1) ministrantes.push({ nombre: m1 });
+    if (m2 && m2.toLowerCase() !== m1.toLowerCase()) {
+      ministrantes.push({ nombre: m2 });
+    }
+
     return {
       nombre: String(document.getElementById("f_nombre").value || "").trim(),
       sexo: emptyToNull(document.getElementById("f_sexo").value),
@@ -2003,6 +2209,7 @@
       obispado: document.getElementById("f_obispado").checked,
       sociedad_socorro: document.getElementById("f_ss").checked,
       quorum_elderes: document.getElementById("f_elderes").checked,
+      hermanos_ministrantes: ministrantes,
     };
   }
 
@@ -2266,9 +2473,16 @@
 
     try {
       const obsValue = payload.observaciones;
-      const ready = await ensureObservacionesColumn();
-      if (!ready) {
+      const obsReady = await ensureObservacionesColumn();
+      if (!obsReady) {
         delete payload.observaciones;
+      }
+      const minReady = await ensureMinistrantesColumn({ force: true });
+      if (!minReady) {
+        delete payload.hermanos_ministrantes;
+        showMinistrantesSetupHint(true);
+      } else {
+        showMinistrantesSetupHint(false);
       }
 
       let savedId = id;
@@ -2283,6 +2497,15 @@
         await saveObservaciones(savedId, obsValue);
       }
 
+      if (!minReady) {
+        showError(
+          formError,
+          "Los datos del hermano se guardaron, pero los ministrantes NO: en Supabase → SQL Editor ejecuta supabase/hermanos-ministrantes.sql (Run) y luego vuelve a editar y guardar."
+        );
+        await loadMiembros();
+        return;
+      }
+
       closeModal();
       await loadMiembros();
     } catch (err) {
@@ -2290,6 +2513,13 @@
         showError(
           formError,
           "Falta la columna observaciones. Ejecuta supabase/observaciones.sql en Supabase y vuelve a guardar."
+        );
+      } else if (isMissingMinistrantesColumnError(err)) {
+        ministrantesColumnReady = false;
+        showMinistrantesSetupHint(true);
+        showError(
+          formError,
+          "Falta la columna hermanos_ministrantes en Supabase. Ve a SQL Editor, ejecuta supabase/hermanos-ministrantes.sql y vuelve a guardar."
         );
       } else {
         showError(formError, err.message || "No se pudo guardar.");

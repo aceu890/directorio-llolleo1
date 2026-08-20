@@ -568,24 +568,28 @@ function createCard(hermano, index) {
 }
 
 function openMinistrantes(hermano) {
-  // Por ahora: plazas vacías (fotos anónimas, sin nombres)
-  const slots = hermano.hermanosMinistrantes?.length
-    ? hermano.hermanosMinistrantes
-    : [null, null];
+  const assigned = (hermano.hermanosMinistrantes || []).filter(
+    (slot) => slot && (typeof slot === "string" ? slot.trim() : slot.nombre)
+  );
+  const slots = assigned.length ? assigned : [null, null];
 
   const cards = slots
     .map((slot) => {
-      const matched = slot?.nombre ? findHermanoByNombre(slot.nombre) : null;
+      const nombreSlot =
+        typeof slot === "string" ? slot : slot?.nombre || "";
+      const matched = nombreSlot ? findHermanoByNombre(nombreSlot) : null;
       const foto = matched?.foto || FOTO_ANON;
       const nombre = matched
         ? escapeHtml(matched.nombre)
-        : "";
+        : nombreSlot
+          ? escapeHtml(nombreSlot)
+          : "";
       return `
         <article class="ministrante-card">
           <img
             class="ministrante-photo"
             src="${foto}"
-            alt="${matched ? `Foto de ${escapeHtml(matched.nombre)}` : "Hermano ministrante por asignar"}"
+            alt="${matched || nombreSlot ? `Foto de ${escapeHtml(matched?.nombre || nombreSlot)}` : "Hermano ministrante por asignar"}"
             onerror="this.onerror=null;this.src='${FOTO_ANON}'"
           />
           <p class="ministrante-name">${nombre || "&nbsp;"}</p>
@@ -598,7 +602,11 @@ function openMinistrantes(hermano) {
     <h2 class="ministrantes-title" id="ministrantesTitle">Hermanos ministrantes</h2>
     <p class="ministrantes-subtitle">De ${escapeHtml(hermano.nombre)}</p>
     <div class="ministrantes-grid">${cards}</div>
-    <p class="ministrantes-note">Aún no hay hermanos ministrantes asignados.</p>
+    ${
+      assigned.length
+        ? ""
+        : `<p class="ministrantes-note">Aún no hay hermanos ministrantes asignados.</p>`
+    }
   `;
 
   ministrantes.hidden = false;
