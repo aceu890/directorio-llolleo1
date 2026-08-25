@@ -5,11 +5,13 @@
   "description": "Directorio Barrio Llo Lleo 1",
   "scripts": {
     "sync:fotos": "node sync-orgs-fotos.mjs",
+    "optimize:fotos": "node optimize-fotos.mjs",
     "watch:fotos": "node watch-fotos.mjs",
     "upload:fotos": "node upload-fotos-supabase.mjs"
   },
   "dependencies": {
     "iceberg-js": "^0.8.1",
+    "sharp": "^0.35.3",
     "tslib": "^2.8.1"
   }
 }
