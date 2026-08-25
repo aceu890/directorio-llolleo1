@@ -52,6 +52,10 @@ html {
   overflow-anchor: none;
 }
 
+body.detail-open {
+  overflow: hidden;
+}
+
 .admin-body input,
 .admin-body textarea,
 .admin-body [contenteditable="true"] {
@@ -1782,22 +1786,21 @@ html {
 .asistencia-obs-btn {
   appearance: none;
   flex-shrink: 0;
-  border: 1px solid rgba(0, 212, 255, 0.3);
+  width: 2rem;
+  height: 2rem;
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid rgba(0, 212, 255, 0.28);
   border-radius: 8px;
-  padding: 0.28rem 0.45rem;
-  background: rgba(0, 212, 255, 0.08);
+  padding: 0;
+  background: rgba(0, 212, 255, 0.06);
   color: var(--hud-cyan);
-  font: inherit;
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
 .asistencia-obs-btn:hover {
   border-color: rgba(0, 212, 255, 0.55);
-  background: rgba(0, 212, 255, 0.16);
+  background: rgba(0, 212, 255, 0.14);
 }
 
 .asistencia-obs-panel {
@@ -1938,21 +1941,24 @@ html {
 .asistencia-roll-item strong {
   display: block;
   color: var(--hud-ink);
-  font-size: 1rem;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.98rem;
+  line-height: 1.25;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-break: break-word;
 }
 
 .asistencia-roll-item small {
   display: block;
   color: var(--hud-muted);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.3;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  word-break: break-word;
 }
 
 .asistencia-roll-age {
@@ -1963,29 +1969,6 @@ html {
 .asistencia-roll-phone {
   color: var(--hud-ink);
   font-weight: 700;
-}
-
-.asistencia-roll-badge {
-  flex-shrink: 0;
-  min-width: 4.6rem;
-  text-align: center;
-  padding: 0.28rem 0.5rem;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.asistencia-roll-item.is-present .asistencia-roll-badge {
-  color: #10281c;
-  background: #3dde8c;
-}
-
-.asistencia-roll-item.is-absent .asistencia-roll-badge {
-  color: #ffb4b4;
-  background: rgba(255, 107, 107, 0.16);
-  border: 1px solid rgba(255, 107, 107, 0.35);
 }
 
 .asistencia-analytics {
@@ -2161,6 +2144,22 @@ html {
   .admin-stat-card--hero {
     grid-column: span 2;
   }
+}
+
+.admin-foto-preview {
+  display: block;
+  margin-top: 0.55rem;
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  background: rgba(5, 12, 24, 0.7);
+}
+
+#f_foto_status {
+  display: block;
+  margin-top: 0.35rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

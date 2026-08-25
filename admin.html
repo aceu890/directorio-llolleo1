@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="admin.css?v=46" />
+  <link rel="stylesheet" href="admin.css?v=72" />
 </head>
 <body class="admin-body">
   <div class="admin-fx" aria-hidden="true"></div>
@@ -516,6 +516,23 @@
             <span>Archivo de foto</span>
             <input id="f_foto" name="foto" placeholder="Nombre Archivo.png" />
           </label>
+          <label class="admin-field">
+            <span>Subir a Supabase (+ vista previa)</span>
+            <input
+              id="f_foto_file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+            />
+            <span class="admin-meta" id="f_foto_status" hidden></span>
+            <img
+              id="f_foto_preview"
+              class="admin-foto-preview"
+              alt=""
+              hidden
+              width="96"
+              height="96"
+            />
+          </label>
         </div>
 
         <fieldset class="admin-flags">
@@ -607,6 +624,7 @@
   <iframe id="attPrintFrame" title="Impresión de asistencia" aria-hidden="true"></iframe>
 
   <script src="supabase-config.js"></script>
-  <script src="admin.js?v=46"></script>
+  <script src="fotos-index.js?v=74"></script>
+  <script src="admin.js?v=74"></script>
 </body>
 </html>

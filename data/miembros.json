@@ -1,7 +1,7 @@
 [
   {
     "nombre": "Benjamín Alexander Vásquez Zolorsa",
-    "organizacion": "Primaria - Valientes",
+    "organizacion": "Primaria",
     "nacimiento": "21 ene 2017",
     "sexo": "Varón",
     "oficio": null,
@@ -18,11 +18,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Wladimir Antonio Sepúlveda Fuentes",
-    "organizacion": "Cuórum sacerdocio Aarónico",
+    "organizacion": "Cuórum de Presbíteros",
     "nacimiento": "8 jun 2009",
     "sexo": "Varón",
     "oficio": null,
@@ -39,11 +43,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "presbiteros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Matias Ignacio Vega Abarca",
-    "organizacion": "Escuela Dominical, Quórum de élderes",
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "2 nov 2005",
     "sexo": "Varón",
     "oficio": "Presbítero",
@@ -60,11 +68,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Martina Francisca Escalante Cornejo",
-    "organizacion": "Mujeres Jóvenes, Escuela Dominical",
+    "organizacion": "Mensajeras de Esperanza",
     "nacimiento": "24 mar 2011",
     "sexo": "Mujer",
     "oficio": null,
@@ -81,11 +93,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "mensajeras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Héctor Manuel Rosales Sanchez",
-    "organizacion": "Quórum de élderes, Escuela Dominical",
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 sep 1973",
     "sexo": "Varón",
     "oficio": "Presbítero",
@@ -102,11 +118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Mario Alejandro Rossel Poblete",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 jul 1981",
     "sexo": "Varón",
     "oficio": null,
@@ -123,11 +143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Graciela Del Carmen Arpe Torres",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 sep 1990",
     "sexo": "Mujer",
     "oficio": null,
@@ -139,16 +163,20 @@
     "familia": "Graciela del Carmen Arpe Torres — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Graciela Del Carmen Arpe Torres.jpeg",
+    "foto": "Graciela Del Carmen Arpe Torres.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Isabella Esperanza Illanes Arpe",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "29 mar 2017",
     "sexo": "Mujer",
     "oficio": null,
@@ -165,11 +193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "José Manuel Illanes Ceballos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "31 dic 1979",
     "sexo": "Varón",
     "oficio": null,
@@ -186,11 +218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Roberto Pablo Illanes Postigo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "14 jun 1947",
     "sexo": "Varón",
     "oficio": null,
@@ -207,11 +243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "María Laura Farias Fuentes",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "6 feb 2008",
     "sexo": "Mujer",
     "oficio": null,
@@ -228,11 +268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Matías Alejandro Fuentes Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 sep 2004",
     "sexo": "Varón",
     "oficio": null,
@@ -249,11 +293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Matias Valentin Leyes Campos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Maestros",
     "nacimiento": "4 mar 2011",
     "sexo": "Varón",
     "oficio": null,
@@ -270,11 +318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "maestros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Nahuel Nicolás Leyes Campos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 dic 2007",
     "sexo": "Varón",
     "oficio": null,
@@ -291,11 +343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Edgardo Jose Abarca Neira",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "4 ago 1978",
     "sexo": "Varón",
     "oficio": null,
@@ -312,11 +368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Omar Ramon Ayala Roman",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "13 oct 1966",
     "sexo": "Varón",
     "oficio": null,
@@ -333,11 +393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Eduardo David Enrique Naranjo Gutierrez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "14 jul 2004",
     "sexo": "Varón",
     "oficio": null,
@@ -354,11 +418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Alicia Cecilia Meza Pizarro",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 sep 1966",
     "sexo": "Mujer",
     "oficio": null,
@@ -370,16 +438,20 @@
     "familia": "Alicia Cecilia Meza Pizarro — Mujer\nDavid Alejandro Quintanilla Meza — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Alicia Cecilia Meza Pizarro.jpeg",
+    "foto": "Alicia Cecilia Meza Pizarro.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Cristopher Bastian Jofré Campos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "23 abr 1991",
     "sexo": "Varón",
     "oficio": null,
@@ -391,16 +463,20 @@
     "familia": "Cristopher Bastian Jofré Campos — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Cristopher Bastian Jofré Campos.png",
+    "foto": "Cristopher Bastian Jofré Campos.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Barbara Elizabeth Gonzalez Salazar",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 mar 1985",
     "sexo": "Mujer",
     "oficio": null,
@@ -417,11 +493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Mateo Ignacio León Silva",
-    "organizacion": null,
+    "organizacion": "Cuórum de Maestros",
     "nacimiento": "12 sep 2012",
     "sexo": "Varón",
     "oficio": null,
@@ -438,11 +518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "maestros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Támara Elizabeth Gonzalez Leon",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "3 ene 1981",
     "sexo": "Mujer",
     "oficio": null,
@@ -459,11 +543,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Julio Anibal Ramírez Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "2 feb 1969",
     "sexo": "Varón",
     "oficio": null,
@@ -480,11 +568,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Walther Ivaniet Urbina Peña",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "11 jun 1989",
     "sexo": "Varón",
     "oficio": null,
@@ -501,11 +593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Fernando Alonso Cerda Poblete",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 ago 2005",
     "sexo": "Varón",
     "oficio": null,
@@ -522,11 +618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Hector Ignacio León Pinto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "10 ene 1965",
     "sexo": "Varón",
     "oficio": null,
@@ -543,11 +643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Yoel Alejandro Córdova González",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "24 ago 2001",
     "sexo": "Varón",
     "oficio": null,
@@ -564,11 +668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Tomas Alejandro Cortez Daza",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "2 jun 2017",
     "sexo": "Varón",
     "oficio": null,
@@ -585,11 +693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Gabriela Soledad Contreras Zuñiga",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "2 jun 1970",
     "sexo": "Mujer",
     "oficio": null,
@@ -606,11 +718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Josefa Paz Diaz Jeria",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "27 dic 2010",
     "sexo": "Mujer",
     "oficio": null,
@@ -627,11 +743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Felipe Esteban Pinto Jauregui",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "3 dic 2013",
     "sexo": "Varón",
     "oficio": null,
@@ -648,11 +768,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "José Miguel Diaz Muñoz",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "17 ago 1961",
     "sexo": "Varón",
     "oficio": null,
@@ -669,11 +793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Thiare Andrea Donoso Vilches",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 ago 2006",
     "sexo": "Mujer",
     "oficio": null,
@@ -690,11 +818,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Dominique Dayanet Donoso Vilches",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "5 mayo 2016",
     "sexo": "Mujer",
     "oficio": null,
@@ -711,11 +843,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Claudia Maricel Vilches Arenas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "4 mayo 1982",
     "sexo": "Mujer",
     "oficio": null,
@@ -732,11 +868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pedro Leon Walker Ramirez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 nov 2004",
     "sexo": "Varón",
     "oficio": null,
@@ -753,11 +893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "David Francisco Flores Contreras",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 jul 1994",
     "sexo": "Varón",
     "oficio": null,
@@ -774,11 +918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Nancy Del Carmen Varas Nitor",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 sep 1949",
     "sexo": "Mujer",
     "oficio": null,
@@ -795,11 +943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pascuala Blanca Arratia Zambrano",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "24 dic 1955",
     "sexo": "Mujer",
     "oficio": null,
@@ -811,16 +963,20 @@
     "familia": "Carlos Fernando Soto Godoy — Varón\nPascuala Blanca Arratia Zambrano — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Pascuala Blanca Arratia Zambrano.jpeg",
+    "foto": "Pascuala Blanca Arratia Zambrano.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": true,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "Maestra SS"
+    "etiqueta_llamamiento": "Maestra SS",
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Javiera Antonia Núñez Pineda",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "28 dic 2009",
     "sexo": "Mujer",
     "oficio": null,
@@ -837,11 +993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Rosa del Carmen Pardo Basaure",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "15 mar 1978",
     "sexo": "Mujer",
     "oficio": null,
@@ -858,11 +1018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Hernan Enrique Aravena Martínez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "25 feb 1968",
     "sexo": "Varón",
     "oficio": null,
@@ -874,16 +1038,20 @@
     "familia": "Hernan Enrique Aravena Martínez — Varón\nPilar de Lourdes Toro Pontigo — Mujer\nCatalina Ignacia Aravena Toro — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Hernan Enrique Aravena Martínez.jpeg",
+    "foto": "Hernan Enrique Aravena Martínez.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Catalina Ignacia Aravena Toro",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "25 abr 2003",
     "sexo": "Mujer",
     "oficio": null,
@@ -900,11 +1068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Carlos Fernando Soto Godoy",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "2 dic 1960",
     "sexo": "Varón",
     "oficio": null,
@@ -921,11 +1093,15 @@
     "obispado": true,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "Secretario"
+    "etiqueta_llamamiento": "Secretario",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pilar De Lourdes Toro Pontigo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 feb 1971",
     "sexo": "Mujer",
     "oficio": null,
@@ -937,16 +1113,20 @@
     "familia": "Hernan Enrique Aravena Martínez — Varón\nPilar de Lourdes Toro Pontigo — Mujer\nCatalina Ignacia Aravena Toro — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Pilar de Lourdes Toro Pontigo.jpeg",
+    "foto": "Pilar de Lourdes Toro Pontigo.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Alejandro Luis Castro Silva",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "5 dic 1968",
     "sexo": "Varón",
     "oficio": null,
@@ -963,11 +1143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Camilo Andrés Farias Ortega",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 ago 1975",
     "sexo": "Varón",
     "oficio": null,
@@ -984,11 +1168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Manuel Antonio Pailamilla Abarza",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "31 oct 1960",
     "sexo": "Varón",
     "oficio": null,
@@ -1000,16 +1188,20 @@
     "familia": "Manuel Antonio Pailamilla Abarza — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Manuel Antonio Pailamilla Abarza.jpeg",
+    "foto": "Manuel Antonio Pailamilla Abarza.jpg",
     "recien_converso": true,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Eduardo Acevedo Mendoza",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "17 nov 1985",
     "sexo": "Varón",
     "oficio": null,
@@ -1026,11 +1218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Silvia Del Carmen Delgado Abarzua",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "13 dic 1954",
     "sexo": "Mujer",
     "oficio": null,
@@ -1047,11 +1243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Isidora Ignacia Riquelme Jofre",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "6 jul 2009",
     "sexo": "Mujer",
     "oficio": null,
@@ -1068,11 +1268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Nicolas Gabriel Hauser Rogget",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 ene 2004",
     "sexo": "Varón",
     "oficio": null,
@@ -1089,11 +1293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Felipe Octavio Caceres Olivera",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "2 mar 2015",
     "sexo": "Varón",
     "oficio": null,
@@ -1110,11 +1318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Andres Felipe Erazo Salgado",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "4 dic 1999",
     "sexo": "Varón",
     "oficio": null,
@@ -1131,11 +1343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Abel del Transito Meza Toro",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 nov 1948",
     "sexo": "Varón",
     "oficio": null,
@@ -1152,11 +1368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Agustin Facundo Flores Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "7 ene 2014",
     "sexo": "Varón",
     "oficio": null,
@@ -1173,11 +1393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Agustin Javier Ignacio Berrios Berrios",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "13 sep 2007",
     "sexo": "Varón",
     "oficio": null,
@@ -1194,11 +1418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Ahiza Lía Pizarro Hernández",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "25 dic 2009",
     "sexo": "Mujer",
     "oficio": null,
@@ -1215,11 +1443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Alejandro Alberto Sanchez Celis",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "30 ene 1992",
     "sexo": "Varón",
     "oficio": null,
@@ -1236,11 +1468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Alejandro Ignacio Bugueño Hormazábal",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 nov 1995",
     "sexo": "Varón",
     "oficio": null,
@@ -1257,11 +1493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Alfredo Elias Mondaca Riveros",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "31 ago 1968",
     "sexo": "Varón",
     "oficio": null,
@@ -1273,16 +1513,20 @@
     "familia": "Alfredo Elias Mondaca Riveros — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Alfredo Elias Mondaca Riveros.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": true,
-    "etiqueta_llamamiento": "Maestro élderes"
+    "etiqueta_llamamiento": "Maestro élderes",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Alicia del Carmen de Peña Jerez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "19 dic 1964",
     "sexo": "Mujer",
     "oficio": null,
@@ -1294,16 +1538,20 @@
     "familia": "Alicia del Carmen de Peña Jerez — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Alicia del Carmen de Peña Jerez.png",
+    "foto": "Alicia del Carmen de Peña Jerez.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Alina Yolanda de Soto Gazul",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "5 nov 1965",
     "sexo": "Mujer",
     "oficio": null,
@@ -1315,16 +1563,20 @@
     "familia": "Jose Miguel Soto Soto — Varón\nAlina Yolanda de Soto Gazul — Mujer\nJose Miguel Soto Gazul — Varón\nFernando Andres Soto Gazul — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Alina Yolanda Gazul Ortega.jpeg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Alvaro Alejandro Claudio Da Viá Campbell",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "25 ago 1979",
     "sexo": "Varón",
     "oficio": null,
@@ -1341,11 +1593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Amanda Carolina Castillo Silva",
-    "organizacion": null,
+    "organizacion": "Mensajeras de Esperanza",
     "nacimiento": "20 oct 2011",
     "sexo": "Mujer",
     "oficio": null,
@@ -1362,11 +1618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "mensajeras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Ana Maria Vicencio Munita",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "24 oct 1947",
     "sexo": "Mujer",
     "oficio": null,
@@ -1383,11 +1643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Andrea Eloísa Castillo Silva",
-    "organizacion": null,
+    "organizacion": "Edificadoras de Fe",
     "nacimiento": "23 oct 2013",
     "sexo": "Mujer",
     "oficio": null,
@@ -1404,11 +1668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "edificadoras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Andrea Francisca de Fuentes Molina",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "30 nov 1974",
     "sexo": "Mujer",
     "oficio": null,
@@ -1425,11 +1693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Andrea Jaqueline Jofre Aravena",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "13 ago 1992",
     "sexo": "Mujer",
     "oficio": null,
@@ -1446,11 +1718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Andres Rolando Gonzalez Salazar",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "23 sep 1947",
     "sexo": "Varón",
     "oficio": null,
@@ -1467,11 +1743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Angelica de las Nieves Naranjo Gallardo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "13 nov 1976",
     "sexo": "Mujer",
     "oficio": null,
@@ -1488,11 +1768,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Antonia Pascal Torres Silva",
-    "organizacion": null,
+    "organizacion": "Mensajeras de Esperanza",
     "nacimiento": "24 dic 2011",
     "sexo": "Mujer",
     "oficio": null,
@@ -1509,11 +1793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "mensajeras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Barbara de las Mercedes Santis Figueroa",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 ene 1992",
     "sexo": "Mujer",
     "oficio": null,
@@ -1530,11 +1818,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Bernarda Cristina Hernandez Fuentes",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "14 ago 1990",
     "sexo": "Mujer",
     "oficio": null,
@@ -1551,11 +1843,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Bernarda de Lourdes Cardenas Zenteno",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "4 ago 1976",
     "sexo": "Mujer",
     "oficio": null,
@@ -1572,11 +1868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Byron Broderyk Oroz Ravanal",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "4 ago 1999",
     "sexo": "Varón",
     "oficio": null,
@@ -1593,11 +1893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Camila Fernanda Farias Alvarez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 nov 1988",
     "sexo": "Mujer",
     "oficio": null,
@@ -1614,11 +1918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Carla Belen Fajardo Lara",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "6 nov 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -1635,11 +1943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Carla Belén Oroz Ravanal",
-    "organizacion": null,
+    "organizacion": "Mensajeras de Esperanza",
     "nacimiento": "3 ene 2012",
     "sexo": "Mujer",
     "oficio": null,
@@ -1656,11 +1968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "mensajeras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Carlos Francisco Martinez Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "21 mar 1994",
     "sexo": "Varón",
     "oficio": null,
@@ -1677,11 +1993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Carlos Horacio Flores Martínez",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "24 sep 2015",
     "sexo": "Varón",
     "oficio": null,
@@ -1698,11 +2018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Carlos Ivan Cárdenas Sanchez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 ene 1973",
     "sexo": "Varón",
     "oficio": null,
@@ -1719,11 +2043,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Carlos Samuel Contreras Gaona",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "22 oct 2000",
     "sexo": "Varón",
     "oficio": null,
@@ -1740,11 +2068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Carmen Gloria Tapia Melendez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 jul 1967",
     "sexo": "Mujer",
     "oficio": null,
@@ -1761,11 +2093,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Carolina Andrea Fuentes Inayao",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 abr 1991",
     "sexo": "Mujer",
     "oficio": null,
@@ -1782,11 +2118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Caroline Pallan Rojas Koneffke",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 oct 1985",
     "sexo": "Mujer",
     "oficio": null,
@@ -1803,11 +2143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Catalina Belen Gana Luna",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 feb 1989",
     "sexo": "Mujer",
     "oficio": null,
@@ -1824,11 +2168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Catherine Estrella de Carrasco Felix",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 dic 1973",
     "sexo": "Mujer",
     "oficio": null,
@@ -1845,11 +2193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Cesar Aaron Miranda Cabello",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 sep 1985",
     "sexo": "Varón",
     "oficio": null,
@@ -1861,16 +2213,20 @@
     "familia": "Cesar Aaron Miranda Cabello — Varón\nLaura Elizabeth de Miranda Acevedo — Mujer\nIgnacio Aaron Miranda Acevedo — Varón (15)\nDiego Aaron Miranda Acevedo — Varón (11)\nGonzalo Aaron Miranda Acevedo — Varón (7)\nNicolás Aaron Miranda Acevedo — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Cesar Aaron Miranda Cabello.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Cesar Alejandro Contreras Toro",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "29 mar 1966",
     "sexo": "Varón",
     "oficio": null,
@@ -1887,11 +2243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "César Antonio Chavez Figueroa",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 feb 1975",
     "sexo": "Varón",
     "oficio": null,
@@ -1908,11 +2268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Clemira Ester Gonzalez Gonzalez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "21 dic 1974",
     "sexo": "Mujer",
     "oficio": null,
@@ -1929,11 +2293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Constanza Alexandra Arce Vidal",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 jun 1997",
     "sexo": "Mujer",
     "oficio": null,
@@ -1950,11 +2318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Constanza Antonia Astorga Hernandez",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "20 jun 2009",
     "sexo": "Mujer",
     "oficio": null,
@@ -1971,11 +2343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Cristian Alexander Cortez Benavente",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "22 sep 2013",
     "sexo": "Varón",
     "oficio": null,
@@ -1992,11 +2368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Cristian Ignacio Ampuero Ampuero",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "21 oct 1974",
     "sexo": "Varón",
     "oficio": null,
@@ -2013,11 +2393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Cristian Pablo Ortega Silva",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "9 nov 1987",
     "sexo": "Varón",
     "oficio": null,
@@ -2034,11 +2418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Cristina del Carmen de Meza Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "1 dic 1953",
     "sexo": "Mujer",
     "oficio": null,
@@ -2055,11 +2443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Da Via Rubio Lucas Maximiliano",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "31 mayo 2023",
     "sexo": "Varón",
     "oficio": null,
@@ -2076,11 +2468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Dafnhe Monserrat Echaniz Maripangui",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 dic 2003",
     "sexo": "Mujer",
     "oficio": null,
@@ -2097,11 +2493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Daniel Andres Delgado Atenas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 mar 1986",
     "sexo": "Varón",
     "oficio": null,
@@ -2118,11 +2518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Daniel Ignacio Wilches Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "8 nov 2001",
     "sexo": "Varón",
     "oficio": null,
@@ -2139,11 +2543,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Daniela Beatriz Jeria Nuñez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "21 ene 1986",
     "sexo": "Mujer",
     "oficio": null,
@@ -2155,16 +2563,20 @@
     "familia": "Daniela Beatriz Jeria Nuñez — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Daniela Beatriz Jeria Nuñez.png",
+    "foto": "Daniela Beatriz Jeria Nuñez.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Daniela Francisca Vera Trincado",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "22 dic 1985",
     "sexo": "Mujer",
     "oficio": null,
@@ -2181,11 +2593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "David Alejandro Quintanilla Meza",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "22 mar 2005",
     "sexo": "Varón",
     "oficio": null,
@@ -2202,11 +2618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": true,
-    "etiqueta_llamamiento": "Secretario élderes"
+    "etiqueta_llamamiento": "Secretario élderes",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "David Joel Ramos Torres",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "31 oct 1998",
     "sexo": "Varón",
     "oficio": null,
@@ -2218,16 +2638,20 @@
     "familia": "David Joel Ramos Torres — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "David Joel Ramos Torres.jpeg",
+    "foto": "David Joel Ramos Torres.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Diego Aaron Miranda Acevedo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "6 nov 2014",
     "sexo": "Varón",
     "oficio": null,
@@ -2239,16 +2663,20 @@
     "familia": "Cesar Aaron Miranda Cabello — Varón\nLaura Elizabeth de Miranda Acevedo — Mujer\nIgnacio Aaron Miranda Acevedo — Varón (15)\nDiego Aaron Miranda Acevedo — Varón (11)\nGonzalo Aaron Miranda Acevedo — Varón (7)\nNicolás Aaron Miranda Acevedo — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Diego Aaron Miranda Acevedo.jpeg",
+    "foto": "Diego Aaron Miranda Acevedo.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Diego Cristobal Delgado Atenas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 mar 1991",
     "sexo": "Varón",
     "oficio": null,
@@ -2265,11 +2693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Eduardo Alberto Castillo Fuentes",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "23 mayo 1975",
     "sexo": "Varón",
     "oficio": null,
@@ -2286,11 +2718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": true,
-    "etiqueta_llamamiento": "2.do consejero élderes"
+    "etiqueta_llamamiento": "2.do consejero élderes",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Eliana de las Mercedes Figueroa Berrios",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "6 jul 1967",
     "sexo": "Mujer",
     "oficio": null,
@@ -2307,11 +2743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Elias Benjamin Torres Jimenez",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "2 sep 2021",
     "sexo": "Varón",
     "oficio": null,
@@ -2323,16 +2763,20 @@
     "familia": "Jesus Alberto Torres Benavente — Varón\nMaria Cristina Jimenez Ramirez — Mujer\nJoaquin Ignacio Torres Jimenez — Varón (13)\nElias Benjamin Torres Jimenez — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Elias Benjamin Torres Jimenez.png",
+    "foto": "Elias Benjamin Torres Jimenez.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Eliette Belen Martez Hernadez",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "11 feb 2016",
     "sexo": "Mujer",
     "oficio": null,
@@ -2349,11 +2793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Elizabeth Macarena Jeria Zuñiga",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "31 dic 1964",
     "sexo": "Mujer",
     "oficio": null,
@@ -2370,11 +2818,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Elvira del Carmen Nuñez Ureta",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "15 jul 1948",
     "sexo": "Mujer",
     "oficio": null,
@@ -2386,16 +2838,20 @@
     "familia": "Elvira del Carmen Nuñez Ureta — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Elvira del Carmen Núñez Ureta.jpeg",
+    "foto": "Elvira del Carmen Núñez Ureta.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Ema Beatriz Soto Zuñiga",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 oct 1962",
     "sexo": "Mujer",
     "oficio": null,
@@ -2412,11 +2868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Emilia Monzerat Hernandez Jara",
-    "organizacion": null,
+    "organizacion": "Guardianas de Luz",
     "nacimiento": "15 nov 2009",
     "sexo": "Mujer",
     "oficio": null,
@@ -2433,11 +2893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "guardianas",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Emma Maritza de Pineda Urra",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "5 mayo 1964",
     "sexo": "Mujer",
     "oficio": null,
@@ -2449,16 +2913,20 @@
     "familia": "Sergio Enrique Pineda Soto — Varón\nEmma Maritza de Pineda Urra — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Emma Maritza de Pineda Urra.jpeg",
+    "foto": "Emma Maritza de Pineda Urra.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Ernesto Ulises Rodriguez Medel",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "28 jul 1933",
     "sexo": "Varón",
     "oficio": null,
@@ -2475,11 +2943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Esteban Advis Jara",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "18 sep 1988",
     "sexo": "Varón",
     "oficio": null,
@@ -2496,11 +2968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Eugenia Margarita de Wilches Martinez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "18 feb 1967",
     "sexo": "Mujer",
     "oficio": null,
@@ -2517,11 +2993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Evelyn Romina Silva Aguilar",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 dic 1990",
     "sexo": "Mujer",
     "oficio": null,
@@ -2538,11 +3018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Evelyn Susana Riquelme Cuevas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "30 jul 1981",
     "sexo": "Mujer",
     "oficio": null,
@@ -2559,11 +3043,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Felipe Ignacio Riquelme Cornejo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "17 jun 1992",
     "sexo": "Varón",
     "oficio": null,
@@ -2580,11 +3068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Felipe Osvaldo Cortez Vera",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "29 mar 1988",
     "sexo": "Varón",
     "oficio": null,
@@ -2601,11 +3093,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Félix Francisco Julian Pizarro Hernández",
-    "organizacion": null,
+    "organizacion": "Cuórum de Maestros",
     "nacimiento": "27 sep 2011",
     "sexo": "Varón",
     "oficio": null,
@@ -2622,11 +3118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "maestros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Fernanda Belen Meza Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "3 jun 1999",
     "sexo": "Mujer",
     "oficio": null,
@@ -2638,16 +3138,20 @@
     "familia": "Juan Antonio Meza Meza — Varón\nMargarita del Pilar de Meza Soto — Mujer\nFernanda Belen Meza Soto — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Fernanda Belén Meza Soto.png",
+    "foto": "Fernanda Belén Meza Soto.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Fernando Andres Soto Gazul",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "24 sep 1991",
     "sexo": "Varón",
     "oficio": null,
@@ -2664,11 +3168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": true,
-    "etiqueta_llamamiento": "Presidente élderes"
+    "etiqueta_llamamiento": "Presidente élderes",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Fernando Antonio Cerda Paredes",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "24 feb 1986",
     "sexo": "Varón",
     "oficio": null,
@@ -2685,11 +3193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Flores Martinez Consuelo Rosario",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "23 nov 2017",
     "sexo": "Mujer",
     "oficio": null,
@@ -2706,11 +3218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Francesco Alejandro Da-via Rubio",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "21 oct 2021",
     "sexo": "Varón",
     "oficio": null,
@@ -2727,11 +3243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Francisca Fernanda Oroz Ravanal",
-    "organizacion": null,
+    "organizacion": "Edificadoras de Fe",
     "nacimiento": "25 jul 2013",
     "sexo": "Mujer",
     "oficio": null,
@@ -2748,11 +3268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "edificadoras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Fredy Felipe Silva Osorio",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 feb 1990",
     "sexo": "Varón",
     "oficio": null,
@@ -2769,11 +3293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gabriela Evelyn Vargas Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 ene 1991",
     "sexo": "Mujer",
     "oficio": null,
@@ -2790,11 +3318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Gaspar Emilio Cofre Hernández",
-    "organizacion": null,
+    "organizacion": "Cuórum de Presbíteros",
     "nacimiento": "9 jul 2010",
     "sexo": "Varón",
     "oficio": null,
@@ -2811,11 +3343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "presbiteros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Gerardo Andres Aburto Velasquez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "29 mar 1983",
     "sexo": "Varón",
     "oficio": null,
@@ -2832,11 +3368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gerardo Andres Quijada Gonzalez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "29 oct 1992",
     "sexo": "Varón",
     "oficio": null,
@@ -2853,11 +3393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Gladys de las Mercedes Vera Diaz",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "8 feb 1960",
     "sexo": "Mujer",
     "oficio": null,
@@ -2874,11 +3418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gladys del Carmen Zuñiga Castillo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "31 mayo 1938",
     "sexo": "Mujer",
     "oficio": null,
@@ -2895,11 +3443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gloria Virginia de Naranjo Gallardo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "14 oct 1948",
     "sexo": "Mujer",
     "oficio": null,
@@ -2916,11 +3468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gonzalo Aaron Miranda Acevedo",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "30 ago 2018",
     "sexo": "Varón",
     "oficio": null,
@@ -2932,16 +3488,20 @@
     "familia": "Cesar Aaron Miranda Cabello — Varón\nLaura Elizabeth de Miranda Acevedo — Mujer\nIgnacio Aaron Miranda Acevedo — Varón (15)\nDiego Aaron Miranda Acevedo — Varón (11)\nGonzalo Aaron Miranda Acevedo — Varón (7)\nNicolás Aaron Miranda Acevedo — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Gonzalo Aaron Miranda Acevedo.jpeg",
+    "foto": "Gonzalo Aaron Miranda Acevedo.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Graciela Rosa Cáceres Monarde",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 feb 1945",
     "sexo": "Mujer",
     "oficio": null,
@@ -2958,11 +3518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Gustavo Adolfo Gana Luna",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "11 mar 2001",
     "sexo": "Varón",
     "oficio": null,
@@ -2974,16 +3538,20 @@
     "familia": "Rene Alberto Gana Gatica — Varón\nSilvana del Carmen de Gana Luna — Mujer\nRene Axel Gana Luna — Varón\nCatalina Belen Gana Luna — Mujer\nGustavo Adolfo Gana Luna — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Gustavo Adolfo Gana Luna.png",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Hector Rigoberto Rocha Corral",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "14 oct 1958",
     "sexo": "Varón",
     "oficio": null,
@@ -3000,11 +3568,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Ian Aaron Cobarrubia Maripangui",
-    "organizacion": null,
+    "organizacion": "Cuórum de Maestros",
     "nacimiento": "2 mar 2012",
     "sexo": "Varón",
     "oficio": null,
@@ -3021,11 +3593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "maestros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Ignacio Aaron Miranda Acevedo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Presbíteros",
     "nacimiento": "31 oct 2010",
     "sexo": "Varón",
     "oficio": null,
@@ -3042,11 +3618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "presbiteros",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Ignacio Alberto Vega Badilla",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 dic 1979",
     "sexo": "Varón",
     "oficio": null,
@@ -3063,11 +3643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Ignacio Juan Caceres Olivera",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "6 sep 2005",
     "sexo": "Varón",
     "oficio": null,
@@ -3084,11 +3668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Iris del Pilar Duque Caceres",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 ago 1960",
     "sexo": "Mujer",
     "oficio": null,
@@ -3105,11 +3693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Irma de las Mercedes Jara Rojas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 dic 1971",
     "sexo": "Mujer",
     "oficio": null,
@@ -3126,11 +3718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Isabella Aurora Bustos Farias",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "9 dic 2015",
     "sexo": "Mujer",
     "oficio": null,
@@ -3147,11 +3743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Isabella Selenne Acevedo Labrin",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "16 jun 2017",
     "sexo": "Mujer",
     "oficio": null,
@@ -3168,11 +3768,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Ivan Lev-Aaron Carrasco Felix",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "9 dic 2003",
     "sexo": "Varón",
     "oficio": null,
@@ -3189,11 +3793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Ivan Marcelo Carrasco Carrasco",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 ago 1968",
     "sexo": "Varón",
     "oficio": null,
@@ -3210,11 +3818,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Javiera Beatriz Vidal Basso",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "1 feb 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -3231,11 +3843,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Jennifer Odette Ravanal Echeverria",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "18 mayo 1976",
     "sexo": "Mujer",
     "oficio": null,
@@ -3252,11 +3868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Jesus Alberto Torres Benavente",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "27 feb 1978",
     "sexo": "Varón",
     "oficio": null,
@@ -3273,11 +3893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Jesus Antonio Quijada Gonzalez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 abr 2002",
     "sexo": "Varón",
     "oficio": null,
@@ -3294,11 +3918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Jhon Alexander Sandoval Basulto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "25 dic 2003",
     "sexo": "Varón",
     "oficio": null,
@@ -3315,11 +3943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Joaquin Ignacio Torres Jimenez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "5 ago 2013",
     "sexo": "Varón",
     "oficio": null,
@@ -3336,11 +3968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Jorge Armando Guerrero Ortega",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 feb 1970",
     "sexo": "Varón",
     "oficio": null,
@@ -3357,11 +3993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Jorge Jose Vera Delgado",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "9 mayo 1962",
     "sexo": "Varón",
     "oficio": null,
@@ -3378,11 +4018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Jose Fernando Antonio Santacana Salinas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "31 ago 1958",
     "sexo": "Varón",
     "oficio": null,
@@ -3399,11 +4043,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "José Ignacio Cartagena Meza",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "17 feb 2021",
     "sexo": "Varón",
     "oficio": null,
@@ -3420,11 +4068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Jose Javier Castro Torres",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 mayo 1994",
     "sexo": "Varón",
     "oficio": null,
@@ -3441,11 +4093,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Jose Miguel Soto Gazul",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "21 mar 1990",
     "sexo": "Varón",
     "oficio": null,
@@ -3462,11 +4118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Jose Miguel Soto Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "25 dic 1970",
     "sexo": "Varón",
     "oficio": null,
@@ -3478,16 +4138,20 @@
     "familia": "Jose Miguel Soto Soto — Varón\nAlina Yolanda de Soto Gazul — Mujer\nJose Miguel Soto Gazul — Varón\nFernando Andres Soto Gazul — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Jose Miguel Soto Soto.jpeg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Antonio Meza Meza",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 jul 1966",
     "sexo": "Varón",
     "oficio": null,
@@ -3504,11 +4168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Armijo Acevedo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 ago 1969",
     "sexo": "Varón",
     "oficio": null,
@@ -3525,11 +4193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Caceres Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "13 abr 1974",
     "sexo": "Varón",
     "oficio": null,
@@ -3546,11 +4218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Hernandez Donoso",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "14 ago 1965",
     "sexo": "Varón",
     "oficio": null,
@@ -3567,11 +4243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Oroz Caceres",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "10 abr 1972",
     "sexo": "Varón",
     "oficio": null,
@@ -3588,11 +4268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Taborga Navia",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 mayo 1957",
     "sexo": "Varón",
     "oficio": null,
@@ -3609,11 +4293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Carlos Zuñiga Lisboa",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "27 dic 1971",
     "sexo": "Varón",
     "oficio": null,
@@ -3630,11 +4318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Francisco Bravo Golling",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 nov 1965",
     "sexo": "Varón",
     "oficio": null,
@@ -3651,11 +4343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Francisco Vera Pavez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "2 ene 1954",
     "sexo": "Varón",
     "oficio": null,
@@ -3672,11 +4368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Manuel Martinez Castillo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 ago 1957",
     "sexo": "Varón",
     "oficio": null,
@@ -3693,11 +4393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Juan Pablo Enrique Avendaño Avendaño",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "30 abr 2003",
     "sexo": "Varón",
     "oficio": null,
@@ -3714,11 +4418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Juanita Ester Ugarte Herrera",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "31 jul 1992",
     "sexo": "Mujer",
     "oficio": null,
@@ -3735,11 +4443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Julieta Ignacia Soto Velásquez",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "14 dic 2017",
     "sexo": "Mujer",
     "oficio": null,
@@ -3756,11 +4468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Julio Alberto Farias Menares",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "16 mar 1937",
     "sexo": "Varón",
     "oficio": null,
@@ -3777,11 +4493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Karen Andrea Diaz Fuenzalida",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 ene 1983",
     "sexo": "Mujer",
     "oficio": null,
@@ -3798,11 +4518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Karen Liliana Márquez Grande",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "10 ago 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -3819,11 +4543,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Katherine Yamilet Marquez Grande",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "14 feb 1995",
     "sexo": "Mujer",
     "oficio": null,
@@ -3835,16 +4563,20 @@
     "familia": "Leonardo Esteban Wilches Martinez — Varón\nKatherine Yamilet Marquez Grande — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Katherine Yamilet Marquez Grande.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Kevin Alan Robinson Tilleria",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "9 ene 1992",
     "sexo": "Varón",
     "oficio": null,
@@ -3861,11 +4593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Laura Agustina de Jesus Parraguez Meza",
-    "organizacion": null,
+    "organizacion": "Mensajeras de Esperanza",
     "nacimiento": "16 abr 2011",
     "sexo": "Mujer",
     "oficio": null,
@@ -3882,11 +4618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "mensajeras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Laura Elizabeth de Miranda Acevedo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "15 mar 1986",
     "sexo": "Mujer",
     "oficio": null,
@@ -3903,11 +4643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Laura Lavinia de Rubio Luna",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 oct 1957",
     "sexo": "Mujer",
     "oficio": null,
@@ -3924,11 +4668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Leon Baltazar Maureira Peñailillo",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "5 feb 2016",
     "sexo": "Varón",
     "oficio": null,
@@ -3945,11 +4693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Leonardo Esteban Wilches Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 dic 1993",
     "sexo": "Varón",
     "oficio": null,
@@ -3961,16 +4713,20 @@
     "familia": "Leonardo Esteban Wilches Martinez — Varón\nKatherine Yamilet Marquez Grande — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Leonardo Esteban Wilches Martínez.jpeg",
+    "foto": "Leonardo Esteban Wilches Martínez.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Leonardo Gerardo Vera Atenas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 mayo 1977",
     "sexo": "Varón",
     "oficio": null,
@@ -3987,11 +4743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Leonardo Nelson Wilches Santibañez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 ago 1966",
     "sexo": "Varón",
     "oficio": null,
@@ -4003,16 +4763,20 @@
     "familia": "Leonardo Nelson Wilches Santibañez — Varón\nEugenia Margarita de Wilches Martinez — Mujer\nDaniel Ignacio Wilches Martinez — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Leonardo Nelson Wilches Santibáñez.png",
+    "foto": "Leonardo Nelson Wilches Santibáñez.jpg",
     "recien_converso": false,
     "obispado": true,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "1.er consejero"
+    "etiqueta_llamamiento": "1.er consejero",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luciano Rafael Antonio Hernandez Inostroza",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "18 oct 2016",
     "sexo": "Varón",
     "oficio": null,
@@ -4024,16 +4788,20 @@
     "familia": "Marco Antonio Hernandez Ruiz — Varón\nMarisol Andrea de Hernandez Ruiz — Mujer\nMateo Alonso Hernández Inostroza — Varón\nMilena Paz Andrea Hernandez Inostroza — Mujer (12)\nLuciano Rafael Antonio Hernandez Inostroza — Varón (9)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Luciano Rafael Antonio Hernández Inostroza.jpeg",
+    "foto": "Luciano Rafael Antonio Hernández Inostroza.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Lucresia del Carmen de Delgado Atenas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "25 sep 1957",
     "sexo": "Mujer",
     "oficio": null,
@@ -4045,16 +4813,20 @@
     "familia": "Lucresia del Carmen de Delgado Atenas — Mujer\nPatricio Alejandro Delgado Atenas — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Lucresia del Carmen de Delgado Atenas.jpeg",
+    "foto": "Lucresia del Carmen de Delgado Atenas.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": true,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "Presidenta SS"
+    "etiqueta_llamamiento": "Presidenta SS",
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luis Alberto Cornejo Mancilla",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "16 jul 1966",
     "sexo": "Varón",
     "oficio": null,
@@ -4066,16 +4838,20 @@
     "familia": "Luis Alberto Cornejo Mancilla — Varón\nPatricia Elsa Maria de Cornejo Zablach — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Luis Alberto Cornejo Mancilla.png",
+    "foto": "Luis Alberto Cornejo Mancilla.jpg",
     "recien_converso": false,
     "obispado": true,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "Obispo"
+    "etiqueta_llamamiento": "Obispo",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luis Mariano Hinojosa Cerda",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "12 jul 1961",
     "sexo": "Varón",
     "oficio": null,
@@ -4092,11 +4868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": true,
-    "etiqueta_llamamiento": "1.er consejero élderes"
+    "etiqueta_llamamiento": "1.er consejero élderes",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luis Martin Lassaube Lassaube",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "26 ene 2007",
     "sexo": "Varón",
     "oficio": null,
@@ -4113,11 +4893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Luisa del Carmen Peso Huenchuan",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 mar 1980",
     "sexo": "Mujer",
     "oficio": null,
@@ -4134,11 +4918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luz Angelica de Pardo Millares",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "30 mayo 1950",
     "sexo": "Mujer",
     "oficio": null,
@@ -4155,11 +4943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Luz Eliana Paillamil Meza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "13 sep 2005",
     "sexo": "Mujer",
     "oficio": null,
@@ -4176,11 +4968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Luz Maria de Berrios Peña",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 jun 1943",
     "sexo": "Mujer",
     "oficio": null,
@@ -4197,11 +4993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Manuel Antonio Vasquez Jerez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "21 ago 1973",
     "sexo": "Varón",
     "oficio": null,
@@ -4218,11 +5018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Manuel Armando Perez Ormazabal",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "12 ago 1982",
     "sexo": "Varón",
     "oficio": null,
@@ -4239,11 +5043,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Manuel Ignacio Ampuero Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "19 mayo 1997",
     "sexo": "Varón",
     "oficio": null,
@@ -4260,11 +5068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Manuel Jesus Ampuero Montes",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "22 ene 1973",
     "sexo": "Varón",
     "oficio": null,
@@ -4281,11 +5093,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marcela Antonia Pardo Martinez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "10 oct 2001",
     "sexo": "Mujer",
     "oficio": null,
@@ -4302,11 +5118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Marcela Ivon Donaire Valladares",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "12 jul 1983",
     "sexo": "Mujer",
     "oficio": null,
@@ -4323,11 +5143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marcelina del Carmen de Soto Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 dic 1962",
     "sexo": "Mujer",
     "oficio": null,
@@ -4344,11 +5168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marco Antonio Hernandez Ruiz",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "22 ene 1975",
     "sexo": "Varón",
     "oficio": null,
@@ -4365,11 +5193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marco Antonio Marco Antonio Hernandez Trujillo",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "14 nov 1980",
     "sexo": "Varón",
     "oficio": null,
@@ -4386,11 +5218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Margarita Alejandra Pardo Perez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 jul 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -4407,11 +5243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Margarita del Pilar de Meza Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "23 abr 1967",
     "sexo": "Mujer",
     "oficio": null,
@@ -4423,16 +5263,20 @@
     "familia": "Juan Antonio Meza Meza — Varón\nMargarita del Pilar de Meza Soto — Mujer\nFernanda Belen Meza Soto — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Margarita del Pilar de Meza Soto.jpeg",
+    "foto": "Margarita del Pilar de Meza Soto.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Margarita Elena de Soto Abarca",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 feb 1943",
     "sexo": "Mujer",
     "oficio": null,
@@ -4449,11 +5293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Margarita Elizabeth de Bugueño Hormazabal",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "5 abr 1965",
     "sexo": "Mujer",
     "oficio": null,
@@ -4470,11 +5318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "María Alejandra Gaona Quintanilla",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "9 jun 1973",
     "sexo": "Mujer",
     "oficio": null,
@@ -4491,11 +5343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maria Cristina Jimenez Ramirez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 dic 1978",
     "sexo": "Mujer",
     "oficio": null,
@@ -4507,16 +5363,20 @@
     "familia": "Jesus Alberto Torres Benavente — Varón\nMaria Cristina Jimenez Ramirez — Mujer\nJoaquin Ignacio Torres Jimenez — Varón (13)\nElias Benjamin Torres Jimenez — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "María Cristina Jiménez Ramírez.png",
+    "foto": "Maria Cristina Jimenez Ramirez.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maria del Carmen Alfaro de Flores",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "5 mayo 1953",
     "sexo": "Mujer",
     "oficio": null,
@@ -4533,11 +5393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maria Enriqueta Vidal Diaz",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "10 oct 1953",
     "sexo": "Mujer",
     "oficio": null,
@@ -4554,11 +5418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maria Fernanda Duran Verdugo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 feb 1963",
     "sexo": "Mujer",
     "oficio": null,
@@ -4575,11 +5443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maria Jose Velasquez Contreras",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "27 nov 1994",
     "sexo": "Mujer",
     "oficio": null,
@@ -4596,11 +5468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Marielín Alejandra Bracho de Jimenez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 feb 1990",
     "sexo": "Mujer",
     "oficio": null,
@@ -4617,11 +5493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marina Enriqueta Martinez Castillo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 ago 1965",
     "sexo": "Mujer",
     "oficio": null,
@@ -4633,16 +5513,20 @@
     "familia": "Marina Enriqueta Martinez Castillo — Mujer",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Marina Enriqueta Martinez Castillo.png",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Mario Ismael Silva Chavez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "12 abr 1947",
     "sexo": "Varón",
     "oficio": null,
@@ -4659,11 +5543,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marisol Andrea de Hernandez Inostroza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "19 jun 1979",
     "sexo": "Mujer",
     "oficio": null,
@@ -4675,16 +5563,20 @@
     "familia": "Marco Antonio Hernandez Ruiz — Varón\nMarisol Andrea de Hernandez Inostroza — Mujer\nMateo Alonso Hernández Inostroza — Varón\nMilena Paz Andrea Hernandez Inostroza — Mujer (12)\nLuciano Rafael Antonio Hernandez Inostroza — Varón (9)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Marisol Andrea de Hernandez Inostroza.jpeg",
+    "foto": "Marisol Andrea de Hernandez Inostroza.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marisol del Carmen de Vasquez Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "1 feb 1973",
     "sexo": "Mujer",
     "oficio": null,
@@ -4701,11 +5593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maritza Viviana Martinez de Flores",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "25 nov 1980",
     "sexo": "Mujer",
     "oficio": null,
@@ -4717,16 +5613,20 @@
     "familia": "Mauricio Fernando Flores Rojas — Varón\nMaritza Viviana Martinez de Flores — Mujer\nAgustin Facundo Flores Martinez — Varón (12)\nCarlos Horacio Flores Martínez — Varón (10)\nFlores Martinez Consuelo Rosario — Mujer (8)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Maritza Viviana Martinez de Flores.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marjorie Andrea Hernández Arellano",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 mayo 1985",
     "sexo": "Mujer",
     "oficio": null,
@@ -4743,11 +5643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marlon Jose Jimenez Dominguez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 ene 1984",
     "sexo": "Varón",
     "oficio": null,
@@ -4764,11 +5668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Marta Irene Celis Gongora",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "29 jul 1958",
     "sexo": "Mujer",
     "oficio": null,
@@ -4785,11 +5693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Mateo Alonso Bustos Farias",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "19 ago 2013",
     "sexo": "Varón",
     "oficio": null,
@@ -4806,11 +5718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Mateo Alonso Hernández Inostroza",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 sep 2006",
     "sexo": "Varón",
     "oficio": null,
@@ -4827,11 +5743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Matías Reinaldo Montecinos Montecinos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 dic 2006",
     "sexo": "Varón",
     "oficio": null,
@@ -4848,11 +5768,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Matilde Josefina Chourio de Bracho",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "13 mar 1957",
     "sexo": "Mujer",
     "oficio": null,
@@ -4869,11 +5793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Mauricio Fernando Flores Rojas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "6 ene 1973",
     "sexo": "Varón",
     "oficio": null,
@@ -4885,16 +5813,20 @@
     "familia": "Mauricio Fernando Flores Rojas — Varón\nMaritza Viviana Martinez de Flores — Mujer\nAgustin Facundo Flores Martinez — Varón (12)\nCarlos Horacio Flores Martínez — Varón (10)\nFlores Martinez Consuelo Rosario — Mujer (8)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Mauricio Fernando Flores Rojas.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Maximiliano Antonio Berridos Arancibia",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "26 mayo 2014",
     "sexo": "Varón",
     "oficio": null,
@@ -4911,11 +5843,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Mayte Belen Carrasco Felix",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "23 sep 1996",
     "sexo": "Mujer",
     "oficio": null,
@@ -4932,11 +5868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Melanie Soledad Coral Om Gutierrez Peso",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "7 jul 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -4953,11 +5893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Melissa Andrea Maripangui Vidal",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 mayo 1984",
     "sexo": "Mujer",
     "oficio": null,
@@ -4974,11 +5918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Michel Andreina Colmenarez Chirinos",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "9 mar 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -4995,11 +5943,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Milena Paz Andrea Om Hernandez Inostroza",
-    "organizacion": null,
+    "organizacion": "Edificadoras de Fe",
     "nacimiento": "5 dic 2013",
     "sexo": "Mujer",
     "oficio": null,
@@ -5016,11 +5968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "edificadoras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Monica Alejandra de Orozco Frias",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "15 jul 1961",
     "sexo": "Mujer",
     "oficio": null,
@@ -5037,11 +5993,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Monica Elena Luna Belmar",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "18 nov 1954",
     "sexo": "Mujer",
     "oficio": null,
@@ -5058,11 +6018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Nahomi Maira Pañailillo Meza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "8 abr 1989",
     "sexo": "Mujer",
     "oficio": null,
@@ -5074,16 +6038,20 @@
     "familia": "Veronica Elizabeth de Peñailillo Meza — Mujer\nNahomi Maira Pañailillo Meza — Mujer\nLeon Baltazar Maureira Peñailillo — Varón (10)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Nahomi Maira Pañailillo Meza.png",
+    "foto": "Nahomi Maira Pañailillo Meza.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Nancy de Lourdes de Acevedo Rojas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "19 ago 1957",
     "sexo": "Mujer",
     "oficio": null,
@@ -5095,16 +6063,20 @@
     "familia": "Victor Orlando Acevedo Nacaratte — Varón\nNancy de Lourdes de Acevedo Rojas — Mujer\nYasna Karen Hernandez Rojas — Mujer\nConstanza Antonia Astorga Hernandez — Mujer (17)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Nancy de Lourdes de Acevedo Rojas.jpeg",
+    "foto": "Nancy de Lourdes de Acevedo Rojas.png",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Nicolás Aaron Miranda Acevedo",
-    "organizacion": null,
+    "organizacion": "Primaria",
     "nacimiento": "23 ago 2021",
     "sexo": "Varón",
     "oficio": null,
@@ -5116,16 +6088,20 @@
     "familia": "Cesar Aaron Miranda Cabello — Varón\nLaura Elizabeth de Miranda Acevedo — Mujer\nIgnacio Aaron Miranda Acevedo — Varón (15)\nDiego Aaron Miranda Acevedo — Varón (11)\nGonzalo Aaron Miranda Acevedo — Varón (7)\nNicolás Aaron Miranda Acevedo — Varón (4)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Nicolás Aarón Miranda Acevedo.jpeg",
+    "foto": "Nicolás Aarón Miranda Acevedo.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "primaria",
+    "org_grupo": "primaria",
+    "escuela_dominical": null,
+    "jas": false
   },
   {
     "nombre": "Nicolas Rodrigo Fajardo Lara",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "18 jul 1996",
     "sexo": "Varón",
     "oficio": null,
@@ -5142,11 +6118,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Nicolas Rodrigo Soto Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "24 feb 2001",
     "sexo": "Varón",
     "oficio": null,
@@ -5163,11 +6143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Nicole Emilia Contreras Berrios",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 dic 1991",
     "sexo": "Mujer",
     "oficio": null,
@@ -5184,11 +6168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Nora Angelica Martinez Riquelme",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "17 ene 1971",
     "sexo": "Mujer",
     "oficio": null,
@@ -5205,11 +6193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Nora del Carmen Riquelme Inostroza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "2 jul 1939",
     "sexo": "Mujer",
     "oficio": null,
@@ -5226,11 +6218,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Olga Luisa Pardo Millares",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "21 sep 1970",
     "sexo": "Mujer",
     "oficio": null,
@@ -5247,11 +6243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Oscar Ignacio Soto Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "30 jul 1992",
     "sexo": "Varón",
     "oficio": null,
@@ -5268,11 +6268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Oscar Ricardo Faris Bustos",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "20 nov 1987",
     "sexo": "Varón",
     "oficio": null,
@@ -5289,11 +6293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Paola Andrea de Castillo Silva",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "27 ene 1972",
     "sexo": "Mujer",
     "oficio": null,
@@ -5305,16 +6313,20 @@
     "familia": "Eduardo Alberto Castillo Fuentes — Varón\nPaola Andrea de Castillo Silva — Mujer\nPilar Catherine Castillo Silva — Mujer (17)\nAmanda Carolina Castillo Silva — Mujer (14)\nAndrea Eloísa Castillo Silva — Mujer (12)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Paola Andrea de Castillo Silva.jpeg",
+    "foto": "Paola Andrea de Castillo Silva.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pascal Noemi Tobar Arancibia",
-    "organizacion": null,
+    "organizacion": "Edificadoras de Fe",
     "nacimiento": "4 feb 2013",
     "sexo": "Mujer",
     "oficio": null,
@@ -5331,11 +6343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "edificadoras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Patricia Elsa Maria de Cornejo Zablach",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "27 nov 1958",
     "sexo": "Mujer",
     "oficio": null,
@@ -5352,11 +6368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Patricio Alejandro Delgado Atenas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 jun 1982",
     "sexo": "Varón",
     "oficio": null,
@@ -5373,11 +6393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Paula Andrea Pardo Perez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "26 jul 2000",
     "sexo": "Mujer",
     "oficio": null,
@@ -5394,11 +6418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Paulina de los Angeles Berrios Meza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "4 jun 1987",
     "sexo": "Mujer",
     "oficio": null,
@@ -5415,11 +6443,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pedro Mauricio Hernández González",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 mayo 1972",
     "sexo": "Varón",
     "oficio": null,
@@ -5436,11 +6468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Pilar Catherine Castillo Silva",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "9 oct 2008",
     "sexo": "Mujer",
     "oficio": null,
@@ -5457,11 +6493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Rachel Jasmin Vidal Martinez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "25 nov 1981",
     "sexo": "Mujer",
     "oficio": null,
@@ -5478,11 +6518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rafael Leopoldo Mercedes de Vera Flores",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "6 ene 1949",
     "sexo": "Varón",
     "oficio": null,
@@ -5499,11 +6543,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Raul Alfredo Vidal Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "5 jun 1987",
     "sexo": "Varón",
     "oficio": null,
@@ -5520,11 +6568,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Raúl Antonio Arce Huerta",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "23 sep 1969",
     "sexo": "Varón",
     "oficio": null,
@@ -5541,11 +6593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rene Alberto Gana Gatica",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "10 ene 1962",
     "sexo": "Varón",
     "oficio": null,
@@ -5557,16 +6613,20 @@
     "familia": "Rene Alberto Gana Gatica — Varón\nSilvana del Carmen de Gana Luna — Mujer\nRene Axel Gana Luna — Varón\nCatalina Belen Gana Luna — Mujer\nGustavo Adolfo Gana Luna — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Rene Alberto Gana Gatica.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rene Axel Gana Luna",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "23 ago 1985",
     "sexo": "Varón",
     "oficio": null,
@@ -5578,16 +6638,20 @@
     "familia": "Rene Alberto Gana Gatica — Varón\nSilvana del Carmen de Gana Luna — Mujer\nRene Axel Gana Luna — Varón\nCatalina Belen Gana Luna — Mujer\nGustavo Adolfo Gana Luna — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Rene Axel Gana Luna.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rita Esperanza Estrella Om Marsa Miranda",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "8 jul 2005",
     "sexo": "Mujer",
     "oficio": null,
@@ -5604,11 +6668,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Rocio Rubio Luna",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 oct 1993",
     "sexo": "Mujer",
     "oficio": null,
@@ -5625,11 +6693,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Rodrigo Andres Martinez Manosalva",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 feb 1981",
     "sexo": "Varón",
     "oficio": null,
@@ -5646,11 +6718,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rodrigo Sebastian Vidal Martinez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "11 jun 1995",
     "sexo": "Varón",
     "oficio": null,
@@ -5667,11 +6743,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Romina Ester Soto Soto",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "19 sep 1987",
     "sexo": "Mujer",
     "oficio": null,
@@ -5688,11 +6768,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Romina Rubio Luna",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "14 ago 1985",
     "sexo": "Mujer",
     "oficio": null,
@@ -5709,11 +6793,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rosa Natividad Herrera Ancain",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 ene 1965",
     "sexo": "Mujer",
     "oficio": null,
@@ -5730,11 +6818,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Rossana del Pilar de Robinson Tilleria",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "16 abr 1963",
     "sexo": "Mujer",
     "oficio": null,
@@ -5751,11 +6843,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Roxanna Soledad Meza Morales",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "30 oct 1990",
     "sexo": "Mujer",
     "oficio": null,
@@ -5772,11 +6868,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sandra Jazmine de Vera Campos",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "5 oct 1970",
     "sexo": "Mujer",
     "oficio": null,
@@ -5793,11 +6893,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sandy Marion Ramirez Roa",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "10 jul 1972",
     "sexo": "Mujer",
     "oficio": null,
@@ -5814,11 +6918,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Santiago Solanille Clavero",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "11 sep 1967",
     "sexo": "Varón",
     "oficio": null,
@@ -5830,16 +6938,20 @@
     "familia": "Santiago Solanille Clavero — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Santiago Solanille Clavero.png",
+    "foto": "Santiago Solanille Clavero.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sarah Nazaret Lassaube Lopez",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "9 oct 1988",
     "sexo": "Mujer",
     "oficio": null,
@@ -5856,11 +6968,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sebastian Andres de Jesus Hinojosa Cerda",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "13 dic 1969",
     "sexo": "Varón",
     "oficio": null,
@@ -5877,11 +6993,15 @@
     "obispado": true,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "2.do consejero"
+    "etiqueta_llamamiento": "2.do consejero",
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sebastian Antonio Mori Lassaube",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "3 jun 2003",
     "sexo": "Varón",
     "oficio": null,
@@ -5898,11 +7018,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Sebastian Ignacio Miranda Cabello",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "4 sep 1997",
     "sexo": "Varón",
     "oficio": null,
@@ -5919,11 +7043,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Segundo Andres Naranjo Alvarez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "11 ene 1948",
     "sexo": "Varón",
     "oficio": null,
@@ -5940,11 +7068,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sergio Enrique Pineda Soto",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "18 oct 1962",
     "sexo": "Varón",
     "oficio": null,
@@ -5961,11 +7093,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Silvana del Carmen de Gana Luna",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "1 mayo 1961",
     "sexo": "Mujer",
     "oficio": null,
@@ -5977,16 +7113,20 @@
     "familia": "Rene Alberto Gana Gatica — Varón\nSilvana del Carmen de Gana Luna — Mujer\nRene Axel Gana Luna — Varón\nCatalina Belen Gana Luna — Mujer\nGustavo Adolfo Gana Luna — Varón",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": null,
+    "foto": "Silvana del Carmen de Gana Luna.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": true,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "2.ª consejera SS"
+    "etiqueta_llamamiento": "2.ª consejera SS",
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Silvia Georgina Olivera Delgado",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "24 ago 1981",
     "sexo": "Mujer",
     "oficio": null,
@@ -6003,11 +7143,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Smith las Mercedes Saint Julien",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 sep 1980",
     "sexo": "Varón",
     "oficio": null,
@@ -6024,11 +7168,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Sofia de los Angeles Bustos Opitz",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "17 jun 1965",
     "sexo": "Mujer",
     "oficio": null,
@@ -6045,11 +7193,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Teresa Sandra Cabello Torres",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "14 mar 1956",
     "sexo": "Mujer",
     "oficio": null,
@@ -6066,11 +7218,15 @@
     "obispado": false,
     "sociedad_socorro": true,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "1.ª consejera SS"
+    "etiqueta_llamamiento": "1.ª consejera SS",
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Teresita del Carmen de Fajardo Lara",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "18 ene 1978",
     "sexo": "Mujer",
     "oficio": null,
@@ -6087,11 +7243,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Thiago Cárdenas Zenteno",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "1 mar 1998",
     "sexo": "Mujer",
     "oficio": null,
@@ -6108,11 +7268,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Treacy Scarlett Oroz Ravanal",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "27 ene 2001",
     "sexo": "Mujer",
     "oficio": null,
@@ -6129,11 +7293,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Ulises Gonzalo Cerda Paredes",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "28 nov 1978",
     "sexo": "Varón",
     "oficio": null,
@@ -6150,11 +7318,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Valeska del Carmen Miranda Loyola",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "11 mayo 1970",
     "sexo": "Mujer",
     "oficio": null,
@@ -6171,11 +7343,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Vanessa Esmeralda Vera Atenas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "23 mayo 1989",
     "sexo": "Mujer",
     "oficio": null,
@@ -6192,11 +7368,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Vasquez Soto Renata Antonio",
-    "organizacion": null,
+    "organizacion": "Edificadoras de Fe",
     "nacimiento": "10 dic 2014",
     "sexo": "Mujer",
     "oficio": null,
@@ -6213,11 +7393,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "edificadoras",
+    "org_grupo": "mj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Veronica del Carmen Guardera Maldonado",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "2 jul 1977",
     "sexo": "Mujer",
     "oficio": null,
@@ -6234,11 +7418,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Veronica Elizabeth de Peñailillo Meza",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "22 dic 1962",
     "sexo": "Mujer",
     "oficio": null,
@@ -6255,11 +7443,15 @@
     "obispado": false,
     "sociedad_socorro": true,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": "Secretaria SS"
+    "etiqueta_llamamiento": "Secretaria SS",
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Veronica Paola Vera Campos",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "17 dic 1992",
     "sexo": "Mujer",
     "oficio": null,
@@ -6276,11 +7468,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   },
   {
     "nombre": "Victor Alejandro Acevedo Rojas",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "15 dic 1990",
     "sexo": "Varón",
     "oficio": null,
@@ -6297,11 +7493,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Victor Manuel Roman Jimenez",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "13 abr 1981",
     "sexo": "Varón",
     "oficio": null,
@@ -6318,11 +7518,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Victor Orlando Acevedo Nacaratte",
-    "organizacion": null,
+    "organizacion": "Cuórum de Élderes",
     "nacimiento": "1 oct 1959",
     "sexo": "Varón",
     "oficio": null,
@@ -6334,16 +7538,20 @@
     "familia": "Victor Orlando Acevedo Nacaratte — Varón\nNancy de Lourdes de Acevedo Rojas — Mujer\nYasna Karen Hernandez Rojas — Mujer\nConstanza Antonia Astorga Hernandez — Mujer (17)",
     "bautismo": null,
     "tiempo_miembro": null,
-    "foto": "Víctor Orlando Acevedo Nacaratte.png",
+    "foto": "Víctor Orlando Acevedo Nacaratte.jpg",
     "recien_converso": false,
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "elderes",
+    "org_grupo": "elderes",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Viviana Jacqueline Martinez Castillo",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "25 jun 1969",
     "sexo": "Mujer",
     "oficio": null,
@@ -6360,11 +7568,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Wilhermina Francisca de Molina Zuñiga",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "28 ago 1941",
     "sexo": "Mujer",
     "oficio": null,
@@ -6381,11 +7593,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Yasna Karen Hernandez Rojas",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "10 sep 1982",
     "sexo": "Mujer",
     "oficio": null,
@@ -6402,11 +7618,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": false
   },
   {
     "nombre": "Yeiko Leon Cobarrubia Maripangui",
-    "organizacion": null,
+    "organizacion": "Cuórum de Diáconos",
     "nacimiento": "9 sep 2013",
     "sexo": "Varón",
     "oficio": null,
@@ -6423,11 +7643,15 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "diaconos",
+    "org_grupo": "hj",
+    "escuela_dominical": "Escuela Dominical · Jóvenes",
+    "jas": false
   },
   {
     "nombre": "Yhanela Danaee Echaniz Maripangui",
-    "organizacion": null,
+    "organizacion": "Sociedad de Socorro",
     "nacimiento": "15 nov 2007",
     "sexo": "Mujer",
     "oficio": null,
@@ -6444,6 +7668,10 @@
     "obispado": false,
     "sociedad_socorro": false,
     "quorum_elderes": false,
-    "etiqueta_llamamiento": null
+    "etiqueta_llamamiento": null,
+    "org_key": "ss",
+    "org_grupo": "ss",
+    "escuela_dominical": "Escuela Dominical · Adultos",
+    "jas": true
   }
 ]

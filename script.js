@@ -1,78 +1,93 @@
 const FOTO_ANON = "./icons/avatar-anon.png";
 
+/** Emparejamientos manuales cuando el archivo no coincide 1:1 con el padrón */
+const FOTO_OVERRIDES = {
+  "alina de gazul soto yolanda": "Alina Yolanda Gazul Ortega.jpeg",
+};
+
 const FOTOS = [
-  "Alicia Cecilia Meza Pizarro.jpeg",
-  "Alicia del Carmen de Peña Jerez.png",
+  "643322059_10240714748943640_1804666815657664619_n.jpg",
+  "Alfredo Elias Mondaca Riveros.jpg",
+  "Alicia Cecilia Meza Pizarro.jpg",
+  "Alicia del Carmen de Peña Jerez.jpg",
+  "Alina Yolanda Gazul Ortega.jpeg",
   "Andrea Francisca de Fuentes Molina.png",
   "Bárbara Elizabeth González Salazar.png",
   "Benjamín Alexander Vásquez Zolorsa.png",
+  "Cesar Aaron Miranda Cabello.jpg",
   "Cristian Alexander Cortez Benavente.png",
-  "Cristopher Bastian Jofré Campos.jpeg",
-  "Cristopher Bastian Jofré Campos.png",
+  "Cristopher Bastian Jofré Campos.jpg",
   "Da Vía Rubio Lucas Maximiliano.jpeg",
   "Dafnhe Monserrat Echaniz Maripangui.png",
-  "Daniela Beatriz Jeria Nuñez.png",
+  "Daniela Beatriz Jeria Nuñez.jpg",
   "David Francisco Flores Contreras.jpeg",
-  "David Joel Ramos Torres.jpeg",
-  "Diego Aaron Miranda Acevedo.jpeg",
+  "David Joel Ramos Torres.jpg",
+  "Diego Aaron Miranda Acevedo.jpg",
   "Edgardo José Abarca Neira.png",
   "Eduardo Alberto Castillo Fuentes.png",
   "Eduardo David Enrique Naranjo Gutiérrez.png",
-  "Elias Benjamin Torres Jimenez.png",
-  "Elvira del Carmen Núñez Ureta.jpeg",
-  "Emma Maritza de Pineda Urra.jpeg",
+  "Elias Benjamin Torres Jimenez.jpg",
+  "Elvira del Carmen Núñez Ureta.jpg",
+  "Emma Maritza de Pineda Urra.jpg",
   "Eugenia Margarita de Wilches Martínez.jpeg",
-  "Fernanda Belén Meza Soto.png",
+  "Fernanda Belén Meza Soto.jpg",
   "Fernando Andrés Soto Gazul.png",
   "Francesco Alejandro Davía Rubio.jpeg",
-  "Gonzalo Aaron Miranda Acevedo.jpeg",
-  "Graciela Del Carmen Arpe Torres.jpeg",
+  "Gonzalo Aaron Miranda Acevedo.jpg",
+  "Graciela Del Carmen Arpe Torres.jpg",
+  "Gustavo Adolfo Gana Luna.png",
   "Héctor Ignacio León Pinto.png",
-  "Hernan Enrique Aravena Martínez.jpeg",
+  "Hernan Enrique Aravena Martínez.jpg",
   "Ignacio Aaron Miranda Acevedo.jpeg",
   "Iris del Pilar Duque Cáceres.jpeg",
   "Isabella Esperanza Illanes Arpe.png",
   "Jesús Alberto Torres Benavente.png",
   "Joaquín Ignacio Torres Jiménez.png",
   "José Manuel Illanes Ceballos.png",
+  "Jose Miguel Soto Soto.jpeg",
   "Julio Anibal Ramírez Soto.png",
+  "Katherine Yamilet Marquez Grande.jpg",
   "Laura Elizabeth Acevedo Rojas.png",
   "León Baltazar maureira peñailillo.png",
-  "Leonardo Esteban Wilches Martínez.jpeg",
-  "Leonardo Nelson Wilches Santibáñez.png",
-  "Luciano Rafael Antonio Hernández Inostroza.jpeg",
-  "Lucresia del Carmen de Delgado Atenas.jpeg",
-  "Luis Alberto Cornejo Mancilla.png",
-  "Manuel Antonio Pailamilla Abarza.jpeg",
+  "Leonardo Esteban Wilches Martínez.jpg",
+  "Leonardo Nelson Wilches Santibáñez.jpg",
+  "Luciano Rafael Antonio Hernández Inostroza.jpg",
+  "Lucresia del Carmen de Delgado Atenas.jpg",
+  "Luis Alberto Cornejo Mancilla.jpg",
+  "Manuel Antonio Pailamilla Abarza.jpg",
   "Marco Antonio Hernandez Ruiz.png",
-  "Margarita del Pilar de Meza Soto.jpeg",
-  "Maria Cristina Jimenez Ramirez.png",
-  "María Cristina Jiménez Ramírez.png",
+  "Margarita del Pilar de Meza Soto.jpg",
+  "Maria Cristina Jimenez Ramirez.jpg",
+  "Marina Enriqueta Martinez Castillo.png",
   "Mario Alejandro Rossel Poblete.png",
-  "Marisol Andrea de Hernandez Inostroza.jpeg",
+  "Marisol Andrea de Hernandez Inostroza.jpg",
+  "Maritza Viviana Martinez de Flores.jpg",
   "Martina Francisca Escalante Cornejo.png",
   "Mateo Alonso Hernández Inostroza.png",
   "Matías Alejandro Fuentes Martinez.png",
   "Matias Ignacio Vega Abarca.png",
   "Matías Valentín Leyes Campos.png",
-  "Nahomi Maira Pañailillo Meza.png",
+  "Mauricio Fernando Flores Rojas.jpg",
+  "Nahomi Maira Pañailillo Meza.jpg",
   "Nahuel Nicolás Leyes Campos.png",
-  "Nancy de Lourdes de Acevedo Rojas.jpeg",
-  "Nicolás Aarón Miranda Acevedo.jpeg",
+  "Nancy de Lourdes de Acevedo Rojas.png",
+  "Nicolás Aarón Miranda Acevedo.jpg",
   "Omar Ramon Ayala Roman.png",
-  "Paola Andrea de Castillo Silva.jpeg",
-  "Pascuala Blanca Arratia Zambrano.jpeg",
-  "Pilar de Lourdes Toro Pontigo.jpeg",
+  "Paola Andrea de Castillo Silva.jpg",
+  "Pascuala Blanca Arratia Zambrano.jpg",
+  "Pilar de Lourdes Toro Pontigo.jpg",
   "Raúl Antonio Arce Huerta.png",
+  "Rene Alberto Gana Gatica.jpg",
+  "Rene Axel Gana Luna.jpg",
   "Roberto Pablo Illanes Postigo.png",
   "Romina Rubio Luna.jpeg",
   "Rosales Sánchez, Héctor Manuel.png",
-  "Santiago Solanille Clavero.png",
+  "Santiago Solanille Clavero.jpg",
+  "Silvana del Carmen de Gana Luna.jpg",
   "Támara Elizabeth González León.png",
   "Verónica Elizabeth de Peñailillo Meza.png",
   "Víctor Manuel Román Jiménez.png",
-  "Víctor Orlando Acevedo Nacaratte.png",
-  "Walther Ivaniet Urbina Peña.jpeg",
+  "Víctor Orlando Acevedo Nacaratte.jpg",
   "Walther Ivaniet Urbina Peña.png",
   "Wladimir Antonio Sepúlveda Fuentes.png",
 ];
@@ -108,10 +123,22 @@ const FILTER_LABELS = {
   "con-foto": "Con foto",
   recien: "Recién conversos",
   obispado: "Obispado",
+  primaria: "Primaria",
+  hj: "Hombres Jóvenes",
+  mj: "Mujeres Jóvenes",
+  diaconos: "Diáconos",
+  maestros: "Maestros",
+  presbiteros: "Presbíteros",
+  edificadoras: "Edificadoras de Fe",
+  mensajeras: "Mensajeras de Esperanza",
+  guardianas: "Guardianas de Luz",
   ss: "Sociedad de Socorro",
   "ss-pres": "Presidencia SS",
   elderes: "Quórum de élderes",
   "elderes-pres": "Presidencia élderes",
+  jas: "Jóvenes Adultos Solteros",
+  "ed-jovenes": "Escuela Dominical · Jóvenes",
+  "ed-adultos": "Escuela Dominical · Adultos",
 };
 
 let activeFilter = "todos";
@@ -140,12 +167,16 @@ function normalize(text) {
 }
 
 function nameTokens(text) {
-  return normalize(text)
-    .replace(/\bdavia\b/g, "da via")
-    .replace(/\bda-via\b/g, "da via")
-    .replace(/[^a-z0-9\s]/g, " ")
-    .split(/\s+/)
-    .filter(Boolean)
+  return [
+    ...new Set(
+      normalize(text)
+        .replace(/\bdavia\b/g, "da via")
+        .replace(/\bda-via\b/g, "da via")
+        .replace(/[^a-z0-9\s]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean)
+    ),
+  ]
     .sort()
     .join(" ");
 }
@@ -160,17 +191,88 @@ function nombreDesdeArchivo(filename) {
 }
 
 function fotoUrl(filename) {
-  return `./fotos/${encodeURIComponent(filename)}`;
+  const name = String(filename || "").trim();
+  if (!name) return FOTO_ANON;
+  if (typeof window.fotoLocalUrl === "function") {
+    const local = window.fotoLocalUrl(name);
+    if (local) return local;
+  }
+  if (/^https?:\/\//i.test(name) || name.startsWith("./") || name.startsWith("/")) {
+    return name;
+  }
+  return `./fotos/${name
+    .replace(/%/g, "%25")
+    .replace(/#/g, "%23")
+    .replace(/\?/g, "%3F")
+    .replace(/ /g, "%20")}`;
 }
 
-/** Si el archivo en BD ya no existe, usa otra extensión con el mismo nombre. */
+/** Resuelve el archivo real en /fotos; null si no hay nombre. */
 function resolveFotoArchivo(filename) {
-  const name = String(filename || "").trim();
+  let name = String(filename || "")
+    .trim()
+    .replace(/^(\.\/)?fotos\//i, "");
   if (!name) return null;
-  if (FOTOS.includes(name)) return name;
-  const base = name.replace(/\.[^.]+$/, "");
-  const alt = FOTOS.find((f) => f.replace(/\.[^.]+$/, "") === base);
-  return alt || name;
+  try {
+    name = decodeURIComponent(name);
+  } catch {
+    /* keep */
+  }
+
+  const catalog =
+    Array.isArray(window.FOTOS_INDEX?.files) && window.FOTOS_INDEX.files.length
+      ? window.FOTOS_INDEX.files
+      : FOTOS;
+
+  if (catalog.includes(name)) return name;
+
+  const base = name.replace(/\.[^.]+$/, "").normalize("NFC");
+  const baseKey = nameTokens(base);
+  const sameBase = catalog.filter((f) => {
+    const fBase = f.replace(/\.[^.]+$/, "").normalize("NFC");
+    return fBase === base || nameTokens(fBase) === baseKey;
+  });
+  if (!sameBase.length) return name;
+
+  // Preferir jpg/jpeg (reemplazos actuales) y luego png
+  return (
+    sameBase.find((f) => /\.jpe?g$/i.test(f)) ||
+    sameBase.find((f) => /\.png$/i.test(f)) ||
+    sameBase[0]
+  );
+}
+
+function fotoCandidatesFor(archivoOrUrl) {
+  const resolved = resolveFotoArchivo(archivoOrUrl);
+  const seed = resolved || archivoOrUrl;
+  if (typeof window.fotoAltCandidates === "function") {
+    return window.fotoAltCandidates(seed);
+  }
+  return resolved ? [resolved] : [];
+}
+
+/** Atributos <img> con fallback automático de extensión + nube */
+function fotoImgAttrs(archivoOrUrl) {
+  const raw = String(archivoOrUrl || "").trim();
+  if (!raw || raw === FOTO_ANON) {
+    return `src="${escapeHtml(FOTO_ANON)}" data-candidates="" data-cloud="" data-anon="${escapeHtml(FOTO_ANON)}" data-foto-stage="anon" onerror="this.onerror=null;this.src='${escapeHtml(FOTO_ANON)}'"`;
+  }
+
+  const cands = fotoCandidatesFor(raw);
+  const primary = cands[0] || resolveFotoArchivo(raw) || raw;
+  const local = fotoUrl(primary);
+  const cloud =
+    typeof window.fotoCloudUrl === "function"
+      ? window.fotoCloudUrl(primary) || ""
+      : "";
+  const cloudCands = cands
+    .map((f) =>
+      typeof window.fotoCloudUrl === "function" ? window.fotoCloudUrl(f) : ""
+    )
+    .filter(Boolean);
+  const uniqueCloud = [...new Set(cloudCands)];
+
+  return `src="${escapeHtml(local)}" data-candidates="${escapeHtml(cands.join("|"))}" data-cand-index="0" data-cloud="${escapeHtml(cloud)}" data-cloud-candidates="${escapeHtml(uniqueCloud.join("|"))}" data-cloud-index="-1" data-anon="${escapeHtml(FOTO_ANON)}" data-foto-stage="local" onerror="window.fotoImgFallback&&window.fotoImgFallback(this)"`;
 }
 
 function overlapNombreScore(a, b) {
@@ -183,33 +285,89 @@ function overlapNombreScore(a, b) {
   return hit / Math.max(A.length, B.length);
 }
 
+/** Empareja archivo→hermano: el nombre del hermano debe estar bien cubierto por el archivo. */
+function fotoMatchScore(fileLabel, hermanoNombre) {
+  const fileTok = nameTokens(fileLabel).split(" ").filter(Boolean);
+  const hermTok = nameTokens(hermanoNombre).split(" ").filter(Boolean);
+  if (!fileTok.length || !hermTok.length) return 0;
+  const fileKey = fileTok.slice().sort().join(" ");
+  const hermKey = hermTok.slice().sort().join(" ");
+  if (fileKey === hermKey) return 1;
+
+  const fileSet = new Set(fileTok);
+  const hermSet = new Set(hermTok);
+  let hitFile = 0;
+  for (const t of fileTok) if (hermSet.has(t)) hitFile++;
+  let hitHerm = 0;
+  for (const t of hermTok) if (fileSet.has(t)) hitHerm++;
+  const fileCovered = hitFile / fileTok.length;
+  const hermCovered = hitHerm / hermTok.length;
+
+  // Evita asignar foto del padre a un hijo con apellido extra (p. ej. Soto Soto → Soto Gazul)
+  if (hermCovered < 0.9 || fileCovered < 0.85) {
+    return Math.min(fileCovered, hermCovered) * 0.5;
+  }
+  return (fileCovered + hermCovered) / 2;
+}
+
 const fotoPorNombre = new Map();
 
-for (const file of FOTOS) {
-  const fromFile = nombreDesdeArchivo(file);
-  const url = fotoUrl(file);
-  fotoPorNombre.set(nameTokens(fromFile), url);
+function uniqueFotoFiles() {
+  const byKey = new Map();
+  for (const file of FOTOS) {
+    const label = nombreDesdeArchivo(file);
+    const key = nameTokens(label) || file.replace(/\.[^.]+$/, "").normalize("NFC");
+    const prev = byKey.get(key);
+    if (!prev) {
+      byKey.set(key, file);
+      continue;
+    }
+    const preferJpeg = /\.jpe?g$/i.test(file) && !/\.jpe?g$/i.test(prev);
+    const preferPng =
+      !preferJpeg && /\.png$/i.test(file) && !/\.png$/i.test(prev);
+    const preferAccent =
+      /[áéíóúñü]/i.test(file) && !/[áéíóúñü]/i.test(prev);
+    if (preferJpeg || preferPng || preferAccent) byKey.set(key, file);
+  }
+  return [...byKey.values()];
+}
 
-  // Emparejar también con el nombre canónico del directorio
-  let best = null;
-  let bestScore = 0;
-  for (const h of hermanos) {
-    const score = overlapNombreScore(fromFile, h.nombre);
-    const fileTokens = nameTokens(fromFile).split(" ").filter(Boolean);
-    const hermanoTokens = nameTokens(h.nombre).split(" ").filter(Boolean);
-    const covers =
-      fileTokens.length >= 3 &&
-      fileTokens.every((t) => hermanoTokens.includes(t)) &&
-      // Evitar asignar la foto a un pariente con nombre parecido
-      Math.abs(fileTokens.length - hermanoTokens.length) <= 1;
-    const effective = covers ? Math.max(score, 0.95) : score;
-    if (effective > bestScore) {
-      bestScore = effective;
-      best = h;
+function rebuildFotoPorNombre() {
+  fotoPorNombre.clear();
+  if (!hermanos.length) return;
+
+  const files = uniqueFotoFiles();
+  const pairs = [];
+  for (const file of files) {
+    const label = nombreDesdeArchivo(file);
+    for (let i = 0; i < hermanos.length; i++) {
+      const score = fotoMatchScore(label, hermanos[i].nombre);
+      if (score >= 0.8) {
+        pairs.push({ file, index: i, score });
+      }
     }
   }
-  if (best && bestScore >= 0.85) {
-    fotoPorNombre.set(nameTokens(best.nombre), url);
+  pairs.sort((a, b) => b.score - a.score || a.index - b.index);
+
+  const usedFiles = new Set();
+  const usedIndexes = new Set();
+  for (const pair of pairs) {
+    if (usedFiles.has(pair.file) || usedIndexes.has(pair.index)) continue;
+    usedFiles.add(pair.file);
+    usedIndexes.add(pair.index);
+    const url = fotoUrl(pair.file);
+    const hermono = hermanos[pair.index];
+    fotoPorNombre.set(nameTokens(hermono.nombre), url);
+    fotoPorNombre.set(nameTokens(nombreDesdeArchivo(pair.file)), url);
+  }
+
+  // Overrides manuales (p. ej. Alina Gazul Ortega → Alina de Soto Gazul)
+  for (const [tokenKey, file] of Object.entries(FOTO_OVERRIDES)) {
+    if (!FOTOS.includes(file)) continue;
+    const url = fotoUrl(file);
+    fotoPorNombre.set(tokenKey, url);
+    const hermono = hermanos.find((h) => nameTokens(h.nombre) === tokenKey);
+    if (hermono) fotoPorNombre.set(nameTokens(hermono.nombre), url);
   }
 }
 
@@ -220,7 +378,7 @@ function fotoDePerfil(nombre) {
   let bestUrl = null;
   let bestScore = 0;
   for (const [photoKey, url] of fotoPorNombre) {
-    const score = overlapNombreScore(key, photoKey);
+    const score = fotoMatchScore(photoKey, key);
     if (score > bestScore) {
       bestScore = score;
       bestUrl = url;
@@ -230,9 +388,9 @@ function fotoDePerfil(nombre) {
 }
 
 let hermanosPorNombre = new Map();
+let filterTotalsCache = null;
 
 function mapMiembroRow(row, index) {
-  const fotoArchivo = resolveFotoArchivo(row.foto);
   return {
     id: row.id ?? index,
     nombre: row.nombre || "",
@@ -249,7 +407,7 @@ function mapMiembroRow(row, index) {
     bautismo: row.bautismo || "",
     tiempoMiembro: row.tiempo_miembro || row.tiempoMiembro || "",
     observaciones: row.observaciones || "",
-    foto: fotoArchivo ? fotoUrl(fotoArchivo) : fotoDePerfil(row.nombre || ""),
+    foto: String(row.foto || "").trim(),
     recienConverso: !!(row.recien_converso ?? row.recienConverso),
     obispado: !!row.obispado,
     sociedadSocorro: !!(row.sociedad_socorro ?? row.sociedadSocorro),
@@ -262,9 +420,34 @@ function mapMiembroRow(row, index) {
 
 function setHermanosFromRows(rows) {
   hermanos = (rows || []).map((row, index) => mapMiembroRow(row, index));
+  rebuildFotoPorNombre();
+  hermanos = hermanos.map((h) => {
+    const override = FOTO_OVERRIDES[nameTokens(h.nombre)];
+    const fromDb = resolveFotoArchivo(
+      String(h.foto || "")
+        .replace(/^https?:\/\/[^/]+/i, "")
+        .replace(/^(\.\/)?fotos\//i, "")
+    );
+    const matchedUrl = fotoPorNombre.get(nameTokens(h.nombre));
+    let matchedFile = null;
+    if (matchedUrl && matchedUrl !== FOTO_ANON) {
+      try {
+        matchedFile = decodeURIComponent(matchedUrl.replace(/^\.\/fotos\//i, ""));
+      } catch {
+        matchedFile = matchedUrl.replace(/^\.\/fotos\//i, "");
+      }
+    }
+    // Preferir override → match por nombre (FOTOS) → campo DB
+    const archivo = override || matchedFile || fromDb || null;
+    const foto = archivo
+      ? fotoUrl(archivo)
+      : fotoDePerfil(h.nombre) || FOTO_ANON;
+    return aplicarOrganizacion({ ...h, foto, fotoArchivo: archivo || "" });
+  });
   hermanosPorNombre = new Map(
     hermanos.map((h) => [nameTokens(h.nombre), h])
   );
+  filterTotalsCache = null;
 }
 
 function getSupabaseConfig() {
@@ -310,6 +493,39 @@ async function fetchMiembrosFromLocalJson() {
 }
 
 async function loadHermanos() {
+  const errors = [];
+
+  if (location.protocol === "file:") {
+    throw new Error(
+      "Estás abriendo el sitio como archivo (file://). Usa Live Server o un servidor local."
+    );
+  }
+
+  // 1) Local primero: funciona offline y no depende de la red
+  try {
+    const local = await fetchMiembrosFromLocalJson();
+    setHermanosFromRows(local);
+    console.info(`[directorio] ${hermanos.length} miembros desde data/miembros.json`);
+
+    // Actualiza en segundo plano desde Supabase si hay red
+    fetchMiembrosFromSupabase()
+      .then((remote) => {
+        if (!remote || !remote.length) return;
+        setHermanosFromRows(remote);
+        refresh();
+        console.info(`[directorio] actualizado desde Supabase (${hermanos.length})`);
+      })
+      .catch((err) => {
+        console.warn("[directorio] Supabase en segundo plano no disponible.", err);
+      });
+
+    return "local";
+  } catch (error) {
+    errors.push(error);
+    console.warn("[directorio] JSON local no disponible.", error);
+  }
+
+  // 2) Fallback nube
   try {
     const remote = await fetchMiembrosFromSupabase();
     if (remote) {
@@ -318,13 +534,15 @@ async function loadHermanos() {
       return "supabase";
     }
   } catch (error) {
-    console.warn("[directorio] Supabase no disponible, usando datos locales.", error);
+    errors.push(error);
+    console.warn("[directorio] Supabase no disponible.", error);
   }
 
-  const local = await fetchMiembrosFromLocalJson();
-  setHermanosFromRows(local);
-  console.info(`[directorio] ${hermanos.length} miembros desde data/miembros.json`);
-  return "local";
+  const detail = errors
+    .map((e) => e && e.message)
+    .filter(Boolean)
+    .join(" · ");
+  throw new Error(detail || "No se pudieron cargar los miembros");
 }
 
 function findHermanoByNombre(nombre) {
@@ -420,6 +638,13 @@ function calcEdad(nacimiento) {
   return age;
 }
 
+/** Edad que cumple en el año civil (avances de organización en enero). */
+function edadEclesiastica(nacimiento, year = new Date().getFullYear()) {
+  const birth = parseFecha(nacimiento);
+  if (!birth) return null;
+  return year - birth.getFullYear();
+}
+
 function esVaron(hermano) {
   return /var[oó]n/i.test(String(hermano?.sexo || ""));
 }
@@ -428,12 +653,139 @@ function esMujer(hermano) {
   return /mujer/i.test(String(hermano?.sexo || ""));
 }
 
+/**
+ * Organización del barrio según edad eclesiástica y sexo.
+ * Primaria → HJ/MJ (clases) → SS / Cuórum de Élderes (+ JAS 18–35).
+ */
+function resolverOrganizacion(hermano) {
+  const edad = edadEclesiastica(hermano?.nacimiento);
+  const varon = esVaron(hermano);
+  const mujer = esMujer(hermano);
+
+  if (edad == null) {
+    return {
+      organizacion: String(hermano?.organizacion || "").trim() || "",
+      orgKey: "",
+      orgGrupo: "",
+      escuelaDominical: "",
+      jas: false,
+    };
+  }
+
+  if (edad <= 11) {
+    return {
+      organizacion: "Primaria",
+      orgKey: "primaria",
+      orgGrupo: "primaria",
+      escuelaDominical: "",
+      jas: false,
+    };
+  }
+
+  if (edad >= 12 && edad <= 17) {
+    if (varon) {
+      if (edad <= 13) {
+        return {
+          organizacion: "Cuórum de Diáconos",
+          orgKey: "diaconos",
+          orgGrupo: "hj",
+          escuelaDominical: "Escuela Dominical · Jóvenes",
+          jas: false,
+        };
+      }
+      if (edad <= 15) {
+        return {
+          organizacion: "Cuórum de Maestros",
+          orgKey: "maestros",
+          orgGrupo: "hj",
+          escuelaDominical: "Escuela Dominical · Jóvenes",
+          jas: false,
+        };
+      }
+      return {
+        organizacion: "Cuórum de Presbíteros",
+        orgKey: "presbiteros",
+        orgGrupo: "hj",
+        escuelaDominical: "Escuela Dominical · Jóvenes",
+        jas: false,
+      };
+    }
+    if (mujer) {
+      if (edad <= 13) {
+        return {
+          organizacion: "Edificadoras de Fe",
+          orgKey: "edificadoras",
+          orgGrupo: "mj",
+          escuelaDominical: "Escuela Dominical · Jóvenes",
+          jas: false,
+        };
+      }
+      if (edad <= 15) {
+        return {
+          organizacion: "Mensajeras de Esperanza",
+          orgKey: "mensajeras",
+          orgGrupo: "mj",
+          escuelaDominical: "Escuela Dominical · Jóvenes",
+          jas: false,
+        };
+      }
+      return {
+        organizacion: "Guardianas de Luz",
+        orgKey: "guardianas",
+        orgGrupo: "mj",
+        escuelaDominical: "Escuela Dominical · Jóvenes",
+        jas: false,
+      };
+    }
+  }
+
+  const jas = edad >= 18 && edad <= 35;
+  if (varon) {
+    return {
+      organizacion: "Cuórum de Élderes",
+      orgKey: "elderes",
+      orgGrupo: "elderes",
+      escuelaDominical: "Escuela Dominical · Adultos",
+      jas,
+    };
+  }
+  if (mujer) {
+    return {
+      organizacion: "Sociedad de Socorro",
+      orgKey: "ss",
+      orgGrupo: "ss",
+      escuelaDominical: "Escuela Dominical · Adultos",
+      jas,
+    };
+  }
+
+  return {
+    organizacion: String(hermano?.organizacion || "").trim() || "Adultos",
+    orgKey: "adultos",
+    orgGrupo: "adultos",
+    escuelaDominical: "Escuela Dominical · Adultos",
+    jas,
+  };
+}
+
+function aplicarOrganizacion(hermano) {
+  const org = resolverOrganizacion(hermano);
+  return {
+    ...hermano,
+    organizacion: org.organizacion,
+    orgKey: org.orgKey,
+    orgGrupo: org.orgGrupo,
+    escuelaDominical: org.escuelaDominical,
+    jas: org.jas,
+  };
+}
+
 function esAdulto(hermano) {
-  const edad = calcEdad(hermano?.nacimiento);
+  const edad = edadEclesiastica(hermano?.nacimiento);
   return edad != null && edad >= 18;
 }
 
-/** Quórum de élderes completo: varones de 18 años o más */
+/** Quórum de élderes completo: varones de 18 años o más (edad eclesiástica) */
 function enQuorumElderes(hermano) {
   return esVaron(hermano) && esAdulto(hermano);
 }
@@ -441,6 +793,43 @@ function enQuorumElderes(hermano) {
 /** Sociedad de Socorro completa: mujeres de 18 años o más */
 function enSociedadSocorro(hermano) {
   return esMujer(hermano) && esAdulto(hermano);
+}
+
+function enPrimaria(hermano) {
+  return hermano?.orgGrupo === "primaria" || hermano?.orgKey === "primaria";
+}
+
+function enHombresJovenes(hermano) {
+  return hermano?.orgGrupo === "hj";
+}
+
+function enMujeresJovenes(hermano) {
+  return hermano?.orgGrupo === "mj";
+}
+
+function enJas(hermano) {
+  return !!hermano?.jas;
+}
+
+function orgBadgeClass(orgKey) {
+  switch (orgKey) {
+    case "primaria":
+      return "badge-org badge-org--primaria";
+    case "diaconos":
+    case "maestros":
+    case "presbiteros":
+      return "badge-org badge-org--hj";
+    case "edificadoras":
+    case "mensajeras":
+    case "guardianas":
+      return "badge-org badge-org--mj";
+    case "ss":
+      return "badge-org badge-org--ss";
+    case "elderes":
+      return "badge-org badge-org--elderes";
+    default:
+      return "badge-org";
+  }
 }
 
 function calcTiempoMiembro(bautismo) {
@@ -470,11 +859,11 @@ function show(value) {
 }
 
 function escapeHtml(value) {
-  return String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function edadTexto(hermano) {
@@ -501,6 +890,14 @@ function llamamientoBadgeClass(hermano) {
 
 function cardBadges(hermano) {
   const badges = [];
+  if (hermano.organizacion) {
+    badges.push(
+      `<span class="${orgBadgeClass(hermano.orgKey)}">${escapeHtml(hermano.organizacion)}</span>`
+    );
+  }
+  if (hermano.jas) {
+    badges.push(`<span class="badge-org badge-org--jas">JAS</span>`);
+  }
   if (hermano.etiquetaLlamamiento) {
     badges.push(
       `<span class="${llamamientoBadgeClass(hermano)}">${escapeHtml(hermano.etiquetaLlamamiento)}</span>`
@@ -514,6 +911,19 @@ function cardBadges(hermano) {
 
 function detailBadges(hermano) {
   const badges = [];
+  if (hermano.organizacion) {
+    badges.push(
+      `<span class="${orgBadgeClass(hermano.orgKey)}">${escapeHtml(hermano.organizacion)}</span>`
+    );
+  }
+  if (hermano.jas) {
+    badges.push(`<span class="badge-org badge-org--jas">JAS · 18 a 35</span>`);
+  }
+  if (hermano.escuelaDominical) {
+    badges.push(
+      `<span class="badge-org badge-org--ed">${escapeHtml(hermano.escuelaDominical)}</span>`
+    );
+  }
   if (hermano.etiquetaLlamamiento) {
     badges.push(
       `<span class="${llamamientoBadgeClass(hermano)}">${escapeHtml(hermano.etiquetaLlamamiento)}</span>`
@@ -540,19 +950,17 @@ function createCard(hermano, index) {
     <button class="card-photo-wrap" type="button" data-id="${hermano.id}" aria-label="Ver detalles de ${escapeHtml(hermano.nombre)}">
       <img
         class="card-photo"
-        src="${hermano.foto || FOTO_ANON}"
+        ${fotoImgAttrs(hermano.fotoArchivo || hermano.foto)}
         alt="Foto de ${escapeHtml(hermano.nombre)}"
-        onerror="this.onerror=null;this.src='${FOTO_ANON}'"
         loading="lazy"
         width="400"
         height="400"
       />
-      ${cardBadges(hermano)}
     </button>
     <div class="card-body">
       <h2 class="card-name">${escapeHtml(hermano.nombre)}</h2>
+      ${cardBadges(hermano)}
       <p class="card-age">${escapeHtml(edadTexto(hermano))}</p>
-      <p class="card-org">${escapeHtml(show(hermano.organizacion))}</p>
       <div class="card-actions">
         <button class="card-btn" type="button" data-id="${hermano.id}">
           Más detalles
@@ -578,7 +986,6 @@ function openMinistrantes(hermano) {
       const nombreSlot =
         typeof slot === "string" ? slot : slot?.nombre || "";
       const matched = nombreSlot ? findHermanoByNombre(nombreSlot) : null;
-      const foto = matched?.foto || FOTO_ANON;
       const nombre = matched
         ? escapeHtml(matched.nombre)
         : nombreSlot
@@ -588,9 +995,8 @@ function openMinistrantes(hermano) {
         <article class="ministrante-card">
           <img
             class="ministrante-photo"
-            src="${foto}"
+            ${fotoImgAttrs(matched?.fotoArchivo || matched?.foto || "")}
             alt="${matched || nombreSlot ? `Foto de ${escapeHtml(matched?.nombre || nombreSlot)}` : "Hermano ministrante por asignar"}"
-            onerror="this.onerror=null;this.src='${FOTO_ANON}'"
           />
           <p class="ministrante-name">${nombre || "&nbsp;"}</p>
         </article>
@@ -650,7 +1056,7 @@ function openDetail(hermano, options = {}) {
     hermano.tiempoMiembro || calcTiempoMiembro(hermano.bautismo);
 
   const telefonoHtml = hermano.telefono
-    ? `<a href="tel:+56${String(hermano.telefono).replace(/\D/g, "")}">${escapeHtml(hermano.telefono)}</a>`
+    ? `<a href="${telHref(hermano.telefono)}">${escapeHtml(hermano.telefono)}</a>`
     : "—";
   const correoHtml = hermano.correo
     ? `<a href="mailto:${escapeHtml(hermano.correo)}">${escapeHtml(hermano.correo)}</a>`
@@ -662,11 +1068,17 @@ function openDetail(hermano, options = {}) {
       hermano.recienConverso ? "Recién converso" : "Miembro del barrio"
     )}
     ${detailItem("Organización", escapeHtml(show(hermano.organizacion)))}
+    ${
+      hermano.escuelaDominical
+        ? detailItem("Escuela Dominical", escapeHtml(hermano.escuelaDominical))
+        : ""
+    }
+    ${hermano.jas ? detailItem("Jóvenes Adultos Solteros", "Sí (18 a 35 años)") : ""}
     ${detailItem("Fecha de nacimiento", escapeHtml(nacimientoText))}
     ${detailItem("Sexo", escapeHtml(show(hermano.sexo)))}
   `;
 
-  if (hermano.sexo === "Varón") {
+  if (normalize(hermano.sexo) === "varon") {
     items += detailItem("Oficio en el sacerdocio", escapeHtml(show(hermano.oficio)));
   }
 
@@ -695,9 +1107,8 @@ function openDetail(hermano, options = {}) {
   detailContent.innerHTML = `
     <img
       class="detail-hero"
-      src="${hermano.foto || FOTO_ANON}"
+      ${fotoImgAttrs(hermano.fotoArchivo || hermano.foto)}
       alt="Foto de ${escapeHtml(hermano.nombre)}"
-      onerror="this.onerror=null;this.src='${FOTO_ANON}'"
     />
     <div class="detail-body">
       <h2 class="detail-name" id="detailName">${escapeHtml(hermano.nombre)}</h2>
@@ -739,6 +1150,10 @@ function searchableText(h) {
   return [
     h.nombre,
     h.organizacion,
+    h.orgKey,
+    h.orgGrupo,
+    h.escuelaDominical,
+    h.jas ? "jas jovenes adultos solteros" : "",
     h.nacimiento,
     h.sexo,
     h.oficio,
@@ -755,10 +1170,112 @@ function searchableText(h) {
     h.obispado ? "obispado llamamiento" : "",
     enSociedadSocorro(h) ? "sociedad de socorro ss" : "",
     enQuorumElderes(h) ? "quorum de elderes elderes" : "",
+    enPrimaria(h) ? "primaria ninos" : "",
+    enHombresJovenes(h) ? "hombres jovenes hj" : "",
+    enMujeresJovenes(h) ? "mujeres jovenes mj" : "",
     h.sociedadSocorro ? "presidencia sociedad de socorro" : "",
     h.quorumElderes ? "presidencia quorum de elderes" : "",
     h.etiquetaLlamamiento || "",
   ].join(" ");
+}
+
+/** Distancia de edición (typos). Optimizada para tokens cortos. */
+function levenshtein(a, b) {
+  if (a === b) return 0;
+  const aLen = a.length;
+  const bLen = b.length;
+  if (!aLen) return bLen;
+  if (!bLen) return aLen;
+  if (Math.abs(aLen - bLen) > 3) return 99;
+  let prev = new Array(bLen + 1);
+  let curr = new Array(bLen + 1);
+  for (let j = 0; j <= bLen; j++) prev[j] = j;
+  for (let i = 1; i <= aLen; i++) {
+    curr[0] = i;
+    const ca = a.charCodeAt(i - 1);
+    for (let j = 1; j <= bLen; j++) {
+      const cost = ca === b.charCodeAt(j - 1) ? 0 : 1;
+      curr[j] = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost);
+    }
+    const tmp = prev;
+    prev = curr;
+    curr = tmp;
+  }
+  return prev[bLen];
+}
+
+function maxEditDistance(tokenLen) {
+  if (tokenLen <= 2) return 0;
+  if (tokenLen <= 4) return 1;
+  if (tokenLen <= 8) return 2;
+  return 3;
+}
+
+function fuzzyTokenMatch(queryToken, candidateToken) {
+  if (!queryToken || !candidateToken) return false;
+  if (candidateToken.includes(queryToken) || queryToken.includes(candidateToken)) {
+    return true;
+  }
+  if (
+    candidateToken.startsWith(queryToken) ||
+    queryToken.startsWith(candidateToken)
+  ) {
+    return true;
+  }
+  const maxDist = maxEditDistance(Math.min(queryToken.length, candidateToken.length));
+  if (Math.abs(queryToken.length - candidateToken.length) > maxDist) return false;
+  return levenshtein(queryToken, candidateToken) <= maxDist;
+}
+
+/**
+ * Puntaje de búsqueda aproximada.
+ * 0 = no coincide. Mayor = más relevante.
+ */
+function searchMatchScore(h, q) {
+  if (!q) return 1;
+  const nombre = normalize(h.nombre || "");
+  const blob = normalize(searchableText(h));
+
+  if (nombre.includes(q)) return 200 - Math.min(nombre.indexOf(q), 50);
+  if (blob.includes(q)) return 120;
+
+  const qTokens = q.split(/\s+/).filter(Boolean);
+  if (!qTokens.length) return 0;
+
+  const nameTokensList = nombre.split(/\s+/).filter(Boolean);
+  const blobTokensList = blob.split(/\s+/).filter(Boolean);
+
+  let matched = 0;
+  let nameHits = 0;
+  let distPenalty = 0;
+
+  for (const qt of qTokens) {
+    let best = Infinity;
+    let hitName = false;
+    for (const t of nameTokensList) {
+      if (fuzzyTokenMatch(qt, t)) {
+        hitName = true;
+        best = Math.min(best, levenshtein(qt, t));
+      }
+    }
+    if (hitName) {
+      matched++;
+      nameHits++;
+      distPenalty += best === Infinity ? 0 : best;
+      continue;
+    }
+    for (const t of blobTokensList) {
+      if (fuzzyTokenMatch(qt, t)) {
+        best = Math.min(best, levenshtein(qt, t));
+        matched++;
+        distPenalty += best === Infinity ? 0 : best;
+        break;
+      }
+    }
+  }
+
+  if (matched < qTokens.length) return 0;
+  return 80 + nameHits * 10 - distPenalty;
 }
 
 function tieneFoto(h) {
@@ -766,8 +1283,50 @@ function tieneFoto(h) {
   return Boolean(foto) && foto !== FOTO_ANON;
 }
 
+function telHref(telefono) {
+  const raw = String(telefono || "").trim();
+  const digits = raw.replace(/\D/g, "");
+  if (!digits) return "tel:";
+  if (raw.startsWith("+")) return `tel:+${digits}`;
+  if (digits.startsWith("56") && digits.length >= 11) return `tel:+${digits}`;
+  if (digits.length === 9 || digits.length === 8) return `tel:+56${digits}`;
+  return `tel:${digits}`;
+}
+
+function getFilterTotals() {
+  if (filterTotalsCache) return filterTotalsCache;
+  const byKey = (key) => hermanos.filter((h) => h.orgKey === key).length;
+  filterTotalsCache = {
+    total: hermanos.length,
+    conFoto: hermanos.filter((h) => tieneFoto(h)).length,
+    recien: hermanos.filter((h) => h.recienConverso).length,
+    obispado: hermanos.filter((h) => h.obispado).length,
+    primaria: hermanos.filter((h) => enPrimaria(h)).length,
+    hj: hermanos.filter((h) => enHombresJovenes(h)).length,
+    mj: hermanos.filter((h) => enMujeresJovenes(h)).length,
+    diaconos: byKey("diaconos"),
+    maestros: byKey("maestros"),
+    presbiteros: byKey("presbiteros"),
+    edificadoras: byKey("edificadoras"),
+    mensajeras: byKey("mensajeras"),
+    guardianas: byKey("guardianas"),
+    ss: hermanos.filter((h) => enSociedadSocorro(h)).length,
+    ssPres: hermanos.filter((h) => h.sociedadSocorro).length,
+    elderes: hermanos.filter((h) => enQuorumElderes(h)).length,
+    elderesPres: hermanos.filter((h) => h.quorumElderes).length,
+    jas: hermanos.filter((h) => enJas(h)).length,
+    edJovenes: hermanos.filter((h) =>
+      /j[oó]venes/i.test(String(h.escuelaDominical || ""))
+    ).length,
+    edAdultos: hermanos.filter((h) =>
+      /adultos/i.test(String(h.escuelaDominical || ""))
+    ).length,
+  };
+  return filterTotalsCache;
+}
+
 function applyFilters() {
-  const q = normalize(searchInput.value.trim());
+  const q = normalize(String(searchInput?.value || "").trim());
   let list = hermanos;
 
   if (activeFilter === "con-foto") {
@@ -776,6 +1335,18 @@ function applyFilters() {
     list = list.filter((h) => h.recienConverso);
   } else if (activeFilter === "obispado") {
     list = list.filter((h) => h.obispado);
+  } else if (activeFilter === "primaria") {
+    list = list.filter((h) => enPrimaria(h));
+  } else if (activeFilter === "hj") {
+    list = list.filter((h) => enHombresJovenes(h));
+  } else if (activeFilter === "mj") {
+    list = list.filter((h) => enMujeresJovenes(h));
+  } else if (
+    ["diaconos", "maestros", "presbiteros", "edificadoras", "mensajeras", "guardianas"].includes(
+      activeFilter
+    )
+  ) {
+    list = list.filter((h) => h.orgKey === activeFilter);
   } else if (activeFilter === "ss") {
     list = list.filter((h) => enSociedadSocorro(h));
   } else if (activeFilter === "ss-pres") {
@@ -784,49 +1355,130 @@ function applyFilters() {
     list = list.filter((h) => enQuorumElderes(h));
   } else if (activeFilter === "elderes-pres") {
     list = list.filter((h) => h.quorumElderes);
+  } else if (activeFilter === "jas") {
+    list = list.filter((h) => enJas(h));
+  } else if (activeFilter === "ed-jovenes") {
+    list = list.filter((h) => /j[oó]venes/i.test(String(h.escuelaDominical || "")));
+  } else if (activeFilter === "ed-adultos") {
+    list = list.filter((h) => /adultos/i.test(String(h.escuelaDominical || "")));
   }
 
   if (q) {
-    list = list.filter((h) => normalize(searchableText(h)).includes(q));
+    const scored = list
+      .map((h) => ({ h, score: searchMatchScore(h, q) }))
+      .filter((row) => row.score > 0);
+    scored.sort(
+      (a, b) =>
+        b.score - a.score ||
+        String(a.h.nombre || "").localeCompare(String(b.h.nombre || ""), "es")
+    );
+    list = scored.map((row) => row.h);
   }
 
   return list;
 }
 
 function render(list) {
+  if (!directory) return;
   directory.replaceChildren();
-  const total = hermanos.length;
-  const totalConFoto = hermanos.filter((h) => tieneFoto(h)).length;
-  const totalRecien = hermanos.filter((h) => h.recienConverso).length;
-  const totalObispado = hermanos.filter((h) => h.obispado).length;
-  const totalSs = hermanos.filter((h) => enSociedadSocorro(h)).length;
-  const totalSsPres = hermanos.filter((h) => h.sociedadSocorro).length;
-  const totalElderes = hermanos.filter((h) => enQuorumElderes(h)).length;
-  const totalElderesPres = hermanos.filter((h) => h.quorumElderes).length;
+  const totals = getFilterTotals();
+  const total = totals.total;
 
   const scopeMap = {
     "con-foto": {
-      total: totalConFoto,
+      total: totals.conFoto,
       label: "con foto",
-      empty: `0 de ${totalConFoto} con foto`,
+      empty: `0 de ${totals.conFoto} con foto`,
     },
-    recien: { total: totalRecien, label: "recién conversos", empty: `0 de ${totalRecien} recién conversos` },
-    obispado: { total: totalObispado, label: "del obispado", empty: `0 de ${totalObispado} del obispado` },
-    ss: { total: totalSs, label: "de Sociedad de Socorro", empty: `0 de ${totalSs} de Sociedad de Socorro` },
+    recien: {
+      total: totals.recien,
+      label: "recién conversos",
+      empty: `0 de ${totals.recien} recién conversos`,
+    },
+    obispado: {
+      total: totals.obispado,
+      label: "del obispado",
+      empty: `0 de ${totals.obispado} del obispado`,
+    },
+    primaria: {
+      total: totals.primaria,
+      label: "de Primaria",
+      empty: `0 de ${totals.primaria} de Primaria`,
+    },
+    hj: {
+      total: totals.hj,
+      label: "de Hombres Jóvenes",
+      empty: `0 de ${totals.hj} de Hombres Jóvenes`,
+    },
+    mj: {
+      total: totals.mj,
+      label: "de Mujeres Jóvenes",
+      empty: `0 de ${totals.mj} de Mujeres Jóvenes`,
+    },
+    diaconos: {
+      total: totals.diaconos,
+      label: "del Cuórum de Diáconos",
+      empty: `0 de ${totals.diaconos} diáconos`,
+    },
+    maestros: {
+      total: totals.maestros,
+      label: "del Cuórum de Maestros",
+      empty: `0 de ${totals.maestros} maestros`,
+    },
+    presbiteros: {
+      total: totals.presbiteros,
+      label: "del Cuórum de Presbíteros",
+      empty: `0 de ${totals.presbiteros} presbíteros`,
+    },
+    edificadoras: {
+      total: totals.edificadoras,
+      label: "Edificadoras de Fe",
+      empty: `0 de ${totals.edificadoras} edificadoras`,
+    },
+    mensajeras: {
+      total: totals.mensajeras,
+      label: "Mensajeras de Esperanza",
+      empty: `0 de ${totals.mensajeras} mensajeras`,
+    },
+    guardianas: {
+      total: totals.guardianas,
+      label: "Guardianas de Luz",
+      empty: `0 de ${totals.guardianas} guardianas`,
+    },
+    ss: {
+      total: totals.ss,
+      label: "de Sociedad de Socorro",
+      empty: `0 de ${totals.ss} de Sociedad de Socorro`,
+    },
     "ss-pres": {
-      total: totalSsPres,
+      total: totals.ssPres,
       label: "de Presidencia SS",
-      empty: `0 de ${totalSsPres} de Presidencia SS`,
+      empty: `0 de ${totals.ssPres} de Presidencia SS`,
     },
     elderes: {
-      total: totalElderes,
+      total: totals.elderes,
       label: "del quórum de élderes",
-      empty: `0 de ${totalElderes} del quórum de élderes`,
+      empty: `0 de ${totals.elderes} del quórum de élderes`,
     },
     "elderes-pres": {
-      total: totalElderesPres,
+      total: totals.elderesPres,
       label: "de Presidencia élderes",
-      empty: `0 de ${totalElderesPres} de Presidencia élderes`,
+      empty: `0 de ${totals.elderesPres} de Presidencia élderes`,
+    },
+    jas: {
+      total: totals.jas,
+      label: "JAS (18–35)",
+      empty: `0 de ${totals.jas} JAS`,
+    },
+    "ed-jovenes": {
+      total: totals.edJovenes,
+      label: "de Escuela Dominical · Jóvenes",
+      empty: `0 de ${totals.edJovenes} en ED Jóvenes`,
+    },
+    "ed-adultos": {
+      total: totals.edAdultos,
+      label: "de Escuela Dominical · Adultos",
+      empty: `0 de ${totals.edAdultos} en ED Adultos`,
     },
   };
 
@@ -857,10 +1509,14 @@ function render(list) {
 
 function refresh() {
   render(applyFilters());
-  requestAnimationFrame(updateScrollControls);
+  try {
+    requestAnimationFrame(updateScrollControls);
+  } catch {
+    updateScrollControls();
+  }
 }
 
-directory.addEventListener("click", (event) => {
+directory?.addEventListener("click", (event) => {
   const ministrantesBtn = event.target.closest(".card-btn-ministrantes");
   if (ministrantesBtn) {
     const hermano = hermanos.find(
@@ -918,7 +1574,11 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight") goDetailHistory(1);
 });
 
-searchInput.addEventListener("input", refresh);
+let searchDebounceTimer = 0;
+searchInput.addEventListener("input", () => {
+  window.clearTimeout(searchDebounceTimer);
+  searchDebounceTimer = window.setTimeout(refresh, 160);
+});
 
 function syncFilterUi() {
   filterButtons.forEach((btn) => {
@@ -1033,12 +1693,6 @@ async function boot() {
   }
   try {
     await loadHermanos();
-    const params = new URLSearchParams(window.location.search);
-    const q = params.get("q");
-    if (q && searchInput) {
-      searchInput.value = q;
-    }
-    refresh();
   } catch (error) {
     console.error(error);
     if (resultsMeta) {
@@ -1046,8 +1700,35 @@ async function boot() {
     }
     if (emptyState) {
       emptyState.hidden = false;
-      emptyState.textContent =
-        "Revisa supabase-config.js o el archivo data/miembros.json.";
+      const msg = String(error && error.message ? error.message : "");
+      emptyState.textContent = /file:\/\//i.test(location.href) || /file:\/\//i.test(msg)
+        ? "Ábrelo con Live Server (no como archivo file://)."
+        : msg || "Revisa supabase-config.js o el archivo data/miembros.json.";
+    }
+    return;
+  }
+
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get("q");
+    if (q && searchInput) {
+      searchInput.value = q;
+    }
+    refresh();
+    if (q) {
+      const exact = findHermanoByNombre(q);
+      const filtered = applyFilters();
+      const openTarget =
+        exact ||
+        (filtered.length === 1
+          ? filtered[0]
+          : filtered.find((h) => nameTokens(h.nombre) === nameTokens(q)));
+      if (openTarget) openDetail(openTarget);
+    }
+  } catch (error) {
+    console.error("[directorio] Error al renderizar:", error);
+    if (resultsMeta && hermanos.length) {
+      resultsMeta.textContent = `${hermanos.length} hermanos`;
     }
   }
 }
@@ -1060,17 +1741,29 @@ const scrollUp = document.getElementById("scrollUp");
 const scrollDown = document.getElementById("scrollDown");
 
 function getScrollMax() {
-  return Math.max(
-    0,
-    document.documentElement.scrollHeight - window.innerHeight
-  );
+  try {
+    const root = document.documentElement;
+    const height = root && typeof root.scrollHeight === "number" ? root.scrollHeight : 0;
+    const view =
+      typeof window.innerHeight === "number"
+        ? window.innerHeight
+        : root && typeof root.clientHeight === "number"
+          ? root.clientHeight
+          : 0;
+    return Math.max(0, height - view);
+  } catch {
+    return 0;
+  }
 }
 
 function updateScrollControls() {
   if (!scrollControls || !scrollUp || !scrollDown) return;
 
   const max = getScrollMax();
-  const y = window.scrollY || document.documentElement.scrollTop || 0;
+  const y =
+    (typeof window.scrollY === "number" ? window.scrollY : 0) ||
+    document.documentElement?.scrollTop ||
+    0;
   const canScroll = max > 80;
 
   scrollControls.hidden = !canScroll;

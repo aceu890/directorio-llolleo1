@@ -8,7 +8,8 @@
 | `supabase/seed.sql` | 307 hermanos listos para insertar |
 | `data/miembros.json` | Copia local / respaldo offline |
 | `supabase-config.js` | URL y anon key de tu proyecto |
-| `supabase/export-seed.mjs` | Regenerar seed desde un script.js antiguo |
+| `supabase/storage-fotos.sql` | Bucket Storage `fotos-miembros` |
+| `upload-fotos-supabase.mjs` | Subir carpeta local `/fotos` a Storage |
 
 ## Pasos (15–20 min)
 
@@ -47,7 +48,32 @@ Si la config está vacía o falla la red, la app sigue funcionando con `data/mie
 
 Campos principales: `nombre`, `organizacion`, `nacimiento`, `sexo`, `oficio`, `telefono`, `correo`, `direccion`, `coords`, `llamamiento`, `familia`, `bautismo`, `tiempo_miembro`, `foto`, `recien_converso`, `obispado`, `sociedad_socorro`, `quorum_elderes`, `etiqueta_llamamiento`.
 
-Las fotos siguen en la carpeta local `fotos/`; el campo `foto` guarda el nombre de archivo.
+## Fotos: local + Supabase Storage
+
+Las fotos viven en **dos sitios** (dual):
+
+| Dónde | Ruta |
+|---|---|
+| Local (offline / PWA) | carpeta `fotos/` del sitio |
+| Nube | bucket `fotos-miembros` en Supabase Storage |
+
+El campo `foto` en la tabla sigue guardando solo el **nombre de archivo** (ej. `Cesar Aaron Miranda Cabello.jpg`).
+La app intenta cargar primero la copia local y, si falla, la de Supabase.
+
+### Activar Storage (una vez)
+1. SQL Editor → pega y ejecuta `supabase/storage-fotos.sql`
+2. Sube las fotos actuales:
+
+```powershell
+$env:SUPABASE_SERVICE_ROLE_KEY="pega_service_role_de_Project_Settings_API"
+node upload-fotos-supabase.mjs
+```
+
+3. Recarga el directorio (Ctrl+F5)
+
+### Subir una foto nueva
+- Desde **Admin → editar hermano → Subir a Supabase**
+- Para respaldo local: copia el mismo archivo a la carpeta `fotos/` del proyecto
 
 ## Panel de administración
 

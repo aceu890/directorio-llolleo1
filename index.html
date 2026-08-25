@@ -1,357 +1,897 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#050a12" />
-  <meta name="description" content="Directorio de hermanos del Barrio Llo Lleo 1" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Directorio" />
-  <meta name="application-name" content="Directorio Llo-Lleo" />
-  <meta name="format-detection" content="telephone=no" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <title>Directorio Llo-Lleo</title>
-</head>
-<body>
-  <div class="page" id="app">
-    <header class="top">
-      <div class="brand-block">
-        <div class="brand-row">
-          <div>
-            <p class="brand">Directorio Llo-Lleo</p>
-            <p class="tagline">Barrio Llo Lleo 1 · Roster</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#050a12" />
+    <meta
+      name="description"
+      content="Directorio de hermanos del Barrio Llo Lleo 1"
+    />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Directorio" />
+    <meta name="application-name" content="Directorio Llo-Lleo" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="icons/icon-192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="icons/icon-512.png"
+    />
+    <link rel="apple-touch-icon" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Directorio Llo-Lleo</title>
+  </head>
+  <body>
+    <div class="page" id="app">
+      <header class="top">
+        <div class="brand-block">
+          <div class="brand-row">
+            <div>
+              <p class="brand">Directorio Llo-Lleo</p>
+              <p class="tagline">Barrio Llo Lleo 1 · Roster</p>
+            </div>
+            <div class="brand-actions">
+              <button class="install-btn" id="installBtn" type="button" hidden>
+                Instalar
+              </button>
+              <nav class="top-nav" aria-label="Accesos rápidos">
+                <button
+                  class="top-nav-link"
+                  type="button"
+                  id="navFiltersDesktop"
+                >
+                  Filtros
+                </button>
+                <a class="top-nav-link top-nav-link--admin" href="./admin.html"
+                  >Admin</a
+                >
+              </nav>
+              <button
+                class="nav-toggle"
+                id="navOpen"
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="sideMenu"
+                aria-expanded="false"
+                aria-label="Abrir menú"
+              >
+                <span class="nav-toggle-label">Menú</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  aria-hidden="true"
+                >
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
           </div>
-          <div class="brand-actions">
-            <button class="install-btn" id="installBtn" type="button" hidden>
-              Instalar
-            </button>
-            <nav class="top-nav" aria-label="Accesos rápidos">
-              <button class="top-nav-link" type="button" id="navFiltersDesktop">Filtros</button>
-              <a class="top-nav-link top-nav-link--admin" href="./admin.html">Admin</a>
-            </nav>
-            <button
-              class="nav-toggle"
-              id="navOpen"
-              type="button"
-              aria-haspopup="dialog"
-              aria-controls="sideMenu"
-              aria-expanded="false"
-              aria-label="Abrir menú"
+        </div>
+        <label class="search" for="search">
+          <span class="search-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
             >
-              <span class="nav-toggle-label">Menú</span>
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-                <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round" />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-      <label class="search" for="search">
-        <span class="search-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="7" />
-            <path d="M20 20l-3.5-3.5" stroke-linecap="round" />
-          </svg>
-        </span>
-        <input
-          id="search"
-          type="search"
-          placeholder="Buscar por nombre..."
-          autocomplete="off"
-          enterkeyhint="search"
-        />
-      </label>
-
-      <button
-        class="filters-trigger"
-        id="filtersOpen"
-        type="button"
-        aria-haspopup="dialog"
-        aria-controls="filtersModal"
-        aria-expanded="false"
-      >
-        <span class="filters-trigger-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 6h16M7 12h10M10 18h4" stroke-linecap="round" />
-          </svg>
-        </span>
-        <span class="filters-trigger-text">
-          <span class="filters-trigger-label">Filtros</span>
-          <span class="filters-trigger-value" id="filtersTriggerValue">Todos</span>
-        </span>
-        <span class="filters-trigger-chevron" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </span>
-      </button>
-
-      <div class="filters filters--desktop" role="group" aria-label="Filtrar hermanos">
-        <button class="filter-btn is-active" type="button" data-filter="todos" aria-pressed="true">
-          Todos
-        </button>
-        <button class="filter-btn" type="button" data-filter="con-foto" aria-pressed="false">
-          Con foto
-        </button>
-        <button class="filter-btn" type="button" data-filter="recien" aria-pressed="false">
-          Recién conversos
-        </button>
-        <button class="filter-btn" type="button" data-filter="obispado" aria-pressed="false">
-          Obispado
-        </button>
-        <button class="filter-btn" type="button" data-filter="ss" aria-pressed="false">
-          Sociedad de Socorro
-        </button>
-        <button class="filter-btn" type="button" data-filter="ss-pres" aria-pressed="false">
-          Presidencia SS
-        </button>
-        <button class="filter-btn" type="button" data-filter="elderes" aria-pressed="false">
-          Quórum de élderes
-        </button>
-        <button class="filter-btn" type="button" data-filter="elderes-pres" aria-pressed="false">
-          Presidencia élderes
-        </button>
-      </div>
-    </header>
-
-    <main>
-      <p class="results-meta" id="resultsMeta" aria-live="polite"></p>
-      <section class="grid" id="directory" aria-label="Listado de hermanos"></section>
-      <p class="empty" id="emptyState" hidden>No se encontraron hermanos con ese criterio.</p>
-    </main>
-  </div>
-
-  <div class="scroll-controls" id="scrollControls" hidden>
-    <button class="scroll-btn" id="scrollUp" type="button" aria-label="Ir al inicio del directorio">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-        <path d="M6 14l6-6 6 6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-    <button class="scroll-btn" id="scrollDown" type="button" aria-label="Ir al final del directorio">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-        <path d="M6 10l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="detail" id="detail" hidden>
-    <div class="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detailName">
-      <div class="detail-toolbar">
-        <div class="detail-nav" role="group" aria-label="Historial de fichas">
-          <button class="detail-nav-btn" id="detailBack" type="button" aria-label="Ficha anterior" disabled>
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-              <path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-          <button class="detail-nav-btn" id="detailForward" type="button" aria-label="Ficha siguiente" disabled>
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-        <button class="detail-close" id="detailClose" type="button" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-          </svg>
-        </button>
-      </div>
-      <div class="detail-content" id="detailContent"></div>
-    </div>
-  </div>
-
-  <div class="ministrantes" id="ministrantes" hidden>
-    <div class="ministrantes-panel" role="dialog" aria-modal="true" aria-labelledby="ministrantesTitle">
-      <button class="detail-close" id="ministrantesClose" type="button" aria-label="Cerrar">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
-          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-        </svg>
-      </button>
-      <div class="ministrantes-content" id="ministrantesContent"></div>
-    </div>
-  </div>
-
-  <div class="filters-modal" id="filtersModal" hidden>
-    <div
-      class="filters-panel"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="filtersTitle"
-    >
-      <div class="filters-panel-header">
-        <div>
-          <p class="filters-panel-kicker">Sistema · Filtros</p>
-          <h2 class="filters-panel-title" id="filtersTitle">Filtrar hermanos</h2>
-        </div>
-        <button class="detail-close" id="filtersClose" type="button" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-          </svg>
-        </button>
-      </div>
-      <div class="filters filters--sheet" role="group" aria-label="Opciones de filtro">
-        <button class="filter-option is-active" type="button" data-filter="todos" aria-pressed="true">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Todos</span>
-            <span class="filter-option-desc">Listado completo del barrio</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="con-foto" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Con foto</span>
-            <span class="filter-option-desc">Solo hermanos con foto de perfil</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="recien" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Recién conversos</span>
-            <span class="filter-option-desc">Hermanos recién bautizados</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="obispado" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Obispado</span>
-            <span class="filter-option-desc">Obispo, consejeros y secretario</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="ss" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Sociedad de Socorro</span>
-            <span class="filter-option-desc">Mujeres de 18 años o más</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="ss-pres" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Presidencia SS</span>
-            <span class="filter-option-desc">Presidencia y secretaría de Sociedad de Socorro</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="elderes" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Quórum de élderes</span>
-            <span class="filter-option-desc">Varones de 18 años o más</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-        <button class="filter-option" type="button" data-filter="elderes-pres" aria-pressed="false">
-          <span class="filter-option-text">
-            <span class="filter-option-name">Presidencia élderes</span>
-            <span class="filter-option-desc">Presidencia y secretaría del quórum</span>
-          </span>
-          <span class="filter-option-check" aria-hidden="true"></span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="side-menu" id="sideMenu" hidden>
-    <div class="side-menu-backdrop" id="sideMenuBackdrop" tabindex="-1"></div>
-    <aside class="side-menu-panel" role="dialog" aria-modal="true" aria-labelledby="sideMenuTitle">
-      <div class="side-menu-head">
-        <div>
-          <p class="side-menu-kicker">Navegación · HUD</p>
-          <h2 class="side-menu-title" id="sideMenuTitle">Directorio Llo-Lleo</h2>
-        </div>
-        <button class="detail-close" id="sideMenuClose" type="button" aria-label="Cerrar menú">
-          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
-          </svg>
-        </button>
-      </div>
-      <nav class="side-menu-nav" aria-label="Navegación">
-        <a class="side-menu-link is-active" href="./index.html">
-          <span class="side-menu-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z" stroke-linejoin="round" />
+              <circle cx="11" cy="11" r="7" />
+              <path d="M20 20l-3.5-3.5" stroke-linecap="round" />
             </svg>
           </span>
-          <span class="side-menu-copy">
-            <strong>Directorio</strong>
-            <small>Listado de hermanos</small>
-          </span>
-        </a>
-        <button class="side-menu-link" type="button" id="navFiltersMobile">
-          <span class="side-menu-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <input
+            id="search"
+            type="search"
+            placeholder="Buscar por nombre (también con errores)…"
+            autocomplete="off"
+            enterkeyhint="search"
+          />
+        </label>
+
+        <button
+          class="filters-trigger"
+          id="filtersOpen"
+          type="button"
+          aria-haspopup="dialog"
+          aria-controls="filtersModal"
+          aria-expanded="false"
+        >
+          <span class="filters-trigger-icon" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
               <path d="M4 6h16M7 12h10M10 18h4" stroke-linecap="round" />
             </svg>
           </span>
-          <span class="side-menu-copy">
-            <strong>Filtros</strong>
-            <small>SS, élderes, obispado y más</small>
+          <span class="filters-trigger-text">
+            <span class="filters-trigger-label">Filtros</span>
+            <span class="filters-trigger-value" id="filtersTriggerValue"
+              >Todos</span
+            >
+          </span>
+          <span class="filters-trigger-chevron" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path
+                d="M6 9l6 6 6-6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
           </span>
         </button>
-        <a class="side-menu-link" href="./reconocimiento.html">
-          <span class="side-menu-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="10" r="3.2" />
-              <path d="M5 19c1.4-3 3.8-4.5 7-4.5s5.6 1.5 7 4.5" stroke-linecap="round" />
-              <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
-            </svg>
-          </span>
-          <span class="side-menu-copy">
-            <strong>Reconocimiento facial</strong>
-            <small>Identificar por fotografía</small>
-          </span>
-        </a>
-        <a class="side-menu-link" href="./mapa-ministrantes.html">
-          <span class="side-menu-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="7" cy="8" r="2.4" />
-              <circle cx="17" cy="7" r="2.4" />
-              <circle cx="12" cy="16" r="2.4" />
-              <path d="M9 9.2l5.2-1.2M8.4 10l2.8 4.4M14.8 9l-2 5" stroke-linecap="round" />
-            </svg>
-          </span>
-          <span class="side-menu-copy">
-            <strong>Mapa de ministrantes</strong>
-            <small>Relaciones gráficas</small>
-          </span>
-        </a>
-        <a class="side-menu-link side-menu-link--accent" href="./admin.html">
-          <span class="side-menu-ico" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="3.2" />
-              <path d="M5 19c1.2-3.2 3.7-5 7-5s5.8 1.8 7 5" stroke-linecap="round" />
-            </svg>
-          </span>
-          <span class="side-menu-copy">
-            <strong>Ingresar como admin</strong>
-            <small>Agregar, editar o eliminar</small>
-          </span>
-        </a>
-      </nav>
-      <p class="side-menu-note">Barrio Llo Lleo 1 · Sistemas en línea</p>
-    </aside>
-  </div>
 
-  <div class="install-banner" id="installBanner" hidden>
-    <div class="install-banner-text">
-      <strong>Instala el Directorio</strong>
-      <span id="installHint">Agrégalo a tu pantalla de inicio para usarlo como app.</span>
-    </div>
-    <div class="install-banner-actions">
-      <button class="install-banner-btn" id="installBannerBtn" type="button">Instalar</button>
-      <button class="install-banner-dismiss" id="installDismiss" type="button" aria-label="Cerrar">×</button>
-    </div>
-  </div>
+        <div
+          class="filters filters--desktop"
+          role="group"
+          aria-label="Filtrar hermanos"
+        >
+          <button
+            class="filter-btn is-active"
+            type="button"
+            data-filter="todos"
+            aria-pressed="true"
+          >
+            Todos
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="primaria"
+            aria-pressed="false"
+          >
+            Primaria
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="hj"
+            aria-pressed="false"
+          >
+            Hombres Jóvenes
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="mj"
+            aria-pressed="false"
+          >
+            Mujeres Jóvenes
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="ss"
+            aria-pressed="false"
+          >
+            Sociedad de Socorro
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="elderes"
+            aria-pressed="false"
+          >
+            Quórum de élderes
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="jas"
+            aria-pressed="false"
+          >
+            JAS
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="con-foto"
+            aria-pressed="false"
+          >
+            Con foto
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="recien"
+            aria-pressed="false"
+          >
+            Recién conversos
+          </button>
+          <button
+            class="filter-btn"
+            type="button"
+            data-filter="obispado"
+            aria-pressed="false"
+          >
+            Obispado
+          </button>
+        </div>
+      </header>
 
-  <script src="supabase-config.js"></script>
-  <script src="script.js"></script>
-</body>
+      <main>
+        <p class="results-meta" id="resultsMeta" aria-live="polite"></p>
+        <section
+          class="grid"
+          id="directory"
+          aria-label="Listado de hermanos"
+        ></section>
+        <p class="empty" id="emptyState" hidden>
+          No se encontraron hermanos con ese criterio.
+        </p>
+      </main>
+    </div>
+
+    <div class="scroll-controls" id="scrollControls" hidden>
+      <button
+        class="scroll-btn"
+        id="scrollUp"
+        type="button"
+        aria-label="Ir al inicio del directorio"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.3"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 14l6-6 6 6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button
+        class="scroll-btn"
+        id="scrollDown"
+        type="button"
+        aria-label="Ir al final del directorio"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="18"
+          height="18"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.3"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 10l6 6 6-6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <div class="detail" id="detail" hidden>
+      <div
+        class="detail-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detailName"
+      >
+        <div class="detail-toolbar">
+          <div class="detail-nav" role="group" aria-label="Historial de fichas">
+            <button
+              class="detail-nav-btn"
+              id="detailBack"
+              type="button"
+              aria-label="Ficha anterior"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M15 6l-6 6 6 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              class="detail-nav-btn"
+              id="detailForward"
+              type="button"
+              aria-label="Ficha siguiente"
+              disabled
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="22"
+                height="22"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+                aria-hidden="true"
+              >
+                <path
+                  d="M9 6l6 6-6 6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <button
+            class="detail-close"
+            id="detailClose"
+            type="button"
+            aria-label="Cerrar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="detail-content" id="detailContent"></div>
+      </div>
+    </div>
+
+    <div class="ministrantes" id="ministrantes" hidden>
+      <div
+        class="ministrantes-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ministrantesTitle"
+      >
+        <button
+          class="detail-close"
+          id="ministrantesClose"
+          type="button"
+          aria-label="Cerrar"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+          >
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+          </svg>
+        </button>
+        <div class="ministrantes-content" id="ministrantesContent"></div>
+      </div>
+    </div>
+
+    <div class="filters-modal" id="filtersModal" hidden>
+      <div
+        class="filters-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="filtersTitle"
+      >
+        <div class="filters-panel-header">
+          <div>
+            <p class="filters-panel-kicker">Sistema · Filtros</p>
+            <h2 class="filters-panel-title" id="filtersTitle">
+              Filtrar hermanos
+            </h2>
+          </div>
+          <button
+            class="detail-close"
+            id="filtersClose"
+            type="button"
+            aria-label="Cerrar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="filters filters--sheet"
+          role="group"
+          aria-label="Opciones de filtro"
+        >
+          <button
+            class="filter-option is-active"
+            type="button"
+            data-filter="todos"
+            aria-pressed="true"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Todos</span>
+              <span class="filter-option-desc"
+                >Listado completo del barrio</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="primaria"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Primaria</span>
+              <span class="filter-option-desc"
+                >Niños hasta el año en que cumplen 11</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="hj"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Hombres Jóvenes</span>
+              <span class="filter-option-desc"
+                >Diáconos, maestros y presbíteros</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="diaconos"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Cuórum de Diáconos</span>
+              <span class="filter-option-desc">Varones 12–13 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="maestros"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Cuórum de Maestros</span>
+              <span class="filter-option-desc">Varones 14–15 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="presbiteros"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Cuórum de Presbíteros</span>
+              <span class="filter-option-desc">Varones 16–17 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="mj"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Mujeres Jóvenes</span>
+              <span class="filter-option-desc"
+                >Edificadoras, mensajeras y guardianas</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="edificadoras"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Edificadoras de Fe</span>
+              <span class="filter-option-desc">Mujeres jóvenes 12–13 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="mensajeras"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Mensajeras de Esperanza</span>
+              <span class="filter-option-desc">Mujeres jóvenes 14–15 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="guardianas"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Guardianas de Luz</span>
+              <span class="filter-option-desc">Mujeres jóvenes 16–17 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="ed-jovenes"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name"
+                >Escuela Dominical · Jóvenes</span
+              >
+              <span class="filter-option-desc"
+                >11 a 18 años (clases de jóvenes)</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="ss"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Sociedad de Socorro</span>
+              <span class="filter-option-desc">Mujeres de 18 años o más</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="elderes"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Quórum de élderes</span>
+              <span class="filter-option-desc">Varones de 18 años o más</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="ed-adultos"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name"
+                >Escuela Dominical · Adultos</span
+              >
+              <span class="filter-option-desc">Desde los 18 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="jas"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name"
+                >Jóvenes Adultos Solteros (JAS)</span
+              >
+              <span class="filter-option-desc">De 18 a 35 años</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="ss-pres"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Presidencia SS</span>
+              <span class="filter-option-desc"
+                >Presidencia y secretaría de Sociedad de Socorro</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="elderes-pres"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Presidencia élderes</span>
+              <span class="filter-option-desc"
+                >Presidencia y secretaría del quórum</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="obispado"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Obispado</span>
+              <span class="filter-option-desc"
+                >Obispo, consejeros y secretario</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="recien"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Recién conversos</span>
+              <span class="filter-option-desc">Hermanos recién bautizados</span>
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+          <button
+            class="filter-option"
+            type="button"
+            data-filter="con-foto"
+            aria-pressed="false"
+          >
+            <span class="filter-option-text">
+              <span class="filter-option-name">Con foto</span>
+              <span class="filter-option-desc"
+                >Solo hermanos con foto de perfil</span
+              >
+            </span>
+            <span class="filter-option-check" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-menu" id="sideMenu" hidden>
+      <div class="side-menu-backdrop" id="sideMenuBackdrop" tabindex="-1"></div>
+      <aside
+        class="side-menu-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="sideMenuTitle"
+      >
+        <div class="side-menu-head">
+          <div>
+            <p class="side-menu-kicker">Navegación · HUD</p>
+            <h2 class="side-menu-title" id="sideMenuTitle">
+              Directorio Llo-Lleo
+            </h2>
+          </div>
+          <button
+            class="detail-close"
+            id="sideMenuClose"
+            type="button"
+            aria-label="Cerrar menú"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <nav class="side-menu-nav" aria-label="Navegación">
+          <a class="side-menu-link is-active" href="./index.html">
+            <span class="side-menu-ico" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 10.5L12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5z"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <span class="side-menu-copy">
+              <strong>Directorio</strong>
+              <small>Listado de hermanos</small>
+            </span>
+          </a>
+          <button class="side-menu-link" type="button" id="navFiltersMobile">
+            <span class="side-menu-ico" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 6h16M7 12h10M10 18h4" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="side-menu-copy">
+              <strong>Filtros</strong>
+              <small>Organizaciones, SS, élderes y más</small>
+            </span>
+          </button>
+          <a class="side-menu-link" href="./reconocimiento.html">
+            <span class="side-menu-ico" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="10" r="3.2" />
+                <path
+                  d="M5 19c1.4-3 3.8-4.5 7-4.5s5.6 1.5 7 4.5"
+                  stroke-linecap="round"
+                />
+                <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+              </svg>
+            </span>
+            <span class="side-menu-copy">
+              <strong>Reconocimiento facial</strong>
+              <small>Identificar por fotografía</small>
+            </span>
+          </a>
+          <a class="side-menu-link" href="./mapa-ministrantes.html">
+            <span class="side-menu-ico" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="7" cy="8" r="2.4" />
+                <circle cx="17" cy="7" r="2.4" />
+                <circle cx="12" cy="16" r="2.4" />
+                <path
+                  d="M9 9.2l5.2-1.2M8.4 10l2.8 4.4M14.8 9l-2 5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span class="side-menu-copy">
+              <strong>Mapa de ministrantes</strong>
+              <small>Relaciones gráficas</small>
+            </span>
+          </a>
+          <a class="side-menu-link side-menu-link--accent" href="./admin.html">
+            <span class="side-menu-ico" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="8" r="3.2" />
+                <path
+                  d="M5 19c1.2-3.2 3.7-5 7-5s5.8 1.8 7 5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <span class="side-menu-copy">
+              <strong>Ingresar como admin</strong>
+              <small>Agregar, editar o eliminar</small>
+            </span>
+          </a>
+        </nav>
+        <p class="side-menu-note">Barrio Llo Lleo 1 · Sistemas en línea</p>
+      </aside>
+    </div>
+
+    <div class="install-banner" id="installBanner" hidden>
+      <div class="install-banner-text">
+        <strong>Instala el Directorio</strong>
+        <span id="installHint"
+          >Agrégalo a tu pantalla de inicio para usarlo como app.</span
+        >
+      </div>
+      <div class="install-banner-actions">
+        <button class="install-banner-btn" id="installBannerBtn" type="button">
+          Instalar
+        </button>
+        <button
+          class="install-banner-dismiss"
+          id="installDismiss"
+          type="button"
+          aria-label="Cerrar"
+        >
+          ×
+        </button>
+      </div>
+    </div>
+
+  <script src="supabase-config.js?v=74"></script>
+  <script src="fotos-index.js?v=74"></script>
+  <script src="script.js?v=74"></script>
+  </body>
 </html>

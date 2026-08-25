@@ -39,6 +39,10 @@ let faceMatcher = null;
 let ready = false;
 let analyzing = false;
 let currentObjectUrl = null;
+let lastOverlay = { detections: [], matches: [] };
+let pendingAutoAnalyze = false;
+
+const FOTO_EXTS = [".jpeg", ".jpg", ".png", ".webp"];
 
 function normalize(text) {
   return String(text || "")
@@ -48,12 +52,26 @@ function normalize(text) {
 }
 
 function resolveFotoArchivo(filename) {
-  const name = String(filename || "").trim();
-  return name || null;
+  const name = String(filename || "").trim().replace(/^(\.\/)?fotos\//i, "");
+  if (!name) return null;
+  if (/^https?:\/\//i.test(name)) return name;
+  const base = name.replace(/\.[^.]+$/, "");
+  const lower = name.toLowerCase();
+  // Prefer exact; otherwise keep given name (browser will 404 → skip face)
+  if (FOTO_EXTS.some((ext) => lower.endsWith(ext))) return name;
+  return `${base}.jpeg`;
 }
 
 function fotoUrl(filename) {
-  return `./fotos/${encodeURIComponent(filename)}`;
+  const name = String(filename || "").trim();
+  if (!name) return FOTO_ANON;
+  if (typeof window.fotoLocalUrl === "function") {
+    return window.fotoLocalUrl(name) || FOTO_ANON;
+  }
+  if (/^https?:\/\//i.test(name) || name.startsWith("./") || name.startsWith("/")) {
+    return name;
+  }
+  return `./fotos/${encodeURIComponent(name)}`;
 }
 
 function mapMiembroRow(row, index) {
@@ -123,13 +141,25 @@ function setProgress(current, total) {
 }
 
 function loadImageFromUrl(url) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.decoding = "async";
-    img.crossOrigin = "anonymous";
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`No se pudo cargar ${url}`));
-    img.src = url;
+  const tryLoad = (src) =>
+    new Promise((resolve, reject) => {
+      const img = new Image();
+      img.decoding = "async";
+      img.crossOrigin = "anonymous";
+      img.onload = () => resolve(img);
+      img.onerror = () => reject(new Error(`No se pudo cargar ${src}`));
+      img.src = src;
+    });
+
+  return tryLoad(url).catch(async (err) => {
+    const name =
+      typeof window.fotoFilename === "function" ? window.fotoFilename(url) : "";
+    const cloud =
+      name && typeof window.fotoCloudUrl === "function"
+        ? window.fotoCloudUrl(name)
+        : "";
+    if (cloud && cloud !== url) return tryLoad(cloud);
+    throw err;
   });
 }
 
@@ -242,6 +272,10 @@ function confidenceFromDistance(distance) {
 }
 
 function drawDetections(detections, matches) {
+  lastOverlay = {
+    detections: detections || [],
+    matches: matches || [],
+  };
   if (!preview || !overlay) return;
   const displayW = preview.clientWidth;
   const displayH = preview.clientHeight;
@@ -260,9 +294,9 @@ function drawDetections(detections, matches) {
   const offsetX = (displayW - drawnW) / 2;
   const offsetY = (displayH - drawnH) / 2;
 
-  detections.forEach((det, index) => {
+  lastOverlay.detections.forEach((det, index) => {
     const box = det.detection.box;
-    const match = matches[index];
+    const match = lastOverlay.matches[index];
     const known = match && match.label !== "unknown";
     const x = offsetX + box.x * scale;
     const y = offsetY + box.y * scale;
@@ -418,6 +452,8 @@ function clearPreview() {
     URL.revokeObjectURL(currentObjectUrl);
     currentObjectUrl = null;
   }
+  pendingAutoAnalyze = false;
+  lastOverlay = { detections: [], matches: [] };
   if (preview) preview.removeAttribute("src");
   if (previewWrap) previewWrap.hidden = true;
   if (overlay) {
@@ -440,10 +476,15 @@ function setPreviewFromFile(file) {
   analyzeBtn.disabled = !ready;
   clearBtn.disabled = false;
   results.hidden = true;
+  pendingAutoAnalyze = true;
   preview.onload = () => {
     if (overlay) {
       overlay.width = preview.clientWidth;
       overlay.height = preview.clientHeight;
+    }
+    if (ready && pendingAutoAnalyze) {
+      pendingAutoAnalyze = false;
+      analyzeCurrentImage();
     }
   };
 }
@@ -475,10 +516,7 @@ document.addEventListener("keydown", (event) => {
 
 faceFile?.addEventListener("change", () => {
   const file = faceFile.files?.[0];
-  if (file) {
-    setPreviewFromFile(file);
-    if (ready) analyzeCurrentImage();
-  }
+  if (file) setPreviewFromFile(file);
 });
 
 analyzeBtn?.addEventListener("click", () => {
@@ -510,10 +548,17 @@ clearBtn?.addEventListener("click", () => {
 });
 faceDrop?.addEventListener("drop", (event) => {
   const file = event.dataTransfer?.files?.[0];
-  if (file) {
-    setPreviewFromFile(file);
-    if (ready) analyzeCurrentImage();
-  }
+  if (file) setPreviewFromFile(file);
+});
+
+let resizeTimer = 0;
+window.addEventListener("resize", () => {
+  window.clearTimeout(resizeTimer);
+  resizeTimer = window.setTimeout(() => {
+    if (lastOverlay.detections.length) {
+      drawDetections(lastOverlay.detections, lastOverlay.matches);
+    }
+  }, 120);
 });
 
 async function boot() {
@@ -553,11 +598,16 @@ async function boot() {
     faceMatcher = new faceapi.FaceMatcher(labeled, MATCH_THRESHOLD);
     ready = true;
     faceFile.disabled = false;
+    analyzeBtn.disabled = !preview?.src;
     setStatus(
       "ready",
       "Listo para reconocer",
       `${labeled.length} de ${withPhoto.length} fotos indexadas`
     );
+    if (preview?.src && pendingAutoAnalyze) {
+      pendingAutoAnalyze = false;
+      analyzeCurrentImage();
+    }
   } catch (error) {
     console.error(error);
     setStatus("error", "Error al preparar el reconocimiento", error.message || "Error desconocido");

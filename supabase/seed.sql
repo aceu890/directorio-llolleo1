@@ -1010,7 +1010,7 @@ San Antonio
 VALPARAÍSO', null, null, 'Victor Orlando Acevedo Nacaratte — Varón
 Nancy de Lourdes de Acevedo Rojas — Mujer
 Yasna Karen Hernandez Rojas — Mujer
-Constanza Antonia Astorga Hernandez — Mujer (17)', null, null, 'Nancy de Lourdes de Acevedo Rojas.jpeg', false, false, false, false, null),
+Constanza Antonia Astorga Hernandez — Mujer (17)', null, null, 'Nancy de Lourdes de Acevedo Rojas.png', false, false, false, false, null),
 ('Nicolás Aaron Miranda Acevedo', null, '23 ago 2021', 'Varón', null, '9 6141 6040', 'cesarsud@hotmail.com', 'Av. Cristo Rey 1012
 San Antonio
 VALPARAÍSO', null, null, 'Cesar Aaron Miranda Cabello — Varón

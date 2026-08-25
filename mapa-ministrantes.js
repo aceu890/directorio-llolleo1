@@ -25,10 +25,16 @@ function normalize(text) {
 }
 
 function nameTokens(text) {
-  return normalize(text)
-    .replace(/[^a-z0-9\s]/g, " ")
-    .split(/\s+/)
-    .filter(Boolean)
+  return [
+    ...new Set(
+      normalize(text)
+        .replace(/\bdavia\b/g, "da via")
+        .replace(/\bda-via\b/g, "da via")
+        .replace(/[^a-z0-9\s]/g, " ")
+        .split(/\s+/)
+        .filter(Boolean)
+    ),
+  ]
     .sort()
     .join(" ");
 }
@@ -42,7 +48,24 @@ function escapeHtml(text) {
 }
 
 function fotoUrl(filename) {
-  return `./fotos/${encodeURIComponent(filename)}`;
+  const name = String(filename || "").trim();
+  if (!name) return FOTO_ANON;
+  if (typeof window.fotoLocalUrl === "function") {
+    return window.fotoLocalUrl(name) || FOTO_ANON;
+  }
+  return `./fotos/${encodeURIComponent(name)}`;
+}
+
+function fotoImgAttrs(archivo) {
+  const name =
+    (typeof window.fotoFilename === "function" && window.fotoFilename(archivo)) ||
+    String(archivo || "").replace(/^(\.\/)?fotos\//i, "");
+  const local = name ? fotoUrl(name) : FOTO_ANON;
+  const cloud =
+    name && typeof window.fotoCloudUrl === "function"
+      ? window.fotoCloudUrl(name) || ""
+      : "";
+  return `src="${local}" data-cloud="${cloud}" data-anon="${FOTO_ANON}" data-foto-stage="local" onerror="window.fotoImgFallback&&window.fotoImgFallback(this)"`;
 }
 
 function getSupabaseConfig() {
@@ -132,16 +155,19 @@ function findByNombre(nombre) {
 
 function personCard(person, fallbackName) {
   const nombre = person?.nombre || fallbackName || "Sin nombre";
-  const foto = person?.foto || FOTO_ANON;
+  const foto = person?.foto || "";
   const href = `./index.html?q=${encodeURIComponent(nombre)}`;
+  const imgAttrs =
+    typeof fotoImgAttrs === "function"
+      ? fotoImgAttrs(foto)
+      : `src="${escapeHtml(foto || FOTO_ANON)}" onerror="this.onerror=null;this.src='${FOTO_ANON}'"`;
   return `
     <a class="map-person" href="${href}">
       <img
         class="map-person-photo"
-        src="${escapeHtml(foto)}"
+        ${imgAttrs}
         alt=""
         loading="lazy"
-        onerror="this.onerror=null;this.src='${FOTO_ANON}'"
       />
       <span class="map-person-name">${escapeHtml(nombre)}</span>
     </a>

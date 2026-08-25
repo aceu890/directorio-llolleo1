@@ -115,14 +115,236 @@
   }
 
   const FOTO_ANON = "./icons/avatar-anon.png";
+  let fotoPorNombreAdmin = new Map();
+
+  function normalizeFotoText(text) {
+    return String(text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function nameTokensFoto(text) {
+    return [
+      ...new Set(
+        normalizeFotoText(text)
+          .replace(/\bdavia\b/g, "da via")
+          .replace(/\bda-via\b/g, "da via")
+          .replace(/[^a-z0-9\s]/g, " ")
+          .split(/\s+/)
+          .filter(Boolean)
+      ),
+    ]
+      .sort()
+      .join(" ");
+  }
+
+  function nombreDesdeArchivoFoto(filename) {
+    const base = String(filename || "").replace(/\.[^.]+$/, "").trim();
+    if (base.includes(",")) {
+      const [apellidos, nombres] = base.split(",").map((p) => p.trim());
+      return `${nombres} ${apellidos}`;
+    }
+    return base;
+  }
+
+  function overlapFotoScore(a, b) {
+    const A = nameTokensFoto(a).split(" ").filter(Boolean);
+    const B = nameTokensFoto(b).split(" ").filter(Boolean);
+    if (!A.length || !B.length) return 0;
+    const setA = new Set(A);
+    const setB = new Set(B);
+    let hit = 0;
+    for (const t of A) if (setB.has(t)) hit++;
+    const base = hit / Math.max(A.length, B.length);
+    const smaller = A.length <= B.length ? A : B;
+    const largerSet = A.length <= B.length ? setB : setA;
+    if (smaller.length >= 3 && smaller.every((t) => largerSet.has(t))) {
+      return Math.max(base, 0.92);
+    }
+    return base;
+  }
+
+  function fotoMatchScoreAdmin(fileLabel, hermanoNombre) {
+    const fileTok = nameTokensFoto(fileLabel).split(" ").filter(Boolean);
+    const hermTok = nameTokensFoto(hermanoNombre).split(" ").filter(Boolean);
+    if (!fileTok.length || !hermTok.length) return 0;
+    const fileKey = fileTok.slice().sort().join(" ");
+    const hermKey = hermTok.slice().sort().join(" ");
+    if (fileKey === hermKey) return 1;
+
+    const fileSet = new Set(fileTok);
+    const hermSet = new Set(hermTok);
+    let hitFile = 0;
+    for (const t of fileTok) if (hermSet.has(t)) hitFile++;
+    let hitHerm = 0;
+    for (const t of hermTok) if (fileSet.has(t)) hitHerm++;
+    const fileCovered = hitFile / fileTok.length;
+    const hermCovered = hitHerm / hermTok.length;
+    if (hermCovered < 0.9 || fileCovered < 0.85) {
+      return Math.min(fileCovered, hermCovered) * 0.5;
+    }
+    return (fileCovered + hermCovered) / 2;
+  }
+
+  function getFotosIndex() {
+    const idx = window.FOTOS_INDEX || {};
+    return {
+      files: Array.isArray(idx.files) ? idx.files : [],
+      overrides: idx.overrides && typeof idx.overrides === "object" ? idx.overrides : {},
+    };
+  }
+
+  function rebuildFotoPorNombreAdmin() {
+    fotoPorNombreAdmin = new Map();
+    const { files, overrides } = getFotosIndex();
+    if (!miembros.length || !files.length) return;
+
+    const byKey = new Map();
+    for (const file of files) {
+      const key =
+        nameTokensFoto(nombreDesdeArchivoFoto(file)) ||
+        file.replace(/\.[^.]+$/, "");
+      const prev = byKey.get(key);
+      if (!prev) {
+        byKey.set(key, file);
+        continue;
+      }
+      if (/\.png$/i.test(file) && !/\.png$/i.test(prev)) byKey.set(key, file);
+    }
+    const unique = [...byKey.values()];
+    const pairs = [];
+    for (const file of unique) {
+      const label = nombreDesdeArchivoFoto(file);
+      for (let i = 0; i < miembros.length; i++) {
+        const score = fotoMatchScoreAdmin(label, miembros[i].nombre);
+        if (score >= 0.8) pairs.push({ file, index: i, score });
+      }
+    }
+    pairs.sort((a, b) => b.score - a.score || a.index - b.index);
+    const usedFiles = new Set();
+    const usedIdx = new Set();
+    for (const p of pairs) {
+      if (usedFiles.has(p.file) || usedIdx.has(p.index)) continue;
+      if (
+        /laura elizabeth acevedo rojas/i.test(nombreDesdeArchivoFoto(p.file)) &&
+        /laura elizabeth de miranda acevedo/i.test(miembros[p.index].nombre)
+      ) {
+        continue;
+      }
+      usedFiles.add(p.file);
+      usedIdx.add(p.index);
+      const urlFile = p.file;
+      fotoPorNombreAdmin.set(nameTokensFoto(miembros[p.index].nombre), urlFile);
+    }
+    for (const [tokenKey, file] of Object.entries(overrides)) {
+      if (!files.includes(file)) continue;
+      fotoPorNombreAdmin.set(tokenKey, file);
+    }
+  }
+
+  function resolveFotoArchivoAdmin(filename) {
+    const { files } = getFotosIndex();
+    let name = String(filename || "")
+      .trim()
+      .replace(/^(\.\/)?fotos\//i, "");
+    if (!name) return null;
+    try {
+      name = decodeURIComponent(name);
+    } catch {
+      /* keep */
+    }
+    if (!files.length) return name;
+    if (files.includes(name)) return name;
+    const base = name.replace(/\.[^.]+$/, "").normalize("NFC");
+    const baseKey = nameTokensFoto(base);
+    const same = files.filter((f) => {
+      const fBase = f.replace(/\.[^.]+$/, "").normalize("NFC");
+      return fBase === base || nameTokensFoto(fBase) === baseKey;
+    });
+    if (same.length) {
+      return (
+        same.find((f) => /\.png$/i.test(f)) ||
+        same.find((f) => /\.jpe?g$/i.test(f)) ||
+        same[0]
+      );
+    }
+    return name;
+  }
+
+  function resolveMiembroFotoArchivo(m) {
+    const { overrides } = getFotosIndex();
+    const override = overrides[nameTokensFoto(m?.nombre || "")];
+    if (override) return override;
+    const byName = fotoPorNombreAdmin.get(nameTokensFoto(m?.nombre || ""));
+    if (byName) return byName;
+    const fromDb = resolveFotoArchivoAdmin(m?.foto);
+    if (fromDb) return fromDb;
+    return null;
+  }
+
+  /** Rellena m.foto desde el índice para que asistencia/admin vean la imagen aunque Supabase aún tenga null. */
+  function enrichMiembrosFotos() {
+    for (const m of miembros) {
+      const archivo = resolveMiembroFotoArchivo(m);
+      if (archivo) m.foto = archivo;
+    }
+  }
 
   function fotoMiembroUrl(foto) {
-    const name = String(foto || "").trim();
+    const raw = String(foto || "").trim();
+    if (!raw) return FOTO_ANON;
+    if (typeof window.fotoLocalUrl === "function") {
+      return window.fotoLocalUrl(raw) || FOTO_ANON;
+    }
+    const name =
+      (typeof window.fotoFilename === "function" && window.fotoFilename(raw)) ||
+      raw.replace(/^(\.\/)?fotos\//i, "");
     if (!name) return FOTO_ANON;
     if (/^https?:\/\//i.test(name) || name.startsWith("./") || name.startsWith("/")) {
       return name;
     }
-    return `./fotos/${encodeURIComponent(name)}`;
+    return `./fotos/${name
+      .replace(/%/g, "%25")
+      .replace(/#/g, "%23")
+      .replace(/\?/g, "%3F")
+      .replace(/ /g, "%20")}`;
+  }
+
+  function fotoMiembroCloudUrl(foto) {
+    if (typeof window.fotoCloudUrl === "function") {
+      return window.fotoCloudUrl(foto) || "";
+    }
+    return "";
+  }
+
+  function fotoMiembroImgAttrs(mOrFoto) {
+    const archivo =
+      mOrFoto && typeof mOrFoto === "object"
+        ? resolveMiembroFotoArchivo(mOrFoto)
+        : mOrFoto;
+    if (!archivo) {
+      return `src="${escapeHtml(FOTO_ANON)}" data-candidates="" data-anon="${escapeHtml(FOTO_ANON)}" data-foto-stage="anon" onerror="this.onerror=null;this.src='${escapeHtml(FOTO_ANON)}'"`;
+    }
+    const cands =
+      typeof window.fotoAltCandidates === "function"
+        ? window.fotoAltCandidates(archivo)
+        : [archivo];
+    const primary = resolveFotoArchivoAdmin(archivo) || cands[0] || archivo;
+    const local = fotoMiembroUrl(primary);
+    const cloud = fotoMiembroCloudUrl(primary);
+    const cloudCands = [
+      ...new Set(
+        cands
+          .map((f) => fotoMiembroCloudUrl(f))
+          .filter(Boolean)
+      ),
+    ];
+    return `src="${escapeHtml(local)}" data-candidates="${escapeHtml(cands.join("|"))}" data-cand-index="0" data-cloud="${escapeHtml(cloud)}" data-cloud-candidates="${escapeHtml(cloudCands.join("|"))}" data-cloud-index="-1" data-anon="${escapeHtml(FOTO_ANON)}" data-foto-stage="local" onerror="window.fotoImgFallback&&window.fotoImgFallback(this)"`;
+  }
+
+  function fotoMiembroUrlFromMember(m) {
+    return fotoMiembroUrl(resolveMiembroFotoArchivo(m));
   }
 
   function saveSession(next) {
@@ -167,6 +389,7 @@
   }
 
   async function api(path, options = {}) {
+    await ensureFreshSession();
     const response = await fetch(`${supabaseUrl}${path}`, {
       ...options,
       headers: authHeaders(options.headers || {}),
@@ -177,6 +400,14 @@
       data = text ? JSON.parse(text) : null;
     } catch {
       data = text;
+    }
+    if (response.status === 401 && session?.refresh_token && !options._retried) {
+      try {
+        await refreshSession(session);
+        return api(path, { ...options, _retried: true });
+      } catch {
+        setLoggedIn(null);
+      }
     }
     if (!response.ok) {
       const message =
@@ -194,10 +425,103 @@
   }
 
   async function signIn(email, password) {
-    return api("/auth/v1/token?grant_type=password", {
+    const response = await fetch(`${supabaseUrl}/auth/v1/token?grant_type=password`, {
       method: "POST",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email, password }),
     });
+    const text = await response.text();
+    let data = null;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      data = text;
+    }
+    if (!response.ok) {
+      const message =
+        data?.msg ||
+        data?.message ||
+        data?.error_description ||
+        data?.error ||
+        `Error ${response.status}`;
+      throw new Error(String(message));
+    }
+    return data;
+  }
+
+  function sessionExpiresAt(sess) {
+    if (!sess) return 0;
+    if (sess.expires_at) return Number(sess.expires_at) * 1000;
+    if (sess.expires_in) {
+      return Date.now() + Number(sess.expires_in) * 1000;
+    }
+    return 0;
+  }
+
+  function isSessionExpired(sess, skewMs = 60_000) {
+    const exp = sessionExpiresAt(sess);
+    if (!exp) return false;
+    return Date.now() >= exp - skewMs;
+  }
+
+  async function refreshSession(current = session) {
+    const refreshToken = current?.refresh_token;
+    if (!refreshToken) throw new Error("Sesión sin refresh_token");
+    const response = await fetch(
+      `${supabaseUrl}/auth/v1/token?grant_type=refresh_token`,
+      {
+        method: "POST",
+        headers: {
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh_token: refreshToken }),
+      }
+    );
+    const text = await response.text();
+    let parsed = null;
+    try {
+      parsed = text ? JSON.parse(text) : null;
+    } catch {
+      parsed = text;
+    }
+    if (!response.ok) {
+      const message =
+        parsed?.msg ||
+        parsed?.message ||
+        parsed?.error_description ||
+        parsed?.error ||
+        `Error ${response.status}`;
+      throw new Error(String(message));
+    }
+    if (!parsed?.access_token) throw new Error("No se pudo renovar la sesión");
+    const next = {
+      ...current,
+      ...parsed,
+      user: parsed.user || current?.user,
+    };
+    saveSession(next);
+    return next;
+  }
+
+  async function ensureFreshSession() {
+    if (!session?.access_token) return null;
+    if (!isSessionExpired(session)) return session;
+    try {
+      return await refreshSession(session);
+    } catch (err) {
+      console.warn("[admin] No se pudo renovar la sesión", err);
+      setLoggedIn(null);
+      showError(loginError, "Tu sesión expiró. Vuelve a iniciar sesión.");
+      return null;
+    }
   }
 
   async function fetchMiembros() {
@@ -244,7 +568,7 @@
   }
 
   function filteredMiembros() {
-    const q = searchQuery.trim().toLowerCase();
+    const q = searchQuery.trim();
     if (!q) return miembros;
     return miembros.filter((m) => {
       const blob = [
@@ -254,10 +578,8 @@
         m.organizacion,
         m.llamamiento,
         m.etiqueta_llamamiento,
-      ]
-        .join(" ")
-        .toLowerCase();
-      return blob.includes(q);
+      ].join(" ");
+      return fuzzyTextMatchAdmin(blob, q);
     });
   }
 
@@ -433,15 +755,45 @@
     return msg || "No se pudo sincronizar con Supabase. Revisa la conexión e inténtalo de nuevo.";
   }
 
-  const ATT_FLUSH_KEY = "directorio-asistencia-flushed-v1";
+  const ATT_PENDING_KEY = "directorio-asistencia-pending-v1";
 
-  /** Sube una sola vez lo pendiente en este dispositivo a Supabase. */
+  function readPendingAttendanceDays() {
+    try {
+      const raw = localStorage.getItem(ATT_PENDING_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      return new Set(Array.isArray(parsed) ? parsed.map(String) : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  function writePendingAttendanceDays(set) {
+    localStorage.setItem(ATT_PENDING_KEY, JSON.stringify([...set]));
+  }
+
+  function markAttendanceDayPending(fecha) {
+    if (!fecha) return;
+    const pending = readPendingAttendanceDays();
+    pending.add(String(fecha));
+    writePendingAttendanceDays(pending);
+  }
+
+  function clearAttendanceDayPending(fecha) {
+    if (!fecha) return;
+    const pending = readPendingAttendanceDays();
+    if (!pending.delete(String(fecha))) return;
+    writePendingAttendanceDays(pending);
+  }
+
+  /** Sube a Supabase los días marcados como pendientes en este dispositivo. */
   async function pushLocalAttendancePending() {
-    if (localStorage.getItem(ATT_FLUSH_KEY) === "1") return 0;
+    const pending = readPendingAttendanceDays();
+    if (!pending.size) return 0;
     const store = readLocalAttendanceStore();
     const payload = [];
-    Object.entries(store).forEach(([fecha, ids]) => {
-      (Array.isArray(ids) ? ids : []).forEach((miembroId) => {
+    pending.forEach((fecha) => {
+      const ids = Array.isArray(store[fecha]) ? store[fecha] : [];
+      ids.forEach((miembroId) => {
         payload.push({
           fecha,
           miembro_id: String(miembroId),
@@ -449,6 +801,15 @@
         });
       });
     });
+
+    // Primero limpiamos en nube cada día pendiente y luego insertamos el snapshot local
+    for (const fecha of pending) {
+      await api(
+        `/rest/v1/asistencia_sacramental?fecha=eq.${encodeURIComponent(fecha)}`,
+        { method: "DELETE" }
+      );
+    }
+
     if (payload.length) {
       const chunkSize = 100;
       for (let i = 0; i < payload.length; i += chunkSize) {
@@ -459,20 +820,27 @@
         });
       }
     }
-    localStorage.setItem(ATT_FLUSH_KEY, "1");
-    return payload.length;
+
+    writePendingAttendanceDays(new Set());
+    // Compat: limpia la clave vieja de un solo flush
+    localStorage.removeItem("directorio-asistencia-flushed-v1");
+    return payload.length || pending.size;
   }
 
-  /** Espejo local del mes = lo que hay en Supabase (fuente de verdad). */
+  /** Espejo local del mes = nube, excepto días aún pendientes de subir. */
   function mirrorLocalFromCloudRows(rows) {
     const { start, end } = monthBounds(attView);
+    const pending = readPendingAttendanceDays();
     const store = readLocalAttendanceStore();
     Object.keys(store).forEach((fecha) => {
-      if (fecha >= start && fecha <= end) delete store[fecha];
+      if (fecha >= start && fecha <= end && !pending.has(fecha)) {
+        delete store[fecha];
+      }
     });
     (rows || []).forEach((row) => {
       if (!row?.presente || !row.fecha) return;
       if (row.fecha < start || row.fecha > end) return;
+      if (pending.has(row.fecha)) return;
       if (!store[row.fecha]) store[row.fecha] = [];
       const id = String(row.miembro_id);
       if (!store[row.fecha].includes(id)) store[row.fecha].push(id);
@@ -480,7 +848,16 @@
     writeLocalAttendanceStore(store);
   }
 
-  function updateDayStats() {
+  let attBulkBusy = false;
+  let attAnalyticsTimer = 0;
+  function scheduleAttendanceAnalytics() {
+    window.clearTimeout(attAnalyticsTimer);
+    attAnalyticsTimer = window.setTimeout(() => {
+      renderAttendanceAnalytics();
+    }, 280);
+  }
+
+  function updateDayStats({ fullAnalytics = true } = {}) {
     const total = miembros.length;
     const present = attDayPresent.size;
     const absent = Math.max(0, total - present);
@@ -489,12 +866,14 @@
     if (attAbsentCount) attAbsentCount.textContent = String(absent);
     if (attPercent) attPercent.textContent = `${percent}%`;
     if (attDayStats) attDayStats.hidden = !attSelectedDate;
-    const enabled = Boolean(attSelectedDate);
+    const enabled = Boolean(attSelectedDate) && !attBulkBusy;
     if (attMarkAll) attMarkAll.disabled = !enabled;
     if (attClearAll) attClearAll.disabled = !enabled;
-    if (attExportPdf) attExportPdf.disabled = !enabled;
-    if (attFiltersBtn) attFiltersBtn.disabled = !enabled;
-    renderAttendanceAnalytics();
+    if (attExportPdf) attExportPdf.disabled = !attSelectedDate;
+    if (attFiltersBtn) attFiltersBtn.disabled = !attSelectedDate;
+    if (fullAnalytics) {
+      scheduleAttendanceAnalytics();
+    }
   }
 
   function attFilterLabel() {
@@ -516,11 +895,11 @@
 
   function getAttendanceRollList() {
     if (!attSelectedDate) return [];
-    const q = attSearchQuery.trim().toLowerCase();
+    const q = attSearchQuery.trim();
     return miembros.filter((m) => {
       if (!matchesAttFilter(m)) return false;
       if (!q) return true;
-      return String(m.nombre || "").toLowerCase().includes(q);
+      return fuzzyTextMatchAdmin(String(m.nombre || ""), q);
     });
   }
 
@@ -584,7 +963,6 @@
       .map((m) => {
         const id = String(m.id);
         const present = attDayPresent.has(id);
-        const foto = fotoMiembroUrl(m.foto);
         const edad = calcEdad(m.nacimiento);
         const edadTexto = edad != null ? `${edad} años` : "Edad —";
         const telefono = String(m.telefono || "").trim() || "Sin teléfono";
@@ -600,12 +978,11 @@
               />
               <img
                 class="asistencia-roll-photo"
-                src="${escapeHtml(foto)}"
+                ${fotoMiembroImgAttrs(m)}
                 alt=""
                 width="40"
                 height="40"
                 loading="lazy"
-                onerror="this.onerror=null;this.src='${FOTO_ANON}'"
               />
               <span class="asistencia-roll-copy">
                 <strong>${escapeHtml(m.nombre)}</strong>
@@ -620,10 +997,14 @@
               class="asistencia-obs-btn"
               type="button"
               data-obs-id="${escapeHtml(id)}"
-              title="Ver observaciones"
+              title="Observaciones"
               aria-label="Observaciones de ${escapeHtml(m.nombre)}"
-            >Obs</button>
-            <span class="asistencia-roll-badge">${present ? "Presente" : "Ausente"}</span>
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 5h14v14H5z" stroke-linejoin="round" />
+                <path d="M8 9h8M8 12h8M8 15h5" stroke-linecap="round" />
+              </svg>
+            </button>
           </div>
         `;
       })
@@ -772,7 +1153,7 @@
 
     preview.innerHTML = built.bodyHtml;
     if (hint) {
-      hint.textContent = `Filtro: ${built.filterLabel}${built.searchLabel} · ${list.length} nombres. En impresión elige “Guardar como PDF”.`;
+      hint.textContent = `Filtro: ${built.filterLabel}${built.searchLabel} · ${list.length} nombres · Archivo: ${attendancePdfFileTitle()}.pdf. En impresión elige “Guardar como PDF”.`;
     }
     modal.hidden = false;
     document.body.classList.add("detail-open");
@@ -780,44 +1161,135 @@
     showOk(asistenciaOk, "Vista previa lista");
   }
 
+  function attendancePdfFilterSlug() {
+    switch (attRollFilter) {
+      case "present":
+        return "Presentes";
+      case "absent":
+        return "Ausentes";
+      case "recien":
+        return "Recien-conversos";
+      case "ss":
+        return "Sociedad-de-Socorro";
+      case "elderes":
+        return "Elderes";
+      default:
+        return "Todos";
+    }
+  }
+
+  function slugForFilename(text) {
+    return String(text || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9]+/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function attendancePdfFileTitle() {
+    const key = String(attSelectedDate || "").trim();
+    let datePart = "";
+    if (/^\d{4}-\d{2}-\d{2}$/.test(key)) {
+      datePart = key;
+    } else {
+      const date = parseDateKey(key);
+      if (date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        datePart = `${y}-${m}-${d}`;
+      }
+    }
+
+    const parts = ["Asistencia-sacramental"];
+    if (datePart) parts.push(datePart);
+    parts.push(attendancePdfFilterSlug());
+
+    const q = attSearchQuery.trim();
+    if (q) {
+      const searchSlug = slugForFilename(q).slice(0, 40);
+      if (searchSlug) parts.push(`busqueda-${searchSlug}`);
+    }
+
+    return parts.join("-");
+  }
+
   function printAttendancePdf() {
     const preview = document.getElementById("attPdfPreview");
-    const frame = document.getElementById("attPrintFrame");
-    if (!preview || !frame) return;
+    if (!preview) return;
 
+    const fileTitle = attendancePdfFileTitle();
     const html = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <title>Asistencia sacramental</title>
+  <title>${escapeHtml(fileTitle)}</title>
   <style>${attendancePrintStyles()}</style>
 </head>
 <body>${preview.innerHTML}</body>
 </html>`;
 
-    const doc = frame.contentDocument;
-    if (!doc) {
-      showError(asistenciaError, "No se pudo preparar la impresión.");
+    // Ventana propia: el título sí se usa como nombre al “Guardar como PDF”
+    const printWin = window.open("", "_blank");
+    if (!printWin) {
+      // Fallback: iframe + título temporal de la página admin
+      const frame = document.getElementById("attPrintFrame");
+      if (!frame) {
+        showError(
+          asistenciaError,
+          "El navegador bloqueó la ventana. Permite ventanas emergentes para exportar el PDF."
+        );
+        return;
+      }
+      const previousTitle = document.title;
+      const restoreTitle = () => {
+        document.title = previousTitle;
+        window.removeEventListener("afterprint", restoreTitle);
+      };
+      document.title = fileTitle;
+      const doc = frame.contentDocument;
+      if (!doc) {
+        restoreTitle();
+        showError(asistenciaError, "No se pudo preparar la impresión.");
+        return;
+      }
+      doc.open();
+      doc.write(html);
+      doc.close();
+      doc.title = fileTitle;
+      window.addEventListener("afterprint", restoreTitle);
+      window.setTimeout(restoreTitle, 60_000);
+      setTimeout(() => {
+        try {
+          frame.contentWindow.focus();
+          frame.contentWindow.print();
+        } catch (err) {
+          restoreTitle();
+          showError(asistenciaError, "No se pudo abrir la impresión.");
+        }
+      }, 150);
       return;
     }
-    doc.open();
-    doc.write(html);
-    doc.close();
+
+    printWin.document.open();
+    printWin.document.write(html);
+    printWin.document.close();
+    printWin.document.title = fileTitle;
 
     const runPrint = () => {
       try {
-        frame.contentWindow.focus();
-        frame.contentWindow.print();
+        printWin.focus();
+        printWin.print();
       } catch (err) {
         showError(asistenciaError, "No se pudo abrir la impresión. Inténtalo de nuevo.");
       }
     };
 
-    // Esperar a que el iframe pinte el contenido
-    if (frame.contentDocument?.readyState === "complete") {
-      setTimeout(runPrint, 120);
+    if (printWin.document.readyState === "complete") {
+      setTimeout(runPrint, 150);
     } else {
-      frame.onload = () => setTimeout(runPrint, 120);
+      printWin.onload = () => setTimeout(runPrint, 150);
     }
   }
 
@@ -1388,6 +1860,60 @@
       .replace(/[\u0300-\u036f]/g, "");
   }
 
+  function levenshteinAdmin(a, b) {
+    if (a === b) return 0;
+    const aLen = a.length;
+    const bLen = b.length;
+    if (!aLen) return bLen;
+    if (!bLen) return aLen;
+    if (Math.abs(aLen - bLen) > 3) return 99;
+    let prev = new Array(bLen + 1);
+    let curr = new Array(bLen + 1);
+    for (let j = 0; j <= bLen; j++) prev[j] = j;
+    for (let i = 1; i <= aLen; i++) {
+      curr[0] = i;
+      const ca = a.charCodeAt(i - 1);
+      for (let j = 1; j <= bLen; j++) {
+        const cost = ca === b.charCodeAt(j - 1) ? 0 : 1;
+        curr[j] = Math.min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost);
+      }
+      const tmp = prev;
+      prev = curr;
+      curr = tmp;
+    }
+    return prev[bLen];
+  }
+
+  function fuzzyTokenMatchAdmin(queryToken, candidateToken) {
+    if (!queryToken || !candidateToken) return false;
+    if (candidateToken.includes(queryToken) || queryToken.includes(candidateToken)) {
+      return true;
+    }
+    if (
+      candidateToken.startsWith(queryToken) ||
+      queryToken.startsWith(candidateToken)
+    ) {
+      return true;
+    }
+    const len = Math.min(queryToken.length, candidateToken.length);
+    const maxDist = len <= 2 ? 0 : len <= 4 ? 1 : len <= 8 ? 2 : 3;
+    if (Math.abs(queryToken.length - candidateToken.length) > maxDist) return false;
+    return levenshteinAdmin(queryToken, candidateToken) <= maxDist;
+  }
+
+  function fuzzyTextMatchAdmin(haystack, query) {
+    const q = normalizeSearchText(query).trim();
+    const text = normalizeSearchText(haystack);
+    if (!q) return true;
+    if (text.includes(q)) return true;
+    const qTokens = q.split(/\s+/).filter(Boolean);
+    const textTokens = text.split(/[^a-z0-9]+/).filter(Boolean);
+    if (!qTokens.length) return true;
+    return qTokens.every((qt) =>
+      textTokens.some((tt) => fuzzyTokenMatchAdmin(qt, tt))
+    );
+  }
+
   let ministrantesExcludeId = "";
 
   function getMinistranteCandidates(query, otherSelected) {
@@ -1400,7 +1926,7 @@
         if (!name) return false;
         if (other && normalizeSearchText(name) === other) return false;
         if (!q) return true;
-        return normalizeSearchText(name).includes(q);
+        return fuzzyTextMatchAdmin(name, q);
       })
       .sort((a, b) =>
         String(a.nombre || "").localeCompare(String(b.nombre || ""), "es", {
@@ -1716,23 +2242,35 @@
     });
   }
 
+  let attDayRequestId = 0;
+  let attMonthRequestId = 0;
+
   async function loadAttendanceMonth() {
     showError(asistenciaError, "");
     if (!session?.access_token) {
       setAttSync("Sin sesión", "error");
       return;
     }
+    const requestId = ++attMonthRequestId;
     setAttSync("Sincronizando con Supabase…", "loading");
     const { start, end } = monthBounds(attView);
 
     try {
       const pushed = await pushLocalAttendancePending();
+      if (requestId !== attMonthRequestId) return;
       const rows = await api(
         `/rest/v1/asistencia_sacramental?select=id,fecha,miembro_id,presente&fecha=gte.${start}&fecha=lte.${end}&order=fecha.asc`
       );
+      if (requestId !== attMonthRequestId) return;
       attCloudReady = true;
       attMonthRows = Array.isArray(rows) ? rows : [];
       mirrorLocalFromCloudRows(attMonthRows);
+      // Mezclar días pendientes locales que aún no se reflejaron
+      const pending = readPendingAttendanceDays();
+      pending.forEach((fecha) => {
+        if (fecha < start || fecha > end) return;
+        rebuildMonthRowsFromPresentSets(fecha, getLocalDaySet(fecha));
+      });
       renderAttendanceCalendar();
       if (attSelectedDate) await loadAttendanceDay(attSelectedDate, { silent: true });
       else {
@@ -1744,6 +2282,7 @@
         );
       }
     } catch (err) {
+      if (requestId !== attMonthRequestId) return;
       attCloudReady = false;
       attMonthRows = localRowsForRange(start, end);
       renderAttendanceCalendar();
@@ -1775,6 +2314,7 @@
 
   async function loadAttendanceDay(dateKey, { silent = false } = {}) {
     if (!dateKey) return;
+    const requestId = ++attDayRequestId;
     const viewport = freezeViewport();
     attSelectedDate = dateKey;
     const date = parseDateKey(dateKey);
@@ -1790,12 +2330,30 @@
     setAttSync("Cargando desde Supabase…", "loading");
     restoreViewport(viewport);
 
+    const pending = readPendingAttendanceDays();
+    if (pending.has(dateKey)) {
+      attDayPresent = getLocalDaySet(dateKey);
+      rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
+      renderAttendanceCalendar({ syncSelectors: false });
+      renderAttendanceRoll();
+      setAttSync(`${attDayPresent.size} presentes · pendiente de nube`, "loading");
+      restoreViewport(viewport);
+      // Intenta subir en segundo plano
+      pushLocalAttendancePending()
+        .then(() => {
+          if (requestId !== attDayRequestId) return;
+          return loadAttendanceDay(dateKey, { silent: true });
+        })
+        .catch(() => {});
+      return;
+    }
+
     try {
       const rows = await api(
         `/rest/v1/asistencia_sacramental?select=miembro_id,presente&fecha=eq.${dateKey}&presente=eq.true`
       );
+      if (requestId !== attDayRequestId) return;
       attCloudReady = true;
-      // Supabase es la fuente de verdad (no se mezclan marcas locales viejas)
       attDayPresent = new Set(
         (Array.isArray(rows) ? rows : []).map((r) => String(r.miembro_id))
       );
@@ -1805,6 +2363,7 @@
       renderAttendanceRoll();
       setAttSync(`${attDayPresent.size} presentes · Supabase`, "ok");
     } catch (err) {
+      if (requestId !== attDayRequestId) return;
       attCloudReady = false;
       attDayPresent = getLocalDaySet(dateKey);
       rebuildMonthRowsFromPresentSets(dateKey, attDayPresent);
@@ -1830,22 +2389,31 @@
     if (presente) attDayPresent.add(id);
     else attDayPresent.delete(id);
     setLocalMemberPresent(attSelectedDate, id, presente);
+    markAttendanceDayPending(attSelectedDate);
     rebuildMonthRowsFromPresentSets(attSelectedDate, attDayPresent);
-    updateDayStats();
-    renderAttendanceCalendar();
+    updateDayStats({ fullAnalytics: false });
+    renderAttendanceCalendar({ syncSelectors: false });
+    if (attRollFilter && attRollFilter !== "all") {
+      renderAttendanceRoll();
+    }
     setAttSync("Guardando en Supabase…", "loading");
 
     try {
-      await cloudDeleteMemberDay(attSelectedDate, id);
-      if (presente) await cloudInsertMemberDay(attSelectedDate, id);
+      if (presente) {
+        await cloudInsertMemberDay(attSelectedDate, id);
+      } else {
+        await cloudDeleteMemberDay(attSelectedDate, id);
+      }
       attCloudReady = true;
       setLocalMemberPresent(attSelectedDate, id, presente);
       setAttSync(`${attDayPresent.size} presentes · guardado en Supabase`, "ok");
       showOk(asistenciaOk, presente ? "Presente sincronizado" : "Ausente sincronizado");
       showError(asistenciaError, "");
+      scheduleAttendanceAnalytics();
       return true;
     } catch (err) {
       attCloudReady = false;
+      markAttendanceDayPending(attSelectedDate);
       setAttSync(`${attDayPresent.size} presentes · error de sync`, "error");
       showError(asistenciaError, attendanceTableHint(err));
       return false;
@@ -1855,7 +2423,9 @@
   }
 
   async function setAllAttendance(presente) {
-    if (!attSelectedDate || !miembros.length) return;
+    if (!attSelectedDate || !miembros.length || attBulkBusy) return;
+    attBulkBusy = true;
+    updateDayStats({ fullAnalytics: false });
     showError(asistenciaError, "");
     setAttSync(presente ? "Marcando en Supabase…" : "Desmarcando en Supabase…", "loading");
 
@@ -1865,9 +2435,10 @@
       attDayPresent = new Set();
     }
     saveLocalDaySet(attSelectedDate, attDayPresent);
+    markAttendanceDayPending(attSelectedDate);
     rebuildMonthRowsFromPresentSets(attSelectedDate, attDayPresent);
     renderAttendanceRoll();
-    renderAttendanceCalendar();
+    renderAttendanceCalendar({ syncSelectors: false });
 
     try {
       await api(
@@ -1891,16 +2462,22 @@
       }
       attCloudReady = true;
       saveLocalDaySet(attSelectedDate, attDayPresent);
+      clearAttendanceDayPending(attSelectedDate);
       setAttSync(`${attDayPresent.size} presentes · guardado en Supabase`, "ok");
       showOk(
         asistenciaOk,
         presente ? "Todos marcados y sincronizados" : "Todos desmarcados y sincronizados"
       );
       showError(asistenciaError, "");
+      scheduleAttendanceAnalytics();
     } catch (err) {
       attCloudReady = false;
+      markAttendanceDayPending(attSelectedDate);
       setAttSync(`${attDayPresent.size} presentes · error de sync`, "error");
       showError(asistenciaError, attendanceTableHint(err));
+    } finally {
+      attBulkBusy = false;
+      updateDayStats({ fullAnalytics: true });
     }
   }
 
@@ -2000,7 +2577,7 @@
     const elderes = miembros.filter((m) => enQuorumElderes(m)).length;
     const presSs = miembros.filter((m) => m.sociedad_socorro).length;
     const presElderes = miembros.filter((m) => m.quorum_elderes).length;
-    const conFoto = miembros.filter((m) => String(m.foto || "").trim()).length;
+    const conFoto = miembros.filter((m) => resolveMiembroFotoArchivo(m)).length;
     const conTel = miembros.filter((m) => String(m.telefono || "").trim()).length;
     const conMail = miembros.filter((m) => String(m.correo || "").trim()).length;
     const conDir = miembros.filter((m) => String(m.direccion || "").trim()).length;
@@ -2113,7 +2690,12 @@
         miembros = (await fetchMiembros()) || [];
         applyLocalObservacionesToMiembros();
       }
+      rebuildFotoPorNombreAdmin();
+      enrichMiembrosFotos();
       renderAll();
+      if (typeof renderAttendanceRoll === "function") {
+        renderAttendanceRoll();
+      }
       if (adminStatusText) {
         adminStatusText.textContent = obsColumnReady
           ? "Datos sincronizados"
@@ -2163,12 +2745,23 @@
 
     fillMinistrantesSelects(member);
 
+    const fotoFile = document.getElementById("f_foto_file");
+    if (fotoFile) fotoFile.value = "";
+    const fotoStatus = document.getElementById("f_foto_status");
+    if (fotoStatus) {
+      fotoStatus.hidden = true;
+      fotoStatus.textContent = "";
+    }
+    setFotoPreview(member?.foto || "");
+
     memberModal.hidden = false;
+    document.body.classList.add("detail-open");
     document.getElementById("f_nombre").focus();
   }
 
   function closeModal() {
     memberModal.hidden = true;
+    document.body.classList.remove("detail-open");
     showError(formError, "");
   }
 
@@ -2211,6 +2804,113 @@
       quorum_elderes: document.getElementById("f_elderes").checked,
       hermanos_ministrantes: ministrantes,
     };
+  }
+
+  function safeFotoFilename(name, originalFileName) {
+    const extMatch = String(originalFileName || "").match(/\.(jpe?g|png|webp|gif)$/i);
+    const ext = extMatch ? extMatch[0].toLowerCase() : ".jpg";
+    let base = String(name || "")
+      .trim()
+      .replace(/[<>:"/\\|?*\u0000-\u001f]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!base) {
+      base = String(originalFileName || "foto")
+        .replace(/\.[^.]+$/, "")
+        .trim() || "foto";
+    }
+    const withExt = /\.(jpe?g|png|webp|gif)$/i.test(base) ? base : `${base}${ext}`;
+    // Clave Storage sin tildes (Supabase InvalidKey)
+    if (typeof window.fotoStorageKey === "function") {
+      return window.fotoStorageKey(withExt) || withExt;
+    }
+    return withExt
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9._\s-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function setFotoPreview(filename) {
+    const preview = document.getElementById("f_foto_preview");
+    if (!preview) return;
+    const name = String(filename || "").trim();
+    if (!name) {
+      preview.hidden = true;
+      preview.removeAttribute("src");
+      return;
+    }
+    preview.hidden = false;
+    preview.dataset.fotoStage = "local";
+    preview.dataset.cloud = fotoMiembroCloudUrl(name);
+    preview.dataset.anon = FOTO_ANON;
+    preview.onerror = () => {
+      if (window.fotoImgFallback) window.fotoImgFallback(preview);
+    };
+    preview.src = fotoMiembroUrl(name);
+  }
+
+  async function uploadFotoToSupabase(file, filename) {
+    const token = session?.access_token;
+    if (!token) throw new Error("Sesión expirada. Vuelve a iniciar sesión.");
+    const bucket =
+      String((window.SUPABASE_CONFIG || {}).fotosBucket || "fotos-miembros").trim() ||
+      "fotos-miembros";
+    const objectPath = encodeURIComponent(filename);
+    const endpoint = `${supabaseUrl}/storage/v1/object/${bucket}/${objectPath}`;
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": file.type || "application/octet-stream",
+        "x-upsert": "true",
+      },
+      body: file,
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      if (response.status === 404 || /Bucket not found/i.test(text)) {
+        throw new Error(
+          "Falta el bucket de fotos. Ejecuta supabase/storage-fotos.sql en el SQL Editor."
+        );
+      }
+      throw new Error(`No se pudo subir la foto (${response.status}).`);
+    }
+    return filename;
+  }
+
+  async function onFotoFileSelected(event) {
+    const input = event.target;
+    const file = input?.files?.[0];
+    const status = document.getElementById("f_foto_status");
+    if (!file) return;
+
+    const nombreMiembro = String(document.getElementById("f_nombre")?.value || "").trim();
+    const filename = safeFotoFilename(nombreMiembro || file.name, file.name);
+    const fotoInput = document.getElementById("f_foto");
+
+    if (status) {
+      status.hidden = false;
+      status.textContent = "Subiendo a Supabase…";
+    }
+
+    try {
+      await uploadFotoToSupabase(file, filename);
+      if (fotoInput) fotoInput.value = filename;
+      setFotoPreview(filename);
+      if (status) {
+        status.textContent =
+          `Listo en la nube: ${filename}. Para respaldo local, guarda también el archivo en la carpeta /fotos.`;
+      }
+    } catch (err) {
+      if (status) {
+        status.textContent = err.message || "Error al subir la foto.";
+      }
+    } finally {
+      input.value = "";
+    }
   }
 
   if (!supabaseUrl || !supabaseKey) {
@@ -2456,6 +3156,11 @@
     }
   });
 
+  document.getElementById("f_foto_file")?.addEventListener("change", onFotoFileSelected);
+  document.getElementById("f_foto")?.addEventListener("input", () => {
+    setFotoPreview(document.getElementById("f_foto")?.value || "");
+  });
+
   memberForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     showError(formError, "");
@@ -2552,11 +3257,23 @@
   setPanel("stats");
 
   // Restaurar sesión guardada
-  const existing = loadSession();
-  if (existing?.access_token) {
+  (async () => {
+    const existing = loadSession();
+    if (!existing?.access_token) {
+      setLoggedIn(null);
+      return;
+    }
     setLoggedIn(existing);
+    if (isSessionExpired(existing)) {
+      try {
+        await refreshSession(existing);
+      } catch (err) {
+        console.warn("[admin] Sesión guardada inválida", err);
+        setLoggedIn(null);
+        showError(loginError, "Tu sesión expiró. Vuelve a iniciar sesión.");
+        return;
+      }
+    }
     loadMiembros();
-  } else {
-    setLoggedIn(null);
-  }
+  })();
 })();

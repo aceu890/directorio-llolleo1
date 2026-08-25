@@ -1036,6 +1036,7 @@ body.filters-open {
   background: var(--surface-strong);
   box-shadow: var(--shadow);
   overflow: hidden;
+  opacity: 1;
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   animation: fade-up 0.45s ease both;
   animation-delay: calc(var(--i, 0) * 28ms);
@@ -1102,12 +1103,7 @@ body.filters-open {
 }
 
 .card-photo-wrap::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 48%;
-  background: linear-gradient(to top, rgba(5, 10, 18, 0.85), transparent);
-  pointer-events: none;
+  display: none;
 }
 
 .card-photo {
@@ -1127,7 +1123,8 @@ body.filters-open {
 .badge-recien,
 .badge-llamamiento,
 .badge-ss,
-.badge-elderes {
+.badge-elderes,
+.badge-org {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -1157,33 +1154,73 @@ body.filters-open {
 .badge-ss {
   background: rgba(46, 196, 182, 0.14);
   border-color: rgba(46, 196, 182, 0.3);
-  color: var(--ss);
+  color: #2ec4b6;
 }
 
 .badge-elderes {
   background: rgba(77, 141, 255, 0.14);
   border-color: rgba(77, 141, 255, 0.3);
-  color: #9cbcff;
+  color: #8eb6ff;
+}
+
+.badge-org {
+  background: rgba(232, 244, 255, 0.08);
+  border-color: rgba(232, 244, 255, 0.18);
+  color: var(--ink, #e8f4ff);
+}
+
+.badge-org--primaria {
+  background: rgba(255, 193, 7, 0.14);
+  border-color: rgba(255, 193, 7, 0.35);
+  color: #ffd56a;
+}
+
+.badge-org--hj {
+  background: rgba(77, 141, 255, 0.14);
+  border-color: rgba(77, 141, 255, 0.32);
+  color: #9fc0ff;
+}
+
+.badge-org--mj {
+  background: rgba(236, 72, 153, 0.14);
+  border-color: rgba(236, 72, 153, 0.32);
+  color: #f9a8d4;
+}
+
+.badge-org--ss {
+  background: rgba(46, 196, 182, 0.14);
+  border-color: rgba(46, 196, 182, 0.32);
+  color: #5eead4;
+}
+
+.badge-org--elderes {
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.32);
+  color: #a5b4fc;
+}
+
+.badge-org--jas {
+  background: rgba(168, 85, 247, 0.14);
+  border-color: rgba(168, 85, 247, 0.35);
+  color: #d8b4fe;
+}
+
+.badge-org--ed {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.28);
+  color: #7dd3fc;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
 
 .card-badges {
-  position: absolute;
-  left: 0.55rem;
-  bottom: 0.55rem;
+  position: static;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 0.3rem;
-  z-index: 1;
-}
-
-.card-photo-wrap .badge-recien,
-.card-photo-wrap .badge-llamamiento,
-.card-photo-wrap .badge-ss,
-.card-photo-wrap .badge-elderes {
-  background: rgba(5, 10, 18, 0.82);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  margin: 0.15rem 0 0.1rem;
 }
 
 .card-body {
@@ -1768,6 +1805,14 @@ body.filters-open {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  .card,
+  .detail,
+  .detail-panel,
+  .ministrantes-panel {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
