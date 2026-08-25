@@ -33,7 +33,7 @@ update public.miembros set organizacion = 'Primaria' where nombre = 'Tomas Aleja
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Gabriela Soledad Contreras Zuñiga';
 update public.miembros set organizacion = 'Guardianas de Luz' where nombre = 'Josefa Paz Diaz Jeria';
 update public.miembros set organizacion = 'Cuórum de Diáconos' where nombre = 'Felipe Esteban Pinto Jauregui';
-update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'José Miguel Diaz Muñoz';
+update public.miembros set foto = 'José Miguel Diaz Muñoz.png', organizacion = 'Cuórum de Élderes' where nombre = 'José Miguel Diaz Muñoz';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Thiare Andrea Donoso Vilches';
 update public.miembros set organizacion = 'Primaria' where nombre = 'Dominique Dayanet Donoso Vilches';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Claudia Maricel Vilches Arenas';
@@ -60,7 +60,7 @@ update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = '
 update public.miembros set organizacion = 'Cuórum de Diáconos' where nombre = 'Agustin Facundo Flores Martinez';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Agustin Javier Ignacio Berrios Berrios';
 update public.miembros set organizacion = 'Guardianas de Luz' where nombre = 'Ahiza Lía Pizarro Hernández';
-update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Alejandro Alberto Sanchez Celis';
+update public.miembros set foto = 'Alejandro Alberto Sanchez Celis.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Alejandro Alberto Sanchez Celis';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Alejandro Ignacio Bugueño Hormazábal';
 update public.miembros set foto = 'Alfredo Elias Mondaca Riveros.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Alfredo Elias Mondaca Riveros';
 update public.miembros set foto = 'Alicia del Carmen de Peña Jerez.jpg', organizacion = 'Sociedad de Socorro' where nombre = 'Alicia del Carmen de Peña Jerez';
@@ -78,7 +78,7 @@ update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = '
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Bernarda Cristina Hernandez Fuentes';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Bernarda de Lourdes Cardenas Zenteno';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Byron Broderyk Oroz Ravanal';
-update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Camila Fernanda Farias Alvarez';
+update public.miembros set foto = 'Camila Fernanda Farias Alvarez.jpg', organizacion = 'Sociedad de Socorro' where nombre = 'Camila Fernanda Farias Alvarez';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Carla Belen Fajardo Lara';
 update public.miembros set organizacion = 'Mensajeras de Esperanza' where nombre = 'Carla Belén Oroz Ravanal';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Carlos Francisco Martinez Martinez';
@@ -109,7 +109,7 @@ update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = '
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'David Alejandro Quintanilla Meza';
 update public.miembros set foto = 'David Joel Ramos Torres.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'David Joel Ramos Torres';
 update public.miembros set foto = 'Diego Aaron Miranda Acevedo.jpg', organizacion = 'Cuórum de Diáconos' where nombre = 'Diego Aaron Miranda Acevedo';
-update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Diego Cristobal Delgado Atenas';
+update public.miembros set foto = 'Diego Cristobal Delgado Atenas.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Diego Cristobal Delgado Atenas';
 update public.miembros set foto = 'Eduardo Alberto Castillo Fuentes.png', organizacion = 'Cuórum de Élderes' where nombre = 'Eduardo Alberto Castillo Fuentes';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Eliana de las Mercedes Figueroa Berrios';
 update public.miembros set foto = 'Elias Benjamin Torres Jimenez.jpg', organizacion = 'Primaria' where nombre = 'Elias Benjamin Torres Jimenez';
@@ -146,7 +146,7 @@ update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = '
 update public.miembros set foto = 'Gustavo Adolfo Gana Luna.png', organizacion = 'Cuórum de Élderes' where nombre = 'Gustavo Adolfo Gana Luna';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Hector Rigoberto Rocha Corral';
 update public.miembros set organizacion = 'Cuórum de Maestros' where nombre = 'Ian Aaron Cobarrubia Maripangui';
-update public.miembros set foto = 'Ignacio Aaron Miranda Acevedo.jpeg', organizacion = 'Cuórum de Presbíteros' where nombre = 'Ignacio Aaron Miranda Acevedo';
+update public.miembros set foto = 'Ignacio Aaron Miranda Acevedo.jpg', organizacion = 'Cuórum de Presbíteros' where nombre = 'Ignacio Aaron Miranda Acevedo';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Ignacio Alberto Vega Badilla';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Ignacio Juan Caceres Olivera';
 update public.miembros set foto = 'Iris del Pilar Duque Cáceres.jpeg', organizacion = 'Sociedad de Socorro' where nombre = 'Iris del Pilar Duque Caceres';
@@ -157,10 +157,10 @@ update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = '
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Ivan Marcelo Carrasco Carrasco';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Javiera Beatriz Vidal Basso';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Jennifer Odette Ravanal Echeverria';
-update public.miembros set foto = 'Jesús Alberto Torres Benavente.png', organizacion = 'Cuórum de Élderes' where nombre = 'Jesus Alberto Torres Benavente';
+update public.miembros set foto = 'Jesús Alberto Torres Benavente.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Jesus Alberto Torres Benavente';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jesus Antonio Quijada Gonzalez';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jhon Alexander Sandoval Basulto';
-update public.miembros set foto = 'Joaquín Ignacio Torres Jiménez.png', organizacion = 'Cuórum de Diáconos' where nombre = 'Joaquin Ignacio Torres Jimenez';
+update public.miembros set foto = 'Joaquín Ignacio Torres Jiménez.jpg', organizacion = 'Cuórum de Diáconos' where nombre = 'Joaquin Ignacio Torres Jimenez';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jorge Armando Guerrero Ortega';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jorge Jose Vera Delgado';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jose Fernando Antonio Santacana Salinas';
@@ -168,7 +168,7 @@ update public.miembros set organizacion = 'Primaria' where nombre = 'José Ignac
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jose Javier Castro Torres';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Jose Miguel Soto Gazul';
 update public.miembros set foto = 'Jose Miguel Soto Soto.jpeg', organizacion = 'Cuórum de Élderes' where nombre = 'Jose Miguel Soto Soto';
-update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Juan Antonio Meza Meza';
+update public.miembros set foto = 'Juan Antonio Meza Meza.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Juan Antonio Meza Meza';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Juan Carlos Armijo Acevedo';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Juan Carlos Caceres Martinez';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Juan Carlos Hernandez Donoso';
@@ -209,7 +209,7 @@ update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = '
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Marcela Antonia Pardo Martinez';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Marcela Ivon Donaire Valladares';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Marcelina del Carmen de Soto Soto';
-update public.miembros set foto = 'Marco Antonio Hernandez Ruiz.png', organizacion = 'Cuórum de Élderes' where nombre = 'Marco Antonio Hernandez Ruiz';
+update public.miembros set foto = 'Marco Antonio Hernandez Ruiz.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Marco Antonio Hernandez Ruiz';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Marco Antonio Marco Antonio Hernandez Trujillo';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Margarita Alejandra Pardo Perez';
 update public.miembros set foto = 'Margarita del Pilar de Meza Soto.jpg', organizacion = 'Sociedad de Socorro' where nombre = 'Margarita del Pilar de Meza Soto';
@@ -229,9 +229,9 @@ update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = '
 update public.miembros set foto = 'Maritza Viviana Martinez de Flores.jpg', organizacion = 'Sociedad de Socorro' where nombre = 'Maritza Viviana Martinez de Flores';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Marjorie Andrea Hernández Arellano';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Marlon Jose Jimenez Dominguez';
-update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Marta Irene Celis Gongora';
+update public.miembros set foto = 'Marta Irene Celis Gongora.jpg', organizacion = 'Sociedad de Socorro' where nombre = 'Marta Irene Celis Gongora';
 update public.miembros set organizacion = 'Cuórum de Diáconos' where nombre = 'Mateo Alonso Bustos Farias';
-update public.miembros set foto = 'Mateo Alonso Hernández Inostroza.png', organizacion = 'Cuórum de Élderes' where nombre = 'Mateo Alonso Hernández Inostroza';
+update public.miembros set foto = 'Mateo Alonso Hernández Inostroza.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Mateo Alonso Hernández Inostroza';
 update public.miembros set organizacion = 'Cuórum de Élderes' where nombre = 'Matías Reinaldo Montecinos Montecinos';
 update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = 'Matilde Josefina Chourio de Bracho';
 update public.miembros set foto = 'Mauricio Fernando Flores Rojas.jpg', organizacion = 'Cuórum de Élderes' where nombre = 'Mauricio Fernando Flores Rojas';
@@ -312,4 +312,4 @@ update public.miembros set organizacion = 'Sociedad de Socorro' where nombre = '
 commit;
 
 -- Año eclesiástico: 2026
--- Fotos actualizadas: 2, orgs: 0
+-- Fotos actualizadas: 4, orgs: 0
