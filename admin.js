@@ -2956,6 +2956,11 @@
           loginError,
           "Confirma el usuario en Supabase → Authentication → Users."
         );
+      } else if (/failed to fetch|networkerror|load failed|err_name_not_resolved|dns/i.test(msg)) {
+        showError(
+          loginError,
+          "No se pudo conectar con Supabase (Failed to fetch). Entra a supabase.com → tu proyecto: si está Pausado, Restáuralo; si no aparece o la URL cambió, actualiza url y anonKey en supabase-config.js."
+        );
       } else {
         showError(loginError, msg || "No se pudo iniciar sesión.");
       }
